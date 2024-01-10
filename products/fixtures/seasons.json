@@ -1,0 +1,42 @@
+[
+  {
+    "pk": 1,
+    "model": "products.season",
+    "fields": {
+      "name": "spring",
+      "friendly_name": "Spring",
+      "start": "2023-03-01",
+      "end": "2023-04-01"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "products.season",
+    "fields": {
+      "name": "summer",
+      "friendly_name": "Summer",
+      "start": "2023-05-01",
+      "end": "2023-08-01"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "products.season",
+    "fields": {
+      "name": "autumn",
+      "friendly_name": "Autumn",
+      "start": "2023-09-01",
+      "end": "2023-11-01"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "products.season",
+    "fields": {
+      "name": "winter",
+      "friendly_name": "Winter",
+      "start": "2023-12-01",
+      "end": "2024-02-01"
+    }
+  }
+]
