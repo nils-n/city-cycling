@@ -38,5 +38,38 @@
       "start": "2023-12-01",
       "end": "2024-02-01"
     }
+  },
+{
+  "pk": 6,
+  "model": "products.product",
+  "fields": {
+    "name": "Black Cycling Shoes",
+    "description": "Stay stylish and comfortable with our Black Cycling Shoes designed for both performance and style.",
+    "price": 99.99,
+    "category": 1,
+    "season": 1,
+    "rating": 4.8,
+    "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_black_shoe_f_0-removebg-preview.png?raw=true",
+    "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_black_shoe_f_0-removebg-preview.png"
   }
+},
+
+{
+  "pk": 8,
+  "model": "products.product",
+  "fields": {
+    "name": "Black Cycling Gloves",
+    "description": "Stay warm and stylish with our Black Cycling Gloves designed for both performance and comfort.",
+    "price": 14.99,
+    "category": 2,
+    "season": 3,
+    "rating": 4.5,
+    "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_black_sungla_0-removebg-preview.png?raw=true",
+    "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_black_sungla_0-removebg-preview.png"
+  }
+}
+
+
+
+
 ]

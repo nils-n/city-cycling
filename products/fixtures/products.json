@@ -12,5 +12,662 @@
       "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_GPS_bike_com_0-removebg-preview.png?raw=true",
       "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_GPS_bike_com_0-removebg-preview.png"
     }
+  },
+  {
+    "pk": 2,
+    "model": "products.product",
+    "fields": {
+      "name": "Silver Bike Chain",
+      "description": "Elevate your bike's style with our sleek Silver Bike Chain! This premium chain is made of high-quality materials for durability and longevity. It adds a touch of elegance to any bicycle, making it perfect for city cycling or casual rides.",
+      "price": 49.99,
+      "category": 5,
+      "season": 2,
+      "rating": 4.3,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_bike_chain_f_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_bike_chain_f_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 3,
+    "model": "products.product",
+    "fields": {
+      "name": "Black Bike Lock",
+      "description": "Secure your bike with our sturdy Black Bike Lock! This high-quality lock is made of durable materials to protect your bicycle from theft and damage. It's easy to carry around, making it perfect for city cycling or casual rides.",
+      "price": 29.99,
+      "category": 2,
+      "season": 2,
+      "rating": 4.5,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_black_cable_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_black_cable_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "products.product",
+    "fields": {
+      "name": "Rainy Day Black Cycling Jacket",
+      "description": "Stay dry and stylish with our Rainy Day Black Cycling Jacket! This waterproof jacket is perfect for those rainy days in Glasgow, keeping you warm and comfortable.",
+      "price": 59.99,
+      "category": 1,
+      "season": 3,
+      "rating": 4.7,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_black_jacket_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_black_jacket_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "products.product",
+    "fields": {
+      "name": "Black Bike Saddle",
+      "description": "Upgrade your bike with our comfortable Black Bike Saddle! This sleek saddle is designed for both style and comfort during long rides.",
+      "price": 19.99,
+      "category": 2,
+      "season": 3,
+      "rating": 4.6,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_black_saddle_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_black_saddle_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "products.product",
+    "fields": {
+      "name": "Black Cycling Gloves",
+      "description": "Stay warm and stylish with our Black Cycling Gloves designed for both performance and comfort.",
+      "price": 14.99,
+      "category": 1,
+      "season": 3,
+      "rating": 4.5,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_black_sungla_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_black_sungla_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "products.product",
+    "fields": {
+      "name": "Blue Cycling Helmet for Safety",
+      "description": "Stay safe on Glasgow's streets with our Blue Cycling Helmet designed for both performance and safety.",
+      "price": 29.99,
+      "category": 3,
+      "season": 4,
+      "rating": 4.8,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_blue_helmet_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_blue_helmet_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "products.product",
+    "fields": {
+      "name": "Blue Cycling Jacket",
+      "description": "Stay warm and stylish with our Blue Cycling Jacket designed for both performance and comfort.",
+      "price": 49.99,
+      "category": 1,
+      "season": 3,
+      "rating": 4.7,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_blue_jacket_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_blue_jacket_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "products.product",
+    "fields": {
+      "name": "Blue Cycling Sunglasses",
+      "description": "Stay cool and stylish with our Blue Cycling Sunglasses designed for both performance and comfort.",
+      "price": 19.99,
+      "category": 1,
+      "season": 3,
+      "rating": 4.6,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_blue_sunglas_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_blue_sunglas_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 12,
+    "model": "products.product",
+    "fields": {
+      "name": "Black Front Mudguard",
+      "description": "Protect your bike from mud and dirt with our Black Front Mudguard designed for both performance and durability.",
+      "price": 14.99,
+      "category": 3,
+      "season": 2,
+      "rating": 4.5,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_front_mudgua_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_front_mudgua_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 13,
+    "model": "products.product",
+    "fields": {
+      "name": "Green Helmet",
+      "description": "Stay safe on the road with our Green Helmet designed for both performance and safety.",
+      "price": 29.99,
+      "category": 3,
+      "season": 4,
+      "rating": 4.7,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_green_helmet_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_green_helmet_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 14,
+    "model": "products.product",
+    "fields": {
+      "name": "Green Short Sleeves",
+      "description": "Stay cool and comfortable with our Green Short Sleeves designed for both performance and style.",
+      "price": 25.99,
+      "category": 1,
+      "season": 3,
+      "rating": 4.6,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_green_shorts_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_green_shorts_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 16,
+    "model": "products.product",
+    "fields": {
+      "name": "Rain Jacket",
+      "description": "Stay dry in the rain with our Rain Jacket designed for both performance and comfort.",
+      "price": 49.99,
+      "category": 1,
+      "season": 1,
+      "rating": 4.7,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_jacket_for_c_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_jacket_for_c_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 17,
+    "model": "products.product",
+    "fields": {
+      "name": "Multitool",
+      "description": "Stay prepared on the road with our Multitool designed for both convenience and functionality.",
+      "price": 24.99,
+      "category": 5,
+      "rating": 4.6,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_multitool_on_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_multitool_on_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 18,
+    "model": "products.product",
+    "fields": {
+      "name": "Bike Lights",
+      "description": "Stay visible on the road with our Bike Lights designed for both safety and style.",
+      "price": 29.99,
+      "category": 4,
+      "rating": 4.7,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_pair_of_bike_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_pair_of_bike_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 19,
+    "model": "products.product",
+    "fields": {
+      "name": "Bike Lights",
+      "description": "Stay visible on the road with our Bike Lights designed for both safety and style.",
+      "price": 29.99,
+      "category": 4,
+      "rating": 4.7,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_pair_of_bike_0__1-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_pair_of_bike_0__1-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 20,
+    "model": "products.product",
+    "fields": {
+      "name": "Red Bike Lights",
+      "description": "Stay visible on the road with our Red Bike Lights designed for both safety and style.",
+      "price": 34.99,
+      "category": 4,
+      "rating": 4.8,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_pair_of_bike_0__2-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_pair_of_bike_0__2-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 21,
+    "model": "products.product",
+    "fields": {
+      "name": "Bike Lights, 200 Lumen",
+      "description": "Stay visible on the road with our Bike Lights designed for both safety and style.",
+      "price": 39.99,
+      "category": 4,
+      "rating": 4.8,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_pair_of_bike_1-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_pair_of_bike_1-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 22,
+    "model": "products.product",
+    "fields": {
+      "name": "Bike Lights",
+      "description": "Stay visible on the road with our Bike Lights designed for both safety and style.",
+      "price": 49.99,
+      "category": 4,
+      "rating": 4.8,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_pair_of_bike_2-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_pair_of_bike_2-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 24,
+    "model": "products.product",
+    "fields": {
+      "name": "Rain Trousers",
+      "description": "A must for rainy November days! Stay dry with our Rain Trousers designed to keep you comfortable.",
+      "price": 79.99,
+      "category": 1,
+      "season": 3,
+      "rating": 4.8,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_rainproof_tr_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_rainproof_tr_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 24,
+    "model": "products.product",
+    "fields": {
+      "name": "Rain Trousers",
+      "description": "A must for rainy November days! Stay dry with our Rain Trousers designed to keep you comfortable.",
+      "price": 79.99,
+      "category": 1,
+      "season": 3,
+      "rating": 4.8,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_rainproof_tr_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_rainproof_tr_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 25,
+    "model": "products.product",
+    "fields": {
+      "name": "Rear Mudguard",
+      "description": "Protect your bike from mud and water with our Rear Mudguard designed for durability.",
+      "price": 29.99,
+      "category": 2,
+      "rating": 4.7,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_rear_mudguar_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_rear_mudguar_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 26,
+    "model": "products.product",
+    "fields": {
+      "name": "Red Bike Lock",
+      "description": "Keep your bike secure with our Red Bike Lock designed for durability and style.",
+      "price": 49.99,
+      "category": 2,
+      "rating": 4.7,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_red_cable_lo_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_red_cable_lo_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 27,
+    "model": "products.product",
+    "fields": {
+      "name": "Red Bike Helmet",
+      "description": "Stay visible on dark Scottish winter days with our Red Bike Helmet.",
+      "price": 49.99,
+      "category": 2,
+      "rating": 4.8,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_red_helmet_f_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_red_helmet_f_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 28,
+    "model": "products.product",
+    "fields": {
+      "name": "Red Cycling Jacket",
+      "description": "Stay visible with our Red Cycling Jacket designed for optimal visibility.",
+      "price": 79.99,
+      "category": 1,
+      "rating": 4.9,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_red_jacket_f_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_red_jacket_f_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 29,
+    "model": "products.product",
+    "fields": {
+      "name": "Red Cycling Shoe",
+      "description": "Stay stylish and comfortable with our Red Cycling Shoe designed for season 2.",
+      "price": 64.99,
+      "category": 1,
+      "season": 2,
+      "rating": 4.8,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_red_shoe_for_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_red_shoe_for_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 30,
+    "model": "products.product",
+    "fields": {
+      "name": "White Cycling Shoe",
+      "description": "Stay stylish with our White Cycling Shoe designed for season 2.",
+      "price": 64.99,
+      "category": 1,
+      "season": 2,
+      "rating": 4.7,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_shoe_for_cyc_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_shoe_for_cyc_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 31,
+    "model": "products.product",
+    "fields": {
+      "name": "City Bike Tyre",
+      "description": "Experience smooth rides with our City Bike Tyre designed for city profiles.",
+      "price": 29.99,
+      "category": 5,
+      "rating": 4.6,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_tyre_for_cyc_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_tyre_for_cyc_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 32,
+    "model": "products.product",
+    "fields": {
+      "name": "Waterproof Sock",
+      "description": "Stay dry on rainy days with our Waterproof Sock designed for rainy autumn days.",
+      "price": 14.99,
+      "category": 1,
+      "season": 3,
+      "rating": 4.5,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_waterproof_s_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_waterproof_s_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 33,
+    "model": "products.product",
+    "fields": {
+      "name": "White Bike Helmet",
+      "description": "Stay stylish with our White Bike Helmet designed for season 1.",
+      "price": 49.99,
+      "category": 1,
+      "season": 1,
+      "rating": 4.8,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_white_helmet_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_white_helmet_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 34,
+    "model": "products.product",
+    "fields": {
+      "name": "Yellow Bike Lock",
+      "description": "Keep your bike secure with our Yellow Bike Lock designed for season 2.",
+      "price": 19.99,
+      "category": 2,
+      "season": 2,
+      "rating": 4.6,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_yellow_cable_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_yellow_cable_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 35,
+    "model": "products.product",
+    "fields": {
+      "name": "Yellow Jacket",
+      "description": "Stay warm with our Yellow Jacket designed for season 4.",
+      "price": 69.99,
+      "category": 1,
+      "season": 4,
+      "rating": 4.7,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_yellow_jacke_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_yellow_jacke_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 36,
+    "model": "products.product",
+    "fields": {
+      "name": "Yellow Short Sleeve",
+      "description": "Stay cool with our Yellow Short Sleeve designed for season 2.",
+      "price": 19.99,
+      "category": 1,
+      "season": 2,
+      "rating": 4.5,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_yellow_short_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_yellow_short_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 37,
+    "model": "products.product",
+    "fields": {
+      "name": "Yellow Waterproof Socks",
+      "description": "Stay dry with our Yellow Waterproof Socks designed for season 3.",
+      "price": 14.99,
+      "category": 1,
+      "season": 3,
+      "rating": 4.6,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_yellow_water_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_yellow_water_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 38,
+    "model": "products.product",
+    "fields": {
+      "name": "Bike Tyre, Robust",
+      "description": "Stay safe with our Bike Tyre designed for off-road adventures.",
+      "price": 29.99,
+      "category": 5,
+      "rating": 4.8,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_an_offroad_tyr_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_an_offroad_tyr_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 39,
+    "model": "products.product",
+    "fields": {
+      "name": "White Arm Warmer",
+      "description": "Stay warm with our White Arm Warmer designed for cooler weather.",
+      "price": 12.99,
+      "category": 1,
+      "season": 4,
+      "rating": 4.7,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_arm_warmer_for_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_arm_warmer_for_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 40,
+    "model": "products.product",
+    "fields": {
+      "name": "Baselayer",
+      "description": "Stay warm with our Baselayer designed for season 4.",
+      "price": 39.99,
+      "category": 1,
+      "season": 4,
+      "rating": 4.8,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_baselayer_for_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_baselayer_for_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 41,
+    "model": "products.product",
+    "fields": {
+      "name": "Blue Gloves",
+      "description": "Stay warm with our Blue Gloves designed for season 4.",
+      "price": 19.99,
+      "category": 1,
+      "season": 4,
+      "rating": 4.6,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_blue_gloves_for_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_blue_gloves_for_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 43,
+    "model": "products.product",
+    "fields": {
+      "name": "Energy Gel",
+      "description": "Boost your energy with our Energy Gel designed for cycling.",
+      "price": 2.99,
+      "category": 2,
+      "rating": 4.3,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_energy_gel_for_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_energy_gel_for_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 44,
+    "model": "products.product",
+    "fields": {
+      "name": "Bike Tyre",
+      "description": "Upgrade your bike with our Bike Tyre designed for various terrains.",
+      "price": 39.99,
+      "category": 5,
+      "rating": 4.2,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_gravel_tyre_for_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_gravel_tyre_for_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 45,
+    "model": "products.product",
+    "fields": {
+      "name": "Green Gloves",
+      "description": "Stay warm with our Green Gloves designed for season 4.",
+      "price": 9.99,
+      "category": 1,
+      "season": 4,
+      "rating": 4.5,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_green_gloves_f_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_green_gloves_f_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 46,
+    "model": "products.product",
+    "fields": {
+      "name": "Green Rain Trousers",
+      "description": "Stay dry with our Green Rain Trousers designed for various terrains.",
+      "price": 39.99,
+      "category": 1,
+      "season": 3,
+      "rating": 4.2,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_green_rainproo_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_green_rainproo_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 48,
+    "model": "products.product",
+    "fields": {
+      "name": "Water Bottle",
+      "description": "Stay hydrated with our Water Bottle designed for various terrains.",
+      "price": 19.99,
+      "category": 3,
+      "rating": 4.2,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_water_bottle_f_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_water_bottle_f_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 49,
+    "model": "products.product",
+    "fields": {
+      "name": "White Baselayer",
+      "description": "Stay warm with our White Baselayer designed for season 4.",
+      "price": 19.99,
+      "category": 1,
+      "season": 4,
+      "rating": 4.5,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_white_baselaye_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_white_baselaye_0-removebg-preview.png"
+    }
+  },
+  {
+    "pk": 50,
+    "model": "products.product",
+    "fields": {
+      "name": "Yellow Arm Sleeve",
+      "description": "Stay warm with our Yellow Arm Sleeve designed for season 3.",
+      "price": 19.99,
+      "category": 1,
+      "season": 3,
+      "rating": 4.5,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_yellow_arm_war_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_yellow_arm_war_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 51,
+    "model": "products.product",
+    "fields": {
+      "name": "Yellow Gloves",
+      "description": "Stay warm with our Yellow Gloves designed for season 4.",
+      "price": 19.99,
+      "category": 1,
+      "season": 4,
+      "rating": 4.5,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_yellow_gloves_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_yellow_gloves_0-removebg-preview.png"
+    }
+  },
+
+  {
+    "pk": 52,
+    "model": "products.product",
+    "fields": {
+      "name": "Yellow Waterproof Trousers",
+      "description": "Stay dry with our Yellow Waterproof Trousers designed for season 3.",
+      "price": 19.99,
+      "category": 1,
+      "season": 3,
+      "rating": 4.5,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_yellow_rainpro_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_yellow_rainpro_0-removebg-preview.png"
+    }
   }
 ]
