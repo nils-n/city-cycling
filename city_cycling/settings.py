@@ -55,7 +55,7 @@ ROOT_URLCONF = "city_cycling.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -67,6 +67,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = "city_cycling.wsgi.application"
 
@@ -127,3 +128,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # https://learndjango.com/tutorials/django-custom-user-model
 AUTH_USER_MODEL = "accounts.CustomUser"  # new
+
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
