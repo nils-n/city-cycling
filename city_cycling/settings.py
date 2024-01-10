@@ -148,4 +148,5 @@ LOGOUT_REDIRECT_URL = "home"
 # use Tailwind crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
+
 CRISPY_TEMPLATE_PACK = "tailwind"
