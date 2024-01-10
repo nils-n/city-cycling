@@ -4,12 +4,12 @@ from products.models import Product
 
 def all_products(request):
     """view to display all products in the shop"""
-    test_product = Product.objects.first()
+    products = Product.objects.all()
 
     return render(
         request,
         "products/products.html",
-        {
-            "test_product": test_product,
+        context={
+            "products": products,
         },
     )
