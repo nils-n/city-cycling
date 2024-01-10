@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "compressor",  # for flowbite CSS components
+    "crispy_forms",
+    "crispy_tailwind",
     "accounts",  # new
 ]
 
@@ -142,3 +144,8 @@ AUTH_USER_MODEL = "accounts.CustomUser"  # new
 
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
+
+# use Tailwind crispy forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
