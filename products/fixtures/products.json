@@ -1,0 +1,16 @@
+[
+  {
+    "pk": 1,
+    "model": "products.product",
+    "fields": {
+      "name": "Cyclotrack GPS",
+      "description": "Experience the ultimate cycling adventure with our Bicycle GPS Device, designed to track your every move! This compact and lightweight gadget offers real-time navigation, voice prompts, route tracking, speed monitoring, distance calculation, and calories burned. It also includes safety features like crash detection and SOS alerts. Stay connected with live tracking for friends and family while enjoying a seamless experience through our user-friendly app. Upgrade your cycling journey now!",
+      "price": 189.99,
+      "category": 2,
+      "season": 2,
+      "rating": 4.6,
+      "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_GPS_bike_com_0-removebg-preview.png?raw=true",
+      "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_GPS_bike_com_0-removebg-preview.png"
+    }
+  }
+]
