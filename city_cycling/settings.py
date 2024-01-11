@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from icecream import ic
 
 if os.path.exists("env.py"):
     import env  # noqa
@@ -33,8 +34,11 @@ DEBUG = os.getenv("DEBUG").lower() in ["true"]
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
+    "city-cycling-e08bb339a180.herokuapp.com",
     os.environ.get("HEROKU_HOSTNAME"),
 ]
+ic()
+ic(ALLOWED_HOSTS)
 
 # Application definition
 
@@ -147,7 +151,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 # if "USE_AWS" in os.environ:
