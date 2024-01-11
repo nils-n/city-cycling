@@ -1,82 +1,168 @@
-{% extends "base.html" %}
-{% load static %}
-{% block title %}Home{% endblock %}
+{% extends "base.html" %} {% load static %} {% block title %}Home{% endblock %}
 {% block content %}
-    <div class="mx-12 my-10">
-        <div class=' md:mt-24 flex flex-wrap justify-center space-x-8'>
-            <!-- Product Image  -->
-            <div class="mx-1 mt-4 w-full max-w-sm rounded-lg bg-gray-50   dark:bg-gray-800">
-                {% if product.image %}
-                    <img class="p-8 rounded-t-lg" src="{{ product.image.url }}" alt="{{ product.name }}"/>   
-                {% else %}
-                    <img class="p-8 rounded-t-lg"  src="{{ MEDIA_URL }}No-Image-Placeholder.svg" alt="{{ product.name }}" / />
-                {% endif %}
-            </div>
-            <!-- Product Details  -->
-            <div class="mx-1 w-full max-w-sm rounded-lg bg-gray-50   dark:bg-gray-800">
-                <h2 class="text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ product.name }}</h2>
-                <div class="flex items-baseline space-x-8 ">
-                    <!-- Product Rating  -->
-                    <div class="mt-4 flex items-center mt-2.5 mb-5">
-                        <div class="flex items-center space-x-1 rtl:space-x-reverse">
-                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                        </div>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
-                    </div>
-                    <!-- Link to Review -->
-                    <a href="#" class="text-gray-500">
-                       (2 Reviews)
-                    </a>
-                </div>
-                 <!-- Product Price -->
-                <div class="mt-4 text-3xl font-bold text-gray-900 dark:text-white">£{{product.price}}</div>
-                <hr class="my-8 md:hidden">
-                <!-- Size and Colour-->
-                <p> <strong>Color</strong> : <span class="text-gray-600"> Green </span></p>
-                <p class="mt-4 "> <strong>Size:</strong></p>
-                <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Test  1</button>
-                <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Test  2</button>
-                <hr class="my-8 md:hidden">
-                <!-- Add to Shopping Bag buttons-->
-                <div class='mt-4 flex space-x-2 items-baseline'>
-                    <div>
-                        <button type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">-</button>
-                        <button type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">2</button>
-                        <button type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">+</button>
-                    </div>
-                    <button type="button" class="px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to Shopping Bag</button>
-                </div>
-                <!-- Descripton-->
-                <div class="mt-12" style='max-width:60ch; line-height:1.6'>
-                    <p> {{ product.description}} </p>
-                </div>
-
-
-
-
-
-
-
-
-               
-
-
-            </div>
-
-        </div>
+<div class="mx-12 my-10">
+  <div class="flex flex-wrap justify-center md:mt-24 md:space-x-2 lg:space-x-32">
+    <!-- Product Image  -->
+    <div class="mx-1 mt-4 w-full max-w-sm rounded-lg bg-gray-50 dark:bg-gray-800">
+      {% if product.image %}
+      <img
+        class="rounded-t-lg p-8"
+        src="{{ product.image.url }}"
+        alt="{{ product.name }}"
+      />
+      {% else %}
+      <img
+        class="rounded-t-lg p-8"
+        src="{{ MEDIA_URL }}No-Image-Placeholder.svg"
+        alt="{{ product.name }}"
+      />
+      {% endif %}
     </div>
+    <!-- Product Details  -->
+    <div class="mx-1 w-full max-w-sm rounded-lg bg-gray-50 dark:bg-gray-800">
+      <h2 class="text-4xl font-semibold tracking-tight text-gray-900 dark:text-white"> {{ product.name }} </h2>
+      <div class="flex items-baseline space-x-8">
+        <!-- Product Rating  -->
+        <div class="mb-5 mt-2.5 mt-4 flex items-center">
+          <div class="flex items-center space-x-1 rtl:space-x-reverse">
+            <svg
+              class="h-4 w-4 text-yellow-300"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 22 20"
+            >
+              <path
+                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+              />
+            </svg>
+            <svg
+              class="h-4 w-4 text-yellow-300"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 22 20"
+            >
+              <path
+                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+              />
+            </svg>
+            <svg
+              class="h-4 w-4 text-yellow-300"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 22 20"
+            >
+              <path
+                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+              />
+            </svg>
+            <svg
+              class="h-4 w-4 text-yellow-300"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 22 20"
+            >
+              <path
+                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+              />
+            </svg>
+            <svg
+              class="h-4 w-4 text-gray-200 dark:text-gray-600"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 22 20"
+            >
+              <path
+                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+              />
+            </svg>
+          </div>
+          <span
+            class="ms-3 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800"
+            >5.0</span
+          >
+        </div>
+        <!-- Link to Review -->
+        <a href="#" class="text-gray-500"> (2 Reviews) </a>
+      </div>
+      <!-- Product Price -->
+      <div class="mt-4 text-3xl font-bold text-gray-900 dark:text-white">
+        £{{product.price}}
+      </div>
+      <hr class="my-8 md:hidden" />
+      <!-- Colour-->
+      <div class='md:my-4'>
+        <p><strong>Color</strong> : <span class="text-gray-600"> Green </span></p>
+        <div class="my-2 flex flex-wrap justify-start">
+          <div class="bg-lime-500 w-10 h-10 rounded-full border shadow-sm-light"> </div>
+          <div class="ml-4 bg-blue-600 w-10 h-10 rounded-full border shadow-sm-light"> </div>
+        </div>
+      </div>
+      <!-- Size-->
+      <div class="my-4">
+        <p class="mt-4"><strong>Size:</strong></p>
+        <button
+          type="button"
+          class="mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        >
+          Test 1
+        </button>
+        <button
+          type="button"
+          class="mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        >
+          Test 2
+        </button>
+        <hr class="my-8 md:hidden" />
+      </div>
+      <!-- Add to Shopping Bag buttons-->
+      <div class="lg:mt-16 md:mt-8 flex items-baseline space-x-2">
+        <div>
+          <button
+            type="button"
+            class="rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            -
+          </button>
+          <button
+            type="button"
+            class="rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            2
+          </button>
+          <button
+            type="button"
+            class="rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            +
+          </button>
+        </div>
+        <button
+          type="button"
+          class="rounded-lg bg-blue-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Add to Shopping Bag
+        </button>
+      </div>
+      <!-- Descripton-->
+      <div class="mt-12" style="max-width: 60ch; line-height: 1.6">
+        <p>{{ product.description}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- User Reviews-->
+  <div class="mt-8 md:mx-16 lg:mx-32">
+    <h3
+    class="mt-16 text-xl font-semibold tracking-tight text-gray-900 dark:text-white"
+  >
+    User Reviews
+  </h3>
+    <p class='mt-4'>No Reviews yet.</p>
+  </div>
+</div>
+
 {% endblock %}
