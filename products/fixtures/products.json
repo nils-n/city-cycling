@@ -151,6 +151,7 @@
       "price": 29.99,
       "category": 3,
       "season": 4,
+      "color": "green",
       "rating": 4.7,
       "image_url": "https://github.com/nils-n/city-cycling/blob/main/media/Absolute_Reality_v16_ecommerce_preview_image_of_a_green_helmet_0-removebg-preview.png?raw=true",
       "image": "Absolute_Reality_v16_ecommerce_preview_image_of_a_green_helmet_0-removebg-preview.png"
