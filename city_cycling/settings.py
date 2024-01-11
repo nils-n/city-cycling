@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import dj_database_url
+
+if os.path.exists("env.py"):
+    import env  # noqa
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,15 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    "django-insecure-&zvrr2ep%(e3nu0k+@4%&0^2tmvcbw^zt+&6q449to7g6somqv"
-)
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG").lower() in ["true"]
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    os.environ.get("HEROKU_HOSTNAME"),
+]
 
 # Application definition
 
@@ -81,12 +87,16 @@ WSGI_APPLICATION = "city_cycling.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+
+DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+
+if DEBUG:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
 
 
 # Password validation
@@ -135,6 +145,33 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+# if "USE_AWS" in os.environ:
+#     ic("using AWS")
+#     # Cache control
+#     AWS_S3_OBJECT_PARAMETERS = {
+#         "Expires": "Thu, 31 Dec 2099 20:00:00 GMT",
+#         "CacheControl": "max-age=94608000",
+#     }
+
+#     # Bucket config
+#     AWS_STORAGE_BUCKET_NAME = "boutique-ado-nils"
+#     AWS_S3_REGION_NAME = "eu-west-1"
+#     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+#     AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+#     AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+
+#     # static and media files
+#     STATICFILES_STORAGE = "custom_storages.StaticStorage"
+#     STATICFILES_LOCATION = "static"
+#     DEFAULT_STORAGE = "custom_storages.MediaStorage"
+#     MEDIAFILES_LOCATION = "media"
+
+#     # override static and media URLs in production
+#     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}"
+#     MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+# else:
+#     ic("DEV --> not using AWS")
 
 
 # Default primary key field type
