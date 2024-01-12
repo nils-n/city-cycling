@@ -1,7 +1,10 @@
 # City Cycling Glasgow
 
 Link to deployed version on [Heroku - City Cycling](https://city-cycling-e08bb339a180.herokuapp.com/products/)
-Link to GitHub Project Board [GitHub - User Stories](https://github.com/users/nils-n/projects/17/views/1)
+
+Link to GitHub Project Board [GitHub Projects - City Cycling](https://github.com/users/nils-n/projects/17/views/1)
+
+Link to User Stories incl. MoSCow prioritization [Numbers Document](./assets/sheets/user-stories-moscow-bikes.numbers)
 
 ---
 
