@@ -2,6 +2,12 @@ Link to deployed version on [Heroku - City Cycling](https://city-cycling-e08bb33
 
 ---
 
+- [Flow Charts](#flow-charts)
+- [DB Sheme](#db-sheme)
+- [Wireframes](#wireframes)
+
+---
+
 ## Flow Charts
 
 ![Flow Chart - Landing](./assets/images/flowchart-landing.png)
@@ -9,9 +15,13 @@ Link to deployed version on [Heroku - City Cycling](https://city-cycling-e08bb33
 ![Flow Chart - Rating](./assets/images/flowchart-rating.png)
 ![Flow Chart - Comments](./assets/images/flowchart-comments.png)
 
+---
+
 ## DB Sheme
 
 ![Database ER Diagram](./assets/images/database-sheme.png)
+
+---
 
 ## Wireframes
 
