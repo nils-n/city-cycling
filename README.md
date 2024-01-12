@@ -1,10 +1,14 @@
+# City Cycling Glasgow
+
 Link to deployed version on [Heroku - City Cycling](https://city-cycling-e08bb339a180.herokuapp.com/products/)
+Link to GitHub Project Board [GitHub - User Stories](https://github.com/users/nils-n/projects/17/views/1)
 
 ---
 
-- [Flow Charts](#flow-charts)
-- [DB Sheme](#db-sheme)
-- [Wireframes](#wireframes)
+- [City Cycling Glasgow](#city-cycling-glasgow)
+  - [Flow Charts](#flow-charts)
+  - [DB Sheme](#db-sheme)
+  - [Wireframes](#wireframes)
 
 ---
 
