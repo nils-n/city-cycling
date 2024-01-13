@@ -1244,6 +1244,14 @@ input:checked + .toggle-bg {
   height: 2.5rem;
 }
 
+.h-2 {
+  height: 0.5rem;
+}
+
+.h-2\.5 {
+  height: 0.625rem;
+}
+
 .h-4 {
   height: 1rem;
 }
@@ -1268,8 +1276,20 @@ input:checked + .toggle-bg {
   width: 2.5rem;
 }
 
+.w-2 {
+  width: 0.5rem;
+}
+
+.w-2\.5 {
+  width: 0.625rem;
+}
+
 .w-4 {
   width: 1rem;
+}
+
+.w-44 {
+  width: 11rem;
 }
 
 .w-5 {
@@ -1424,6 +1444,17 @@ input:checked + .toggle-bg {
   --tw-space-x-reverse: 0;
   margin-right: calc(2rem * var(--tw-space-x-reverse));
   margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.divide-y > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}
+
+.divide-gray-100 > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgb(243 244 246 / var(--tw-divide-opacity));
 }
 
 .self-center {
@@ -1736,6 +1767,11 @@ input:checked + .toggle-bg {
   color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
+.text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
 .text-gray-800 {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
@@ -1956,6 +1992,11 @@ input:checked + .toggle-bg {
 :is(.dark .dark\:text-blue-800) {
   --tw-text-opacity: 1;
   color: rgb(30 66 159 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-gray-200) {
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 
 :is(.dark .dark\:text-gray-400) {
