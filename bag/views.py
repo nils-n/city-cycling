@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from icecream import ic
 
 
 def view_bag(request):
@@ -23,8 +22,5 @@ def add_to_bag(request, item_id):
         bag[item_id] = quantity
 
     request.session["bag"] = bag
-
-    # for testing, log out the content the console
-    ic(bag)
 
     return redirect(redirect_url)
