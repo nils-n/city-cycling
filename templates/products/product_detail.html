@@ -123,33 +123,41 @@
       </div>
       <!-- Add to Shopping Bag buttons-->
       <div class="lg:mt-16 md:mt-8 flex items-baseline space-x-2">
-        <div>
-          <button
-            type="button"
-            class="rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            -
-          </button>
-          <button
-            type="button"
-            class="rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            2
-          </button>
-          <button
-            type="button"
-            class="rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            +
-          </button>
-        </div>
-        <button
-          type="button"
-          class="rounded-lg bg-blue-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Add to Shopping Bag
-        </button>
+        <form method="post" action="{% url 'add_to_bag' product.id %}">
+          {% csrf_token %}
+            <button
+              type="button"
+              class="rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              -
+            </button>
+            
+            <input
+              type="number"
+              name='quantity'
+              value='1'
+              style='width:4em;'
+              class="rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+            
+           
+            <button
+              type="button"
+              class="rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              +
+            </button>
+            <button
+            type="submit"
+            class="rounded-lg bg-blue-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Add to Shopping Bag
+            </button>
+            <!-- to send the current URL to the view, taken from Boutique Ado example -->
+            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+        </form>
       </div>
+
       <!-- Descripton-->
       <div class="mt-12" style="max-width: 60ch; line-height: 1.6">
         <p>{{ product.description}}</p>
