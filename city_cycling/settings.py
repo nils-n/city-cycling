@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "crispy_tailwind",
     "accounts",  # new
     "products",
+    "bag",
 ]
 
 MIDDLEWARE = [
