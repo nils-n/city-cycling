@@ -6,7 +6,10 @@
 
 
 <div class="md:mx-12 mx-4 my-10">
-  <h2 class="text-2xl pb-8 font-bold">Shopping Bag</h2>
+
+  <h2 class="text-2xl pb-4 font-bold">Shopping Bag</h2>
+  <p class='pb-8'> Free Delivery : {{ free_delivery_threshold}}</p>
+
 
   {% if bag_items %}
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
