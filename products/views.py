@@ -7,9 +7,11 @@ from icecream import ic
 def all_products(request):
     """view to display all products in the shop"""
     products = Product.objects.all()
-    categories = Category.objects.all()
+    all_categories = Category.objects.all()
+    categories = None
     sort = None
     direction = None
+    category = None
 
     if request.GET:
         ic()
@@ -26,6 +28,10 @@ def all_products(request):
                 sortkey = f"-{sortkey}"
             products = products.order_by(sortkey)
 
+        if "category" in request.GET:
+            categories = request.GET["category"].split(",")
+            products = products.filter(category__name__in=categories)
+
     current_sorting = f"{sort}_{direction}"
 
     return render(
@@ -33,8 +39,8 @@ def all_products(request):
         "products/products.html",
         context={
             "products": products,
-            "categories": categories,
             "current_sorting": current_sorting,
+            "all_categories": all_categories,
         },
     )
 
