@@ -7,9 +7,7 @@
 
 <div class="md:mx-12 mx-4 my-10">
 
-  <h2 class="text-2xl pb-4 font-bold">Shopping Bag</h2>
-  <p class='pb-8'> Free Delivery : {{ free_delivery_threshold}}</p>
-
+  <h2 class="sr-only text-2xl pb-4 font-bold">Shopping Bag</h2>
 
   {% if bag_items %}
 
@@ -87,6 +85,18 @@
           </tbody>
       </table>
     </div>
+
+    <!-- Summary of the Shopping Bag -->
+    <div class="my-16 left-3 leading-10 flex flex-col place-items-end">
+      <p class="text-lg leading-8 font-semibold tracking-tight text-gray-900 dark:text-white"> Bag Total :  £ <span class='text-xl'> {{ grand_total|floatformat:2}} </span> </p>
+      <p class="text-lg leading-8 font-semibold tracking-tight text-gray-900 dark:text-white"> Delivery :  £ <span class='text-xl'> {{ delivery|floatformat:2}} </span> </p>
+      {% if free_delivery_delta > 0 %}
+          <p class="txt-lg  leading-5 font-semibold tracking-tight text-gray-400 dark:text-white"> You could get delivery by sending  £ <span class='text-xl'> {{ free_delivery_delta|floatformat:2}} more! </span> </p>
+      {% endif%}
+      <p class="text-xl  leading-5 font-bold tracking-tight text-gray-900 dark:text-white"> Grand Total :  £ <span class='text-2xl'> {{ grand_total|floatformat:2}} </span> </p>
+
+    </div>
+
 {% else %}
 <p class='mb-8'> Your shopping bag is empty.</p>
 
