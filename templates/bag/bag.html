@@ -28,6 +28,9 @@
                       Price
                   </th>
                   <th scope="col" class="px-6 py-3">
+                    Size
+                </th>
+                  <th scope="col" class="px-6 py-3">
                       Action
                   </th>
               </tr>
@@ -76,6 +79,9 @@
                       <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                            {{ bag_item.product.price|floatformat:2}} 
                       </td>
+                      <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                        {% if bag_item.product.has_sizes %} {{ bag_item.product.size|upper}} {% else %} N/A {% endif %}
+                   </td>
                       <td class="px-6 py-4">
                           <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
                       </td>

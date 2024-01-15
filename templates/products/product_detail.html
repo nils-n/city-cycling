@@ -106,20 +106,40 @@
       </div>
       <!-- Size-->
       <div class="my-4">
-        <p class="mt-4"><strong>Size:</strong></p>
-        <button
-          type="button"
-          class="mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-        >
-          Test 1
-        </button>
-        <button
-          type="button"
-          class="mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-        >
-          Test 2
-        </button>
-        <hr class="my-8 md:hidden" />
+        {% if product.has_sizes %}
+            <p class="mt-4"><strong>Size:</strong></p>
+            <button
+              type="button"
+              class="size-btn mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 focus:bg-gray-700  focus:text-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+            >
+              XS
+            </button>
+            <button
+              type="button"
+              class="size-btn mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 focus:bg-gray-700  focus:text-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+            >
+              S
+            </button>
+            <button
+              type="button"
+              class="size-btn mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 focus:bg-gray-700  focus:text-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+            >
+              M
+            </button>
+            <button
+              type="button"
+              class="size-btn mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 focus:bg-gray-700  focus:text-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+            >
+              L
+            </button>
+            <button
+              type="button"
+              class="size-btn mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 focus:bg-gray-700 focus:text-gray-50  dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+            >
+              XL
+            </button>
+         {% endif %}
+         <hr class="my-8 md:hidden" />
       </div>
       <!-- Add to Shopping Bag buttons-->
       <div class="lg:mt-16 md:mt-8 flex items-baseline space-x-2">
