@@ -33,13 +33,26 @@ function handleUpdateClick(productId) {
 // submit the remove item form
 // the post request requires the csrf token
 // https://docs.djangoproject.com/en/3.1/ref/csrf/#ajax
+// https://forum.djangoproject.com/t/send-views-py-request-post-with-javascript/23146/8
 function handleRemoveClick(productId, productSize) {
   const csrftoken = getCookie("csrftoken");
-  const url = `/bag/remove/${itemId}`;
-  const data = { csrfmiddlewaretoken: csrfToken, size: productSize };
+  const url = `/bag/remove/${productId}`;
 
-  $.post(url, data).done(function () {
-    location.reload();
+  //const data = { csrfmiddlewaretoken: csrftoken, size: productSize };
+  console.log("removing item", productId);
+  const data = JSON.stringify({
+    size: productSize,
+    product_id: productId,
+  });
+
+  let response = fetch(url, {
+    method: "POST",
+    body: data,
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+      "X-CSRFToken": csrftoken,
+    },
   });
 }
 

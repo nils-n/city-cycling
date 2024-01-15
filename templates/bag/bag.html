@@ -65,7 +65,7 @@
                         <form action="" method="POST" id='quantity-form-{{bag_item.item_id}}'> 
                             {% csrf_token %}
                             <!-- Add to Shopping Bag buttons-->
-                            <div class="lg:mt-16 md:mt-8 flex items-baseline space-x-2">
+                            <div class="flex items-baseline space-x-2">
                               <button
                                 type="button"
                                 data-product-id="{{ bag_item.item_id }}" 
@@ -93,7 +93,7 @@
                               >
                                 +
                               </button>
-                            
+                            </div>
                         </form>
                       </td>
                       <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
