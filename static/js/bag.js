@@ -41,7 +41,7 @@ function handleRemoveClick(productId, productSize) {
   //const data = { csrfmiddlewaretoken: csrftoken, size: productSize };
   console.log("removing item", productId);
   const data = JSON.stringify({
-    size: productSize,
+    product_size: productSize,
     product_id: productId,
   });
 

@@ -62,7 +62,7 @@
                          {% endif %}
                       </td>
                       <td class="px-1 sm:px-4 py-4">
-                        <form action="" method="POST" id='quantity-form-{{bag_item.item_id}}'> 
+                        <form action="{%  url 'adjust_bag' bag_item.item_id  %}" method="POST" id='quantity-form-{{bag_item.item_id}}'> 
                             {% csrf_token %}
                             <!-- Add to Shopping Bag buttons-->
                             <div class="flex items-baseline space-x-2">
@@ -78,7 +78,7 @@
                               <input
                                 type="number"
                                 name='quantity'
-                                value='1'
+                                value='{{bag_item.quantity}}'
                                 style='width:4em;'
                                 readonly="readonly"
                                 id="qty-{{bag_item.item_id }}"
@@ -103,8 +103,8 @@
                           <a 
                               href="#"
                               id="remove_{{ bag_item.item_id }}"
-                              data-size={{ bag_item.size }}
-                              data-product-id={{ bag_item.item_id}}
+                              data-size="{{ bag_item.size }}"
+                              data-product-id="{{ bag_item.item_id}}"
                               class="remove-item inline-block leading-8 font-medium text-red-600 dark:text-red-500 hover:underline"
                           >Remove </a>
                           <a 
