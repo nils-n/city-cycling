@@ -53,6 +53,9 @@ function handleRemoveClick(productId, productSize) {
       "Content-Type": "application/json",
       "X-CSRFToken": csrftoken,
     },
+  }).then(() => {
+    //reload the page
+    location.reload();
   });
 }
 

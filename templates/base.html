@@ -17,9 +17,29 @@
     {% include 'partials/navbar.html' %}
     {% block content %}
     {% endblock content %}
+
+    {% if messages %}
+    <div class="message-container">
+         {%  for message in messages %}
+            {% with message.level as level %}
+                {% if level == 40 %}
+                    {%  include "partials/toast_error.html" %}
+                {% elif level == 30 %}
+                    {%  include "partials/toast_warning.html" %}
+                {% elif level == 25 %}
+                    {%  include "partials/toast_success.html" %}
+                {% else %}
+                  {%  include "partials/toast_info.html" %}
+                {% endif %}
+            {% endwith%}
+        {% endfor %}
+    </div>
+    {% endif %}
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+  <script src=" {%  static 'js/toasts.js' %}" type='module'></script>
+  {% block javascript %}
+  {% endblock javascript %}
 </body>
-{% block javascript %}
-{% endblock javascript %}
+
 </html>
