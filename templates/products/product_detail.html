@@ -159,7 +159,10 @@
           <div class="lg:mt-16 md:mt-8 flex items-baseline space-x-2">
             <button
               type="button"
-              class="rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              data-product-id="{{ product.id }}" 
+              data-button-type='decrement'
+              id="decrement-qty-{{ product.id}}"
+              class="quantity-btn rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               -
             </button>
@@ -169,18 +172,24 @@
               name='quantity'
               value='1'
               style='width:4em;'
-              class="rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              readonly="readonly"
+              id="qty-{{ product.id}}"
+              class="disabled rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
             
            
             <button
               type="button"
-              class="rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              data-product-id="{{ product.id }}" 
+              data-button-type='increment'
+              id="increment-qty-{{ product.id}}"
+              class="quantity-btn rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               +
             </button>
             <button
             type="submit"
+            data-product-id="{{ product.id }}" 
             class="rounded-lg bg-blue-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Add to Shopping Bag
@@ -208,3 +217,10 @@
 </div>
 
 {% endblock %}
+
+
+{% block javascript %}
+
+<script src=" {%  static 'js/quantity_input.js' %}" type='module'></script>
+
+{% endblock javascript  %}
