@@ -96,55 +96,67 @@
         £{{product.price}}
       </div>
       <hr class="my-8 md:hidden" />
-      <!-- Colour-->
-      <div class='md:my-4'>
-        <p><strong>Color</strong> : <span class="text-gray-600"> Green </span></p>
-        <div class="my-2 flex flex-wrap justify-start">
-          <div class="bg-lime-500 w-10 h-10 rounded-full border shadow-sm-light"> </div>
-          <div class="ml-4 bg-blue-600 w-10 h-10 rounded-full border shadow-sm-light"> </div>
-        </div>
-      </div>
-      <!-- Size-->
-      <div class="my-4">
-        {% if product.has_sizes %}
-            <p class="mt-4"><strong>Size:</strong></p>
-            <button
-              type="button"
-              class="size-btn mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 focus:bg-gray-700  focus:text-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-            >
-              XS
-            </button>
-            <button
-              type="button"
-              class="size-btn mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 focus:bg-gray-700  focus:text-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-            >
-              S
-            </button>
-            <button
-              type="button"
-              class="size-btn mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 focus:bg-gray-700  focus:text-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-            >
-              M
-            </button>
-            <button
-              type="button"
-              class="size-btn mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 focus:bg-gray-700  focus:text-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-            >
-              L
-            </button>
-            <button
-              type="button"
-              class="size-btn mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 focus:bg-gray-700 focus:text-gray-50  dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-            >
-              XL
-            </button>
-         {% endif %}
-         <hr class="my-8 md:hidden" />
-      </div>
-      <!-- Add to Shopping Bag buttons-->
-      <div class="lg:mt-16 md:mt-8 flex items-baseline space-x-2">
-        <form method="post" action="{% url 'add_to_bag' product.id %}">
-          {% csrf_token %}
+      <form method="post" action="{% url 'add_to_bag' product.id %}">
+        {% csrf_token %}
+          <!-- Colour-->
+          <div class='md:my-4'>
+            <p><strong>Color</strong> : <span class="text-gray-600"> Green </span></p>
+            <div class="my-2 flex flex-wrap justify-start">
+              <div class="bg-lime-500 w-10 h-10 rounded-full border shadow-sm-light"> </div>
+              <div class="ml-4 bg-blue-600 w-10 h-10 rounded-full border shadow-sm-light"> </div>
+            </div>
+          </div>
+          <!-- Size-->
+          <div class="mb-4">
+            {% if product.has_sizes %}
+                <p class="mt-4"><strong>Size:</strong></p>
+                  <ul class="mt-2 flex w-full gap-5 ">
+                      <li>
+                          <input type="radio" id="size-xs" name="product_size" value="size-xs" class="hidden peer" required>
+                          <label for="size-xs" class="px-5 py-2.5  inline-flex items-center justify-between  text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                              <div class="block">
+                                  <div class="w-full text-lg text-center font-semibold">XS</div>
+                              </div>
+                          </label>
+                      </li>
+                      <li>
+                        <input type="radio" id="size-s" name="product_size" value="s" class="hidden peer" >
+                        <label for="size-s" class="px-5 py-2.5  inline-flex items-center justify-between   text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                            <div class="block text-center">
+                                <div class="w-full text-lg text-center font-semibold">S</div>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                      <input type="radio" id="size-m" name="product_size" value="m" class="hidden peer" >
+                      <label for="size-m" class="px-5 py-2.5  inline-flex items-center justify-between   text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                          <div class="block text-center">
+                              <div class="w-full text-lg text-center font-semibold">M</div>
+                          </div>
+                      </label>
+                  </li>
+                  <li>
+                    <input type="radio" id="size-l" name="product_size" value="l" class="hidden peer" >
+                    <label for="size-l" class="px-5 py-2.5  inline-flex items-center justify-between   text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                        <div class="block text-center">
+                            <div class="w-full text-lg text-center font-semibold">L</div>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                  <input type="radio" id="size-xl" name="product_size" value="xl" class="hidden peer" >
+                  <label for="size-xl" class="px-5 py-2.5  inline-flex items-center justify-between   text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                      <div class="block text-center">
+                          <div class="w-full text-lg text-center font-semibold">XL</div>
+                      </div>
+                  </label>
+              </li>
+                  </ul>
+            {% endif %}
+            <hr class="my-8 md:hidden" />
+          </div>
+          <!-- Add to Shopping Bag buttons-->
+          <div class="lg:mt-16 md:mt-8 flex items-baseline space-x-2">
             <button
               type="button"
               class="rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
