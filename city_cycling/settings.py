@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "accounts",  # new
     "products",
     "bag",
+    "checkout",
 ]
 
 MIDDLEWARE = [
