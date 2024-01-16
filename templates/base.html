@@ -11,6 +11,8 @@
   {% compress css %}
   <link rel="stylesheet" href="{% static 'src/output.css' %}">
   {% endcompress %}
+  <script src=" {%  static 'js/toasts.js' %}" type='module'></script>
+  <!-- Stripe - recommended to include in base file for their advanced fraud detection methods -->
 </head>
 <body class="bg-gray-50">
   <div class="container mx-auto mt-4">
@@ -37,7 +39,7 @@
     {% endif %}
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-  <script src=" {%  static 'js/toasts.js' %}" type='module'></script>
+  <script src="https://js.stripe.com/v3/"></script>
   {% block javascript %}
   {% endblock javascript %}
 </body>
