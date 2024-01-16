@@ -38,11 +38,10 @@ function handleRemoveClick(productId, productSize) {
   const csrftoken = getCookie("csrftoken");
   const url = `/bag/remove/${productId}`;
 
-  //const data = { csrfmiddlewaretoken: csrftoken, size: productSize };
-  console.log("removing item", productId);
   const data = JSON.stringify({
-    product_size: productSize,
-    product_id: productId,
+    headline: "productSize",
+    tag: "productSize",
+    content: `${productSize}`,
   });
 
   let response = fetch(url, {

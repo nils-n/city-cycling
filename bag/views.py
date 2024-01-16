@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from products.models import Product
 from icecream import ic
+import json
 
 
 def view_bag(request):
@@ -24,6 +25,8 @@ def add_to_bag(request, item_id):
 
     # get bag from session if it exists
     bag = request.session.get("bag", {})
+
+    ic(bag)
 
     # allow for multiple size of a product that has sizes
     if size:
@@ -61,6 +64,8 @@ def add_to_bag(request, item_id):
             messages.success(request, f"Added { product.name} to your bag")
 
     request.session["bag"] = bag
+
+    ic(bag)
 
     return redirect(redirect_url)
 
@@ -111,15 +116,19 @@ def adjust_bag(request, item_id):
 
 
 def remove_from_bag(request, item_id):
-    """remove a product from the shopping bag"""
+    """
+    remove a product from the shopping bag
+    retrieving POST parameters from fetch API using :
+    https://forum.djangoproject.com/t/send-views-py-request-post-with-javascript/23146/8
+    """
     product = get_object_or_404(Product, pk=item_id)
 
     try:
-        ic()
         size = None
 
-        if "product_size" in request.POST:
-            size = request.POST.get("product_size")
+        post_data = json.loads(request.body.decode("utf-8"))
+        if "content" in post_data:
+            size = post_data["content"]
 
         # get bag from session if it exists
         bag = request.session.get("bag", {})
@@ -138,6 +147,8 @@ def remove_from_bag(request, item_id):
             messages.success(request, f"Removed { product.name} from your bag")
 
         request.session["bag"] = bag
+
+        ic(bag)
 
         return HttpResponse(status=200)
 
