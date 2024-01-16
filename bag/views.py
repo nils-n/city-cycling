@@ -130,6 +130,7 @@ def remove_from_bag(request, item_id):
         if "content" in post_data:
             size = post_data["content"]
 
+        ic(post_data)
         # get bag from session if it exists
         bag = request.session.get("bag", {})
 

@@ -18,7 +18,7 @@ for (let removeLink of removeLinkArray) {
       if (e.target.dataset.size) {
         handleRemoveClick(e.target.dataset.productId, e.target.dataset.size);
       } else {
-        handleRemoveClick(e.target.dataset.productId, false);
+        handleRemoveClick(e.target.dataset.productId, "");
       }
     }
   });
