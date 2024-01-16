@@ -1,5 +1,5 @@
 <div id="toast-success" class='fixed top-20 right-1 z-50' role="alert">
-    <div class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800">
+    <div class="flex items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800">
     <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
@@ -17,6 +17,46 @@
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
         </svg>
     </button>
-    </div>
+</div>
+<!--  Shopping Bag Preview -->
+{% if grand_total %}
+    <div class="max-w-xs rounded-lg shadow">
+        {% for item in bag_items %}
+        <div class="flex items-center w-full max-w-xs p-4 space-x-4 {% if forloop.counter == 0%}rounded-t-lg {% endif%} rtl:space-x-reverse text-gray-500 bg-white divide-x rtl:divide-x-reverse divide-gray-200  dark:text-gray-400 dark:divide-gray-700 space-x dark:bg-gray-800">
+            <div class='w-1/4'>
+                <img src="{{item.product.image.url}}" alt="{{item.product.name}}" >
+            </div>
+            <div class='w-3/4'>
+                <p class="my-0 pl-2 "><strong>{{ item.product.name }}</strong></p>
+                <p class="my-0 pl-2  text-sm text-gray-800">Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
+                <p class="my-0 pl-2  text-sm text-gray-800/50">Qty: {{ item.quantity }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="pl-4 pb-4  my-0 leading-10 flex flex-col place-items-start text-gray-500 bg-white">
+            <p class="text-sm leading-8 font-semibold tracking-tight text-gray-900 dark:text-white">Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}:  £ <span class='text-sm'> {{ total|floatformat:2}} </span> </p>
+            {% if free_delivery_delta > 0 %}
+                <p class="txt-sm leading-5 font-semibold tracking-tight text-gray-400 dark:text-white"> Spend  £<span class='text-xl'> {{ free_delivery_delta|floatformat:2}} more to get free delivery! </span> </p>
+            {% endif%}
+            <a 
+                href="{% url 'view_bag' %}" 
+                class="px-4 py-1.25  inline-flex items-center justify-between bg-gray-800 text-gray-50 border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" 
+            >
+                <span class=''> Go To Secure Checkout</span> 
+                <span class='pl-1'>
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        height="16" 
+                        width="14" 
+                        viewBox="0 0 448 512"
+                        fill='#f9fafb'>
+                        <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"
+                    /></svg>
+                </span>
+            </a>
+        </div>
+    </div> 
+{% endif %}
+    
 </div>
 
