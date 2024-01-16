@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-from icecream import ic
 
 if os.path.exists("env.py"):
     import env  # noqa
@@ -37,8 +36,6 @@ ALLOWED_HOSTS = [
     "city-cycling-e08bb339a180.herokuapp.com",
     os.environ.get("HEROKU_HOSTNAME"),
 ]
-ic()
-ic(ALLOWED_HOSTS)
 
 # Application definition
 
