@@ -41,7 +41,7 @@
                 <p class="pb-3 text-xs leading-2 font-semibold tracking-tight text-gray-400 dark:text-white"> Spend  £<span class='text-xs'> {{ free_delivery_delta|floatformat:2}} more to get free delivery! </span> </p>
             {% endif%}
             <a 
-                href="{% url 'view_bag' %}" 
+                href="{% url 'checkout' %}" 
                 class="px-4 py-1.25  inline-flex items-center justify-between bg-gray-800 text-gray-50 border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" 
             >
                 <span class=''> Go To Secure Checkout</span> 

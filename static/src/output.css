@@ -1346,6 +1346,10 @@ input:checked + .toggle-bg {
   margin-right: 1.25rem;
 }
 
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
 .block {
   display: block;
 }
