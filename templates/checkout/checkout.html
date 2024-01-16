@@ -6,70 +6,137 @@
 
 {% block content %}
 
-<div class="mx-12 my-10">
-  <h2 class="text-3xl pb-8 font-bold">Checkout</h2>
-  <div class='md:w-1/2' >
-    <form action="{% url 'checkout' %}" method="post" id='payment-form'>
-      {% csrf_token %}
-      {{ order_form | crispy }}
-      <fieldset class='mt-8'>
-          <legend class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Payment</legend>
-          <!-- Placeholder for stripe card element -->
-          <div 
-            class="w-full p-2.5 my-2  bg-white border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-            id='card-element'
-          > empty for now</div>
-          <!-- Form errors -->
-          <div 
-            class="w-full p-2.5 my-2  bg-white border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-            id='card-errors'
-            role='alert'
-          > empty for now</div>
-      </fieldset>
-      <div class='flex flex-row justify-end'>
-        <a 
-        href={% url 'view_bag' %} 
-        class="mt-12 flex items-center space-x-1 bg-white border-gray-800 border-2 text-gray-800 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-200 dark:hover:bg-gray-100 dark:focus:ring-gray-300 dark:border-gray-300"
-        > 
-              <span class='pl-1 inline-block'>
-                <svg 
+<div class="mx-12 my-10  ">
+  <h1 class="text-3xl pb-8 mb-16  font-bold">Checkout</h1>
+  <div class='md:flex'>
+    <!-- Order Summary Table-->
+    <div class='md:w-1/2 md:mr-16 ' >
+      <h2 class='text-2xl pb-8 font-bold '>Order Summary</h2>
+      <div class="mb-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class=" w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-16 py-3">
+                        <span class="sr-only">Image</span>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Item
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Subtotal
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+              <!-- Table of Order items -->
+               {% for bag_item in bag_items %}
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="p-4">
+                          {% if bag_item.product.image %}
+                          <img
+                            class="w-16 md:w-32 max-w-full max-h-full"
+                            src="{{ bag_item.product.image.url }}"
+                            alt="{{ bag_item.product.name }}"
+                          />
+                          {% else %}
+                          <img
+                            class="w-16 md:w-32 max-w-full max-h-full"
+                            src="{{ MEDIA_URL }}No-Image-Placeholder.svg"
+                            alt="{{ bag_item.product.name }}"
+                          />
+                          {% endif %}
+                        </td>
+                        <td class="px-1 sm:px-4 py-4 font-semibold text-gray-900 dark:text-white">
+                          <p> {{ bag_item.product.name}} </p>
+                          {% if bag_item.product.has_sizes %} 
+                              <div class="text-left">
+                                <p class="pt-1 font-normal  text-gray-900 dark:text-white">Size: <strong class'font-bold'> {{ bag_item.size|upper}} </strong> </p>
+                              </div>
+                           {% endif %}
+                           <div class="text-left">
+                            <p class="pt-1 font-normal  text-gray-900 dark:text-white">Qty: <strong class'font-bold'> {{ bag_item.quantity}} </strong> </p>
+                          </div>
+
+                        </td> 
+                        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                             {{ bag_item.product.price|floatformat:2}} 
+                        </td>    
+                    </tr>
+                  {% endfor  %}
+                
+            </tbody>
+        </table>
+      </div>
+      <!-- Summary of the Shopping Bag -->
+      <div class="mb-16 mt-8 mr-5 left-3 leading-10 flex flex-col place-items-end">
+        <p class=" leading-6 mr-5 font-semibold tracking-tight text-gray-900 dark:text-white">Order Total :  £ <span class='text-md'> {{ grand_total|floatformat:2}} </span> </p>
+        <p class=" leading-6 mr-5 font-semibold tracking-tight text-gray-900 dark:text-white">Delivery :  £ <span class='text-md'> {{ delivery|floatformat:2}} </span> </p>
+        <p class=" leading-6 mr-5 font-semibold tracking-tight text-gray-900 dark:text-white">Grand Total :  £ <span class='text-md'> {{ grand_total|floatformat:2}} </span> </p>
+      </div>
+    </div>
+    <!-- Payment Detail Form -->
+    <div class='md:w-1/2' >
+      <h2 class='text-2xl pb-8 font-bold '> Card Details</h2>
+      <form action="{% url 'checkout' %}" method="post" id='payment-form'>
+        {% csrf_token %}
+        {{ order_form | crispy }}
+        <fieldset class='mt-8'>
+            <legend class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Payment</legend>
+            <!-- Placeholder for stripe card element -->
+            <div 
+              class="w-full p-2.5 my-2  bg-white border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+              id='card-element'
+            > empty for now</div>
+            <!-- Form errors -->
+            <div 
+              class="w-full p-2.5 my-2  bg-white border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+              id='card-errors'
+              role='alert'
+            > empty for now</div>
+        </fieldset>
+        <div class='flex flex-row justify-end'>
+          <a 
+          href={% url 'view_bag' %} 
+          class="mt-12 flex items-center space-x-1 bg-white border-gray-800 border-2 text-gray-800 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-200 dark:hover:bg-gray-100 dark:focus:ring-gray-300 dark:border-gray-300"
+          > 
+                <span class='pl-1 inline-block'>
+                  <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      height="16" 
+                      width="10" 
+                      viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
+                  </svg>
+                </span>  
+                <span> Adjust Bag</span> 
+        </a>
+          <button 
+          type="submit" 
+          class="mt-12 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+          > 
+              <span class=''>Complete Order
+                <span class='pl-1 inline-block'>
+                  <svg 
                     xmlns="http://www.w3.org/2000/svg" 
                     height="16" 
-                    width="10" 
-                    viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
-                </svg>
-              </span>  
-              <span> Adjust Bag</span> 
-      </a>
-        <button 
-        type="submit" 
-        class="mt-12 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-        > 
-            <span class=''>Complete Order
-              <span class='pl-1 inline-block'>
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  height="16" 
-                  width="14" 
-                  viewBox="0 0 448 512"
-                  fill='#f9fafb'>
-                  <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"
-                /></svg>
+                    width="14" 
+                    viewBox="0 0 448 512"
+                    fill='#f9fafb'>
+                    <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"
+                  /></svg>
+                </span> 
               </span> 
-            </span> 
-      </button>
-      </div>
-      <div class='flex flex-row justify-end me-2 text-red-600 space-x-1 '>
-            <svg xmlns="http://www.w3.org/2000/svg" fill='#dc2626' height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>
-            <p class='text-sm inline-block'>
-              Your card will be charged <strong> £{{ grand_total|floatformat:2}}</strong>
-            </p>
-      </div>
-    </form>
+        </button>
+        </div>
+        <div class='flex flex-row justify-end me-2 text-red-600 space-x-1 '>
+              <svg xmlns="http://www.w3.org/2000/svg" fill='#dc2626' height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>
+              <p class='text-sm inline-block'>
+                Your card will be charged <strong> £{{ grand_total|floatformat:2}}</strong>
+              </p>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
-
-
 
 
  
