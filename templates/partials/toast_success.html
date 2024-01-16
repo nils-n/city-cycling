@@ -1,5 +1,5 @@
 <div id="toast-success" class='fixed top-20 right-1 z-50' role="alert">
-    <div class="flex items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800">
+    <div class="flex items-center w-full max-w-xs p-4 mb-1 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800">
     <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
@@ -21,22 +21,24 @@
 <!--  Shopping Bag Preview -->
 {% if grand_total %}
     <div class="max-w-xs rounded-lg shadow">
-        {% for item in bag_items %}
-        <div class="flex items-center w-full max-w-xs p-4 space-x-4 {% if forloop.counter == 0%}rounded-t-lg {% endif%} rtl:space-x-reverse text-gray-500 bg-white divide-x rtl:divide-x-reverse divide-gray-200  dark:text-gray-400 dark:divide-gray-700 space-x dark:bg-gray-800">
-            <div class='w-1/4'>
-                <img src="{{item.product.image.url}}" alt="{{item.product.name}}" >
+        <div class="overflow-scroll max-h-72">
+            {% for item in bag_items %}
+            <div class="flex items-center w-full max-w-xs p-4 space-x-4   {% if forloop.counter == 1 %}rounded-t-lg {% endif%} rtl:space-x-reverse text-gray-500 bg-white divide-x rtl:divide-x-reverse divide-gray-200  dark:text-gray-400 dark:divide-gray-700 space-x dark:bg-gray-800">
+                <div class='w-1/4'>
+                    <img src="{{item.product.image.url}}" alt="{{item.product.name}}" >
+                </div>
+                <div class='w-3/4'>
+                    <p class="my-0 pl-2 "><strong>{{ item.product.name }}</strong></p>
+                    <p class="my-0 pl-2  text-sm text-gray-800">Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
+                    <p class="my-0 pl-2  text-sm text-gray-800/50">Qty: {{ item.quantity }}</p>
+                </div>
             </div>
-            <div class='w-3/4'>
-                <p class="my-0 pl-2 "><strong>{{ item.product.name }}</strong></p>
-                <p class="my-0 pl-2  text-sm text-gray-800">Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
-                <p class="my-0 pl-2  text-sm text-gray-800/50">Qty: {{ item.quantity }}</p>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-        <div class="pl-4 pb-4  my-0 leading-10 flex flex-col place-items-start text-gray-500 bg-white">
-            <p class="text-sm leading-8 font-semibold tracking-tight text-gray-900 dark:text-white">Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}:  £ <span class='text-sm'> {{ total|floatformat:2}} </span> </p>
+        <div class="pl-4 pb-4 my-0 leading-10 flex flex-col place-items-start rounded-b-lg text-gray-500 bg-white ">
+            <p class=" text-sm leading-8 font-semibold tracking-tight text-gray-900 dark:text-white">Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}:  £ <span class='text-sm'> {{ total|floatformat:2}} </span> </p>
             {% if free_delivery_delta > 0 %}
-                <p class="txt-sm leading-5 font-semibold tracking-tight text-gray-400 dark:text-white"> Spend  £<span class='text-xl'> {{ free_delivery_delta|floatformat:2}} more to get free delivery! </span> </p>
+                <p class="pb-3 text-xs leading-2 font-semibold tracking-tight text-gray-400 dark:text-white"> Spend  £<span class='text-xs'> {{ free_delivery_delta|floatformat:2}} more to get free delivery! </span> </p>
             {% endif%}
             <a 
                 href="{% url 'view_bag' %}" 
