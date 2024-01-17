@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Checkout Success{% endblock %}
+
+{% block content %}
+
+<div class="mx-8 md:mx-0 lg:mx-12 my-10  ">
+  <div class='md:flex md:space-x-4'>
+      <!-- Checkout Success Message -->
+    <div class='md:w-1/2' >  
+        <h1 class="text-3xl pb-8 mb-4  font-bold">Thank you</h1>
+        <p class="mt-2 mb-12 text-lg">Your order information is below. A confirmation email will be sent to <strong> {{ order.email}}.</strong></p>    
+    </div>
+    <!-- Order Summary Table-->
+    <div class='md:w-1/2  lg:mr-16 ' >
+      <h2 class='text-2xl pb-8 font-bold '>Order Summary</h2>
+      <div class="mb-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class=" w-full text-sm text-left   rtl:text-right text-gray-500 dark:text-gray-400" >
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-16 py-3">
+                        <span class="sr-only">Image</span>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Item
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Subtotal
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+              <!-- Table of Order items -->
+               {% for bag_item in bag_items %}
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="p-4">
+                          {% if bag_item.product.image %}
+                          <img
+                            class="w-16 md:w-32 max-w-full max-h-full"
+                            src="{{ bag_item.product.image.url }}"
+                            alt="{{ bag_item.product.name }}"
+                          />
+                          {% else %}
+                          <img
+                            class="w-16 md:w-32 max-w-full max-h-full"
+                            src="{{ MEDIA_URL }}No-Image-Placeholder.svg"
+                            alt="{{ bag_item.product.name }}"
+                          />
+                          {% endif %}
+                        </td>
+                        <td class="px-1 sm:px-4 py-4 font-semibold text-gray-900 dark:text-white">
+                          <p> {{ bag_item.product.name}} </p>
+                          {% if bag_item.product.has_sizes %} 
+                              <div class="text-left">
+                                <p class="pt-1 font-normal  text-gray-900 dark:text-white">Size: <strong class'font-bold'> {{ bag_item.size|upper}} </strong> </p>
+                              </div>
+                           {% endif %}
+                           <div class="text-left">
+                            <p class="pt-1 font-normal  text-gray-900 dark:text-white">Qty: <strong class'font-bold'> {{ bag_item.quantity}} </strong> </p>
+                          </div>
+
+                        </td> 
+                        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                             {{ bag_item.product.price|floatformat:2}} 
+                        </td>    
+                    </tr>
+                  {% endfor  %}
+                
+            </tbody>
+        </table>
+      </div>
+      <!-- Summary of the Shopping Bag -->
+      <div class="mb-16 mt-8 mr-5 left-3 leading-10 flex flex-col place-items-end">
+        <p class=" leading-6 mr-5 font-semibold tracking-tight text-gray-900 dark:text-white">Order Total :  £ <span class='text-md'> {{ grand_total|floatformat:2}} </span> </p>
+        <p class=" leading-6 mr-5 font-semibold tracking-tight text-gray-900 dark:text-white">Delivery :  £ <span class='text-md'> {{ delivery|floatformat:2}} </span> </p>
+        <p class=" leading-6 mr-5 font-semibold tracking-tight text-gray-900 dark:text-white">Grand Total :  £ <span class='text-md'> {{ grand_total|floatformat:2}} </span> </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ 
+{% endblock %}
+
+
+{% block javascript %}
+
+{{ stripe_public_key|json_script:'id_stripe_public_key' }}
+{{ client_secret|json_script:'id_client_secret' }}
+<script src=" {%  static 'js/stripe_elements.js' %}" ></script>
+
+{% endblock javascript  %}
