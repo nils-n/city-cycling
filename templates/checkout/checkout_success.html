@@ -10,72 +10,156 @@
   <div class='md:flex md:space-x-4'>
       <!-- Checkout Success Message -->
     <div class='md:w-1/2' >  
-        <h1 class="text-3xl pb-8 mb-4  font-bold">Thank you</h1>
+        <h1 class="text-3xl pb-8 mb-4  font-bold">Thank you!</h1>
         <p class="mt-2 mb-12 text-lg">Your order information is below. A confirmation email will be sent to <strong> {{ order.email}}.</strong></p>    
     </div>
     <!-- Order Summary Table-->
     <div class='md:w-1/2  lg:mr-16 ' >
-      <h2 class='text-2xl pb-8 font-bold '>Order Summary</h2>
+      <h2 class='sr-only '>Order Summary</h2>
+      <!-- Order Number-->
+      <h3 class='mb-4 text-sm font-semibold  text-gray-800'> Your order  : </h3>
       <div class="mb-8 relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class=" w-full text-sm text-left   rtl:text-right text-gray-500 dark:text-gray-400" >
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-16 py-3">
-                        <span class="sr-only">Image</span>
-                    </th>
                     <th scope="col" class="px-6 py-3">
-                        Item
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Subtotal
+                        Order Number
                     </th>
                 </tr>
             </thead>
             <tbody>
-              <!-- Table of Order items -->
-               {% for bag_item in bag_items %}
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="p-4">
-                          {% if bag_item.product.image %}
-                          <img
-                            class="w-16 md:w-32 max-w-full max-h-full"
-                            src="{{ bag_item.product.image.url }}"
-                            alt="{{ bag_item.product.name }}"
-                          />
-                          {% else %}
-                          <img
-                            class="w-16 md:w-32 max-w-full max-h-full"
-                            src="{{ MEDIA_URL }}No-Image-Placeholder.svg"
-                            alt="{{ bag_item.product.name }}"
-                          />
-                          {% endif %}
-                        </td>
-                        <td class="px-1 sm:px-4 py-4 font-semibold text-gray-900 dark:text-white">
-                          <p> {{ bag_item.product.name}} </p>
-                          {% if bag_item.product.has_sizes %} 
-                              <div class="text-left">
-                                <p class="pt-1 font-normal  text-gray-900 dark:text-white">Size: <strong class'font-bold'> {{ bag_item.size|upper}} </strong> </p>
-                              </div>
-                           {% endif %}
-                           <div class="text-left">
-                            <p class="pt-1 font-normal  text-gray-900 dark:text-white">Qty: <strong class'font-bold'> {{ bag_item.quantity}} </strong> </p>
-                          </div>
-
-                        </td> 
-                        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                             {{ bag_item.product.price|floatformat:2}} 
-                        </td>    
-                    </tr>
-                  {% endfor  %}
-                
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ order.order_number }}
+                    </td>
+                </tr>
             </tbody>
         </table>
       </div>
-      <!-- Summary of the Shopping Bag -->
+      <div class="mb-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Order Date
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ order.date }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+      <!-- Order Details-->
+      <h3 class='mb-4 text-sm font-semibold  text-gray-800 sr-only'>Order Details: </h3>
+      <div class="mb-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                      <th scope="col" class="px-6 py-3">
+                          Product name
+                      </th>
+                      <th scope="col" class="px-6 py-3">
+                          Qty @ Price
+                      </th>
+                  </tr>
+              </thead>
+              <tbody>
+                 {% for item in order.lineitems.all %}
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          {{ item.product.name }} {% if item.product_size %} - Size {{item.product_size|upper }} {% endif%}
+                      </th>
+                      <td class="px-6 py-4">
+                        {{ item.quantity}} @ £{{ item.product.price }}
+                      </td>
+                  </tr>
+                  {% endfor%}
+              </tbody>
+          </table>
+      </div>
+      <!--  Delivery Address-->
+      <div class="mb-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Delivery Address
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-white  dark:bg-gray-800 ">
+                    <td scope="row" class="px-6  font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        Full Name
+                    </td>
+                    <td class="px-6 py-1">
+                      {{ order.full_name}}
+                    </td>
+                </tr>
+                <tr class="bg-white  ">
+                    <td scope="row" class="px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        Street Address 1
+                    </td>
+                    <td class="px-6 py-1">
+                      {{ order.street_address1}}
+                    </td>
+                </tr>
+                <tr class="bg-white  ">
+                    <td scope="row" class="px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        Street Address 2
+                    </td>
+                    <td class="px-6 py-1">
+                      {{ order.street_address2}}
+                    </td>
+                </tr>
+                <tr class="bg-white  ">
+                  <td scope="row" class="px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      Town / City
+                  </td>
+                  <td class="px-6 py-1">
+                    {{ order.town_or_city}}
+                  </td>
+              </tr>
+              <tr class="bg-white  ">
+                <td scope="row" class="px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Postcode
+                </td>
+                <td class="px-6 py-1">
+                  {{ order.postcode}}
+                </td>
+            </tr>
+            <tr class="bg-white  ">
+              <td scope="row" class="px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  Country
+              </td>
+              <td class="px-6 py-1">
+                {{ order.country}}
+              </td>
+            </tr>
+            <tr class="bg-white  ">
+              <td scope="row" class="px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  Phone
+              </td>
+              <td class="px-6 py-1">
+                {{ order.phone_number}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- Summary of the Order -->
       <div class="mb-16 mt-8 mr-5 left-3 leading-10 flex flex-col place-items-end">
-        <p class=" leading-6 mr-5 font-semibold tracking-tight text-gray-900 dark:text-white">Order Total :  £ <span class='text-md'> {{ grand_total|floatformat:2}} </span> </p>
-        <p class=" leading-6 mr-5 font-semibold tracking-tight text-gray-900 dark:text-white">Delivery :  £ <span class='text-md'> {{ delivery|floatformat:2}} </span> </p>
-        <p class=" leading-6 mr-5 font-semibold tracking-tight text-gray-900 dark:text-white">Grand Total :  £ <span class='text-md'> {{ grand_total|floatformat:2}} </span> </p>
+        <p class=" leading-6 mr-5 font-semibold tracking-tight text-gray-900 dark:text-white">Order Total :  £ <span class='text-md'> {{ order.grand_total|floatformat:2}} </span> </p>
+        <p class=" leading-6 mr-5 font-semibold tracking-tight text-gray-900 dark:text-white">Delivery :  £ <span class='text-md'> {{ order.delivery_cost|floatformat:2}} </span> </p>
+        <p class=" leading-6 mr-5 font-semibold tracking-tight text-gray-900 dark:text-white">Grand Total :  £ <span class='text-md'> {{ order.grand_total|floatformat:2}} </span> </p>
       </div>
     </div>
   </div>
