@@ -54,7 +54,7 @@ card.addEventListener("change", function (event) {
 
 // Handle form submit
 const csrftoken = getCookie("csrftoken");
-const spinnerDiv = document.getElementById("loading-spinner");
+const spinnerDiv = document.getElementById("spinner-div");
 const spinnerBackgroundDiv = document.getElementById("spinner-bg-div");
 const spinnerContainerDiv = document.getElementById("loading-spinner");
 
@@ -63,9 +63,6 @@ var form = document.getElementById("payment-form");
 form.addEventListener("submit", function (ev) {
   ev.preventDefault();
   card.update({ disabled: true });
-  $("#submit-button").attr("disabled", true);
-  $("#payment-form").fadeToggle(100);
-  $("#loading-overlay").fadeToggle(100);
   spinnerDiv.classList.remove("hidden");
   spinnerBackgroundDiv.classList.remove("hidden");
   spinnerContainerDiv.classList.remove("hidden");
@@ -85,16 +82,15 @@ form.addEventListener("submit", function (ev) {
     })
     .then(function (result) {
       if (result.error) {
-        var errorDiv = document.getElementById("card-errors");
-        var html = `
-            <span class="icon" role="alert">
-            <i class="fas fa-times"></i>
-            </span>
-            <span>${result.error.message}</span>`;
-        $(errorDiv).html(html);
+        let errorDiv = document.getElementById("card-errors");
+        let html = `
+              <span>${result.error.message}</span>
+            `;
+        errorDiv.innerHTML = html;
         card.update({ disabled: false });
         $("#submit-button").attr("disabled", false);
         // remove the loading spinner
+        console.log("payment error");
         spinnerDiv.classList.add("hidden");
         spinnerBackgroundDiv.classList.add("hidden");
         spinnerContainerDiv.classList.add("hidden");
@@ -105,6 +101,11 @@ form.addEventListener("submit", function (ev) {
       }
     });
 });
+// .fail(function () {
+//   // just reload the page, error will be in django messages
+//   location.reload();
+//   console.log("payment failed");
+// });
 
 function getCookie(name) {
   let cookieValue = null;
