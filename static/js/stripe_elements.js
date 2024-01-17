@@ -5,15 +5,8 @@
     CSS from here: 
     https://stripe.com/docs/stripe-js
 */
-console.log("entering Stripe module");
-
-let stripePublicKey = document
-  .getElementById("id_stripe_public_key")
-  .textContent.slice(1, -1);
-
-let clientSecret = document
-  .getElementById("id_client_secret")
-  .textContent.slice(1, -1);
+var stripePublicKey = $("#id_stripe_public_key").text().slice(1, -1);
+var clientSecret = $("#id_client_secret").text().slice(1, -1);
 
 var stripe = Stripe(stripePublicKey);
 
@@ -76,36 +69,63 @@ form.addEventListener("submit", function (ev) {
   };
   var url = "/checkout/cache_checkout_data/";
 
-  stripe
-    .confirmCardPayment(clientSecret, {
-      payment_method: { card: card },
-    })
-    .then(function (result) {
-      if (result.error) {
-        let errorDiv = document.getElementById("card-errors");
-        let html = `
+  $.post(url, postData)
+    .done(function () {
+      stripe
+        .confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: card,
+            billing_details: {
+              name: $.trim(form.full_name.value),
+              phone: $.trim(form.phone_number.value),
+              email: $.trim(form.email.value),
+              address: {
+                line1: $.trim(form.street_address1.value),
+                line2: $.trim(form.street_address2.value),
+                city: $.trim(form.town_or_city.value),
+                country: $.trim(form.country.value),
+                state: $.trim(form.county.value),
+              },
+            },
+          },
+          shipping: {
+            name: $.trim(form.full_name.value),
+            phone: $.trim(form.phone_number.value),
+            address: {
+              line1: $.trim(form.street_address1.value),
+              line2: $.trim(form.street_address2.value),
+              city: $.trim(form.town_or_city.value),
+              country: $.trim(form.country.value),
+              postal_code: $.trim(form.postcode.value),
+              state: $.trim(form.county.value),
+            },
+          },
+        })
+        .then(function (result) {
+          if (result.error) {
+            let errorDiv = document.getElementById("card-errors");
+            let html = `
               <span>${result.error.message}</span>
             `;
-        errorDiv.innerHTML = html;
-        card.update({ disabled: false });
-        $("#submit-button").attr("disabled", false);
-        // remove the loading spinner
-        console.log("payment error");
-        spinnerDiv.classList.add("hidden");
-        spinnerBackgroundDiv.classList.add("hidden");
-        spinnerContainerDiv.classList.add("hidden");
-      } else {
-        if (result.paymentIntent.status === "succeeded") {
-          form.submit();
-        }
-      }
+            errorDiv.innerHTML = html;
+            card.update({ disabled: false });
+            $("#submit-button").attr("disabled", false);
+            // remove the loading spinner
+            spinnerDiv.classList.add("hidden");
+            spinnerBackgroundDiv.classList.add("hidden");
+            spinnerContainerDiv.classList.add("hidden");
+          } else {
+            if (result.paymentIntent.status === "succeeded") {
+              form.submit();
+            }
+          }
+        });
+    })
+    .fail(function () {
+      // just reload the page, error will be in django messages
+      location.reload();
     });
 });
-// .fail(function () {
-//   // just reload the page, error will be in django messages
-//   location.reload();
-//   console.log("payment failed");
-// });
 
 function getCookie(name) {
   let cookieValue = null;

@@ -14,14 +14,10 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
               integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
               crossorigin="anonymous"></script>
-  <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body class="bg-gray-50">
-  <div class="container mx-auto mt-4">
-    {% include 'partials/navbar.html' %}
-    {% block content %}
-    {% endblock content %}
 
+    {% include 'partials/navbar.html' %}
     {% if messages %}
     <div class="message-container">
          {%  for message in messages %}
@@ -39,10 +35,16 @@
         {% endfor %}
     </div>
     {% endif %}
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-  {% block javascript %}
-  {% endblock javascript %}
+    <div class="container mx-auto mt-4">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <script src="https://js.stripe.com/v3/"></script>
+    {% block postloadjs %}
+    {% endblock postloadjs %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    {% block javascript %}
+    {% endblock javascript %}
 </body>
 
 </html>

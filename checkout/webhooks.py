@@ -2,7 +2,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
-
+from icecream import ic
 from checkout.webhook_handler import StripeWH_Handler
 
 import stripe
@@ -15,6 +15,8 @@ def webhook(request):
     # Setup
     wh_secret = settings.STRIPE_WH_SECRET
     stripe.api_key = settings.STRIPE_SECRET_KEY
+
+    ic(wh_secret)
 
     # Get the webhook data and verify its signature
     payload = request.body

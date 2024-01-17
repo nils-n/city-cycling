@@ -1,7 +1,9 @@
 from django.urls import path
 
-from checkout.views import checkout, checkout_success
-from checkout.webhooks import webhook
+from checkout.views import checkout, checkout_success, cache_checkout_data
+
+from .webhooks import webhook
+
 
 urlpatterns = [
     path("", checkout, name="checkout"),
@@ -10,5 +12,8 @@ urlpatterns = [
         checkout_success,
         name="checkout_success",
     ),
-    path("wh", webhook, name="webhook"),
+    path(
+        "cache_checkout_data/", cache_checkout_data, name="cache_checkout_data"
+    ),
+    path("wh/", webhook, name="webhook"),
 ]
