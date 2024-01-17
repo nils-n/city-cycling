@@ -1250,6 +1250,11 @@ input:checked + .toggle-bg {
   margin-right: 0px;
 }
 
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -1516,6 +1521,14 @@ input:checked + .toggle-bg {
 
 .min-w-80 {
   min-width: 20rem;
+}
+
+.min-w-9 {
+  min-width: 2.25rem;
+}
+
+.min-w-96 {
+  min-width: 24rem;
 }
 
 .max-w-screen-xl {
@@ -2778,6 +2791,11 @@ input:checked + .toggle-bg {
     margin-right: 3rem;
   }
 
+  .md\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
   .md\:mt-0 {
     margin-top: 0px;
   }
@@ -2800,6 +2818,18 @@ input:checked + .toggle-bg {
 
   .md\:mr-16 {
     margin-right: 4rem;
+  }
+
+  .md\:mr-2 {
+    margin-right: 0.5rem;
+  }
+
+  .md\:ml-2 {
+    margin-left: 0.5rem;
+  }
+
+  .md\:ml-4 {
+    margin-left: 1rem;
   }
 
   .md\:block {
@@ -2864,6 +2894,12 @@ input:checked + .toggle-bg {
     margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
+  .md\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
   .md\:border-0 {
     border-width: 0px;
   }
@@ -2925,8 +2961,26 @@ input:checked + .toggle-bg {
     margin-right: 8rem;
   }
 
+  .lg\:my-10 {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .lg\:mx-12 {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
   .lg\:mt-16 {
     margin-top: 4rem;
+  }
+
+  .lg\:mr-16 {
+    margin-right: 4rem;
+  }
+
+  .lg\:flex {
+    display: flex;
   }
 
   .lg\:space-x-32 > :not([hidden]) ~ :not([hidden]) {
