@@ -112,6 +112,7 @@
                       {{ order.street_address1}}
                     </td>
                 </tr>
+                {% if order.street_address2 %}
                 <tr class="bg-white  ">
                     <td scope="row" class="px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         Street Address 2
@@ -120,6 +121,7 @@
                       {{ order.street_address2}}
                     </td>
                 </tr>
+                {% endif %}
                 <tr class="bg-white  ">
                   <td scope="row" class="px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                       Town / City
@@ -128,6 +130,7 @@
                     {{ order.town_or_city}}
                   </td>
               </tr>
+              {% if order.postcode  %}
               <tr class="bg-white  ">
                 <td scope="row" class="px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     Postcode
@@ -136,6 +139,7 @@
                   {{ order.postcode}}
                 </td>
             </tr>
+            {% endif %}
             <tr class="bg-white  ">
               <td scope="row" class="px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   Country

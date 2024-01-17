@@ -54,6 +54,9 @@ card.addEventListener("change", function (event) {
 
 // Handle form submit
 const csrftoken = getCookie("csrftoken");
+const spinnerDiv = document.getElementById("loading-spinner");
+const spinnerBackgroundDiv = document.getElementById("spinner-bg-div");
+const spinnerContainerDiv = document.getElementById("loading-spinner");
 
 var form = document.getElementById("payment-form");
 
@@ -63,6 +66,9 @@ form.addEventListener("submit", function (ev) {
   $("#submit-button").attr("disabled", true);
   $("#payment-form").fadeToggle(100);
   $("#loading-overlay").fadeToggle(100);
+  spinnerDiv.classList.remove("hidden");
+  spinnerBackgroundDiv.classList.remove("hidden");
+  spinnerContainerDiv.classList.remove("hidden");
 
   var safeInfo = Boolean($("#id-save-info").attr("checked"));
   var csrfToken = $("input[name='csrfmiddlewaretoken']").val();
@@ -88,6 +94,10 @@ form.addEventListener("submit", function (ev) {
         $(errorDiv).html(html);
         card.update({ disabled: false });
         $("#submit-button").attr("disabled", false);
+        // remove the loading spinner
+        spinnerDiv.classList.add("hidden");
+        spinnerBackgroundDiv.classList.add("hidden");
+        spinnerContainerDiv.classList.add("hidden");
       } else {
         if (result.paymentIntent.status === "succeeded") {
           form.submit();
