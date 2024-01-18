@@ -7,9 +7,7 @@
 */
 var stripePublicKey = $("#id_stripe_public_key").text().slice(1, -1);
 var clientSecret = $("#id_client_secret").text().slice(1, -1);
-
 var stripe = Stripe(stripePublicKey);
-
 var elements = stripe.elements();
 
 var style = {
@@ -142,3 +140,20 @@ function getCookie(name) {
   }
   return cookieValue;
 }
+
+// handle css of country field selector
+let countrySelectorEl = document.querySelector("select[name='country']");
+
+// set Country field to light gray by default
+document.addEventListener("DOMContentLoaded", (event) => {
+  countrySelectorEl.style.color = "#6b7280";
+});
+
+// set Country field to light gray when selecting no option
+countrySelectorEl.addEventListener("change", () => {
+  if (countrySelectorEl.value === "") {
+    countrySelectorEl.style.color = "#aab7c4";
+  } else {
+    countrySelectorEl.style.color = "rgb(55,65,81)";
+  }
+});
