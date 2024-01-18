@@ -7,10 +7,7 @@ from django.contrib.auth.signals import (
     user_logged_out,
     user_login_failed,
 )
-from django.contrib import messages
 
-
-# Create your views here.
 from .forms import CustomUserCreationForm
 
 
