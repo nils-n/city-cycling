@@ -1,12 +1,22 @@
 {% extends "base.html" %}
 
+{% load tailwind_filters %}
+
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-<h2>Sign Up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Sign Up</button>
-</form>
+
+<div class="max-w-screen-xl md:flex md:flex-wrap md:items-center md:justify-between mx-auto md:p-4">
+  <div class="md:mx-8 mx-4 my-10 md:max-w-md ">
+    <div class="">
+      <h2 class="text-2xl pb-8 font-bold">Signup</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="mt-12  text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Sign Up</button>
+      </form>
+    </div> 
+  </div>
+</div>
+
 {% endblock %}
