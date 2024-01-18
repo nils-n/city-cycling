@@ -5,7 +5,6 @@ from django.contrib import messages
 from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
-from icecream import ic
 import stripe  # no qa
 from checkout.forms import OrderForm, Order
 from checkout.models import OrderLineItem
@@ -16,8 +15,7 @@ from bag.contexts import bag_contents
 
 @require_POST
 def cache_checkout_data(request):
-    ic()
-    ic("trying to cache_checkout_data")
+    """send metadata about the order to the frontend"""
     try:
         pid = request.POST.get("client_secret").split("_secret")[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -60,7 +58,11 @@ def checkout(request):
 
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            pid = request.POST.get("client_secret").split("_secret")[0]
+            order.stripe_pid = pid
+            order.original_bag = json.dumps(bag)
+            order.save()
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
