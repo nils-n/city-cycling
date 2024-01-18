@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load tailwind_filters %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+
+<div class='md:flex md:flex-row md:justify-center'>
+  <div class="mx-8 lg:mx-12 my-10 md:mx-0 lg:w-screen lg:max-w-6xl" >
+    <h1 class="text-3xl pb-8 mb-16  font-bold">My Profile</h1>
+    <div class='md:flex md:space-x-1 ' >
+      <!-- Profile Details Col 1-->
+      <div class='md:w-1/2  lg:mr-4 ' >
+        <h2 class='text-2xl pb-8 font-bold '>Profile Details A</h2>
+        <div class="mb-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+          
+        </div>
+        
+      </div>
+      <!-- Profile Details Col 2 -->
+      <div class='md:w-1/2 z-20'>
+        <h2 class='text-2xl pb-8 font-bold '> Profile Details B</h2>
+      
+      </div>
+    </div>
+  </div>
+</div>
+ 
+{% endblock %}

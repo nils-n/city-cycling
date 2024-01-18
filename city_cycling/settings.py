@@ -49,10 +49,11 @@ INSTALLED_APPS = [
     "compressor",  # for flowbite CSS components
     "crispy_forms",
     "crispy_tailwind",
-    "accounts",  # new
+    "accounts",  
     "products",
     "bag",
     "checkout",
+    "profiles",
 ]
 
 MIDDLEWARE = [
