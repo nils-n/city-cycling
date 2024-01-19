@@ -1,7 +1,10 @@
+from icecream import ic
+
 from django.shortcuts import render, get_object_or_404
 from django.db.models.functions import Lower
+
 from products.models import Product, Category
-from icecream import ic
+from products.forms import ProductForm
 
 
 def all_products(request):
@@ -56,3 +59,13 @@ def product_detail(request, product_id):
             "product": product,
         },
     )
+
+
+def add_product(request):
+    """add a product to the store"""
+    form = ProductForm()
+    template = "products/add_product.html"
+
+    context = {"form": form}
+
+    return render(request, template, context)
