@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib import messages
 
 from profiles.forms import UserProfileForm
+from checkout.models import Order
 
 User = get_user_model()
 
@@ -29,5 +30,22 @@ def profile(request):
         "form": form,
         "hide_bag_preview": hide_bag_preview,
     }
+
+    return render(request, template, context)
+
+
+def order_history(request, order_number):
+    """
+    Display a past order to the user
+    """
+    order = get_object_or_404(Order, order_number=order_number)
+
+    messages.info(
+        request,
+        f"This is a past confirmation for {order_number}. A confirmation Email was sent on the order date.",
+    )
+
+    template = "checkout/checkout_success.html"
+    context = {"order": order, "from_profile": True}
 
     return render(request, template, context)

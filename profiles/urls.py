@@ -1,8 +1,9 @@
 from django.urls import path
 
-from profiles.views import profile
+from profiles.views import profile, order_history
 
 
 urlpatterns = [
     path("", profile, name="profile"),
+    path("order_history/<order_number>", order_history, name="order_history"),
 ]
