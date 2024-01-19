@@ -5,12 +5,20 @@ from django.contrib import messages
 from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
+from django.contrib.auth import get_user_model
+
 import stripe  # no qa
+
 from checkout.forms import OrderForm, Order
+from profiles.forms import UserProfileForm
+
 from checkout.models import OrderLineItem
 from products.models import Product
 
+
 from bag.contexts import bag_contents
+
+User = get_user_model()
 
 
 @require_POST
@@ -119,7 +127,27 @@ def checkout(request):
         intent = stripe.PaymentIntent.create(
             amount=stripe_total, currency=settings.STRIPE_CURRENCY
         )
-        order_form = OrderForm()
+
+        if request.user.is_authenticated:
+            try:
+                user_profile = User.objects.get(pk=request.user.id)
+                order_form = OrderForm(
+                    initial={
+                        "full_name": user_profile.get_full_name(),
+                        "email": user_profile.email,
+                        "phone_number": user_profile.default_phone_number,
+                        "country": user_profile.default_country,
+                        "postcode": user_profile.default_postcode,
+                        "town_or_city": user_profile.default_town_or_city,
+                        "street_address1": user_profile.default_street_address1,
+                        "street_address2": user_profile.default_street_address2,
+                        "county": user_profile.default_county,
+                    }
+                )
+            except User.DoesNotExist:
+                order_form = OrderForm()
+        else:
+            order_form = OrderForm()
 
         if not stripe_public_key:
             messages.warning(request, "Stripe public key is missing.")
@@ -138,6 +166,28 @@ def checkout_success(request, order_number):
     """Handle successful checkouts"""
     save_info = request.session.get("save_info")
     order = get_object_or_404(Order, order_number=order_number)
+
+    if request.user.is_authenticated:
+        """attach user profile to order"""
+        user_profile = get_object_or_404(User, id=request.user.id)
+        order.user_profile = user_profile
+        order.save()
+
+        if save_info or 1:
+            profile_data = {
+                "default_phone_number": order.phone_number,
+                "default_country": order.country,
+                "default_postcode": order.postcode,
+                "default_town_or_city": order.town_or_city,
+                "default_street_address1": order.street_address1,
+                "default_street_address2": order.street_address2,
+                "default_county": order.county,
+            }
+            user_profile_form = UserProfileForm(
+                profile_data, instance=user_profile
+            )
+            if user_profile_form.is_valid():
+                user_profile_form.save()
 
     messages.success(
         request,
