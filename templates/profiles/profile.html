@@ -4,29 +4,39 @@
 
 {% load tailwind_filters %}
 
-{% block title %}Checkout{% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block content %}
 
 <div class='md:flex md:flex-row md:justify-center'>
-  <div class="mx-8 lg:mx-12 my-10 md:mx-0 lg:w-screen lg:max-w-6xl" >
+  <div class="mx-8 lg:mx-12 my-10 md:mx-2 md:w-screen lg:max-w-6xl" >
     <h1 class="text-3xl pb-8 mb-16  font-bold">My Profile</h1>
     <div class='md:flex md:space-x-1 ' >
-      <!-- Profile Details Col 1-->
-      <div class='md:w-1/2  lg:mr-4 ' >
-        <h2 class='text-2xl pb-8 font-bold '>Profile Details A</h2>
-        <div class="mb-8 relative overflow-x-auto shadow-md sm:rounded-lg">
-          {{ profile }}
+      <!-- Profile Details Column -->
+      <div class='lg:mr-4 md:mr-2 ' >
+        <h2 class='text-2xl pb-8 font-bold '>Profile Details </h2>
+        <div class="mb-8 relative overflow-x-auto sm:rounded-lg">
+          <form action="{% url 'profile' %}" method="post" id='profile-update-form'>
+            {% csrf_token %}
+            {{ form | crispy }}
+            <button type="submit" class="mt-6 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Update Information</button>
+
+          </form>
         </div>
-        
       </div>
-      <!-- Profile Details Col 2 -->
+      <!--Order History Column -->
       <div class='md:w-1/2 z-20'>
         <h2 class='text-2xl pb-8 font-bold '> Profile Details B</h2>
-      
+            {{ orders }}
       </div>
     </div>
   </div>
 </div>
  
 {% endblock %}
+
+{% block javascript %}
+
+<script src=" {%  static 'js/profiles.js' %}" type='module'></script>
+
+{% endblock javascript  %}

@@ -19,7 +19,7 @@
     </button>
 </div>
 <!--  Shopping Bag Preview -->
-{% if grand_total %}
+{% if grand_total  and not hide_bag_preview %}
     <div class="max-w-xs rounded-lg shadow">
         <div class="overflow-scroll max-h-72">
             {% for item in bag_items %}
