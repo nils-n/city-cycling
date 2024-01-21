@@ -16,8 +16,6 @@ import dj_database_url
 from icecream import ic
 
 
-ic("heerere 1")
-
 if os.path.exists("env.py"):
     import env  # noqa
 
@@ -29,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG").lower() in ["true"]
@@ -59,6 +57,7 @@ INSTALLED_APPS = [
     "bag",
     "checkout",
     "profiles",
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -166,32 +165,32 @@ MEDIA_ROOT = BASE_DIR / "media"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 
-# if "USE_AWS" in os.environ:
-#     ic("using AWS")
-#     # Cache control
-#     AWS_S3_OBJECT_PARAMETERS = {
-#         "Expires": "Thu, 31 Dec 2099 20:00:00 GMT",
-#         "CacheControl": "max-age=94608000",
-#     }
+if "USE_AWS" in os.environ:
+    ic("using AWS")
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        "Expires": "Thu, 31 Dec 2099 20:00:00 GMT",
+        "CacheControl": "max-age=94608000",
+    }
 
-#     # Bucket config
-#     AWS_STORAGE_BUCKET_NAME = "boutique-ado-nils"
-#     AWS_S3_REGION_NAME = "eu-west-1"
-#     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-#     AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-#     AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+    # Bucket config
+    AWS_STORAGE_BUCKET_NAME = "city-cycling"
+    AWS_S3_REGION_NAME = "eu-west-2"
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 
-#     # static and media files
-#     STATICFILES_STORAGE = "custom_storages.StaticStorage"
-#     STATICFILES_LOCATION = "static"
-#     DEFAULT_STORAGE = "custom_storages.MediaStorage"
-#     MEDIAFILES_LOCATION = "media"
+    # static and media files
+    STATICFILES_STORAGE = "custom_storages.StaticStorage"
+    STATICFILES_LOCATION = "static"
+    DEFAULT_STORAGE = "custom_storages.MediaStorage"
+    MEDIAFILES_LOCATION = "media"
 
-#     # override static and media URLs in production
-#     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}"
-#     MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
-# else:
-#     ic("DEV --> not using AWS")
+    # override static and media URLs in production
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}"
+    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+else:
+    ic("DEV --> not using AWS")
 
 
 # Default primary key field type
@@ -219,7 +218,6 @@ STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
 DEFAULT_FROM_EMAIL = "glasgowcitycycling@example.com"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-ic("heerere")
 
 # to fix 500 server error when Debug is off
 # https://stackoverflow.com/questions/15128135/setting-debug-false-causes-500-error
