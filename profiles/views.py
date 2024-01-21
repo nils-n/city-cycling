@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import get_user_model
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from profiles.forms import UserProfileForm
 from checkout.models import Order
@@ -8,6 +9,7 @@ from checkout.models import Order
 User = get_user_model()
 
 
+@login_required
 def profile(request):
     """Display user profile
     https://learndjango.com/tutorials/django-best-practices-referencing-user-model
