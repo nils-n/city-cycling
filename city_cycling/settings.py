@@ -33,7 +33,6 @@ DEBUG = os.getenv("DEBUG").lower() in ["true"]
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "city-cycling-e08bb339a180.herokuapp.com",
     os.environ.get("HEROKU_HOSTNAME"),
 ]
 
@@ -96,9 +95,12 @@ WSGI_APPLICATION = "city_cycling.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
-DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+if "DATABASE_URL" in os.environ:
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
 
-if DEBUG:
+else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",

@@ -1,1 +1,1 @@
-web: gunicorn city_cycling.wsgi
+web: gunicorn city_cycling.wsgi:application
