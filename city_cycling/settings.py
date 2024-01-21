@@ -220,3 +220,5 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # to fix 500 server error when Debug is off
 # https://stackoverflow.com/questions/15128135/setting-debug-false-causes-500-error
 COMPRESS_ENABLED = os.environ.get("COMPRESS_ENABLED", False)
+COMPRESS_URL = "/static/"
+# COMPRESS_ROOT = STATIC_ROOT
