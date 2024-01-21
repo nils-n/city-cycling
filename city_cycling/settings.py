@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "compressor",  # for flowbite CSS components
     "crispy_forms",
