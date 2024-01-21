@@ -153,7 +153,7 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-STATIC_ROOT = BASE_DIR / "staticfiles"
+# STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 MEDIA_URL = "/media/"
@@ -220,14 +220,3 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # to fix 500 server error when Debug is off
 # https://stackoverflow.com/questions/15128135/setting-debug-false-causes-500-error
 COMPRESS_ENABLED = os.environ.get("COMPRESS_ENABLED", False)
-COMPRESS_URL = "/static/"
-COMPRESS_ROOT = STATIC_ROOT
-
-# to fix problem that static js files cannot be loaded properly on Heroku
-# https://django-compressor.readthedocs.io/en/2.1/quickstart/
-STATICFILES_FINDERS = (
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    # other finders..
-    "compressor.finders.CompressorFinder",
-)
