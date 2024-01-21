@@ -4,7 +4,7 @@
 
 {% load tailwind_filters %}
 
-{% block title %}Checkout{% endblock %}
+{% block title %}Edit Product{% endblock %}
 
 {% block content %}
 
@@ -12,15 +12,15 @@
   <div class="mx-8 lg:mx-12 my-10 md:mx-0 lg:w-screen lg:max-w-6xl" >
     <h1 class="text-3xl pb-8 mb-2 font-bold">Product Management</h1>
     <div class='md:flex md:space-x-1 ' >
-      <!-- Add Product -->
+      <!-- Edit Product -->
        <div class='lg:mr-4 md:mr-2 ' >
-        <h2 class='text-2xl pb-8 font-bold '>Add Product </h2>
+        <h2 class='text-2xl pb-8 font-bold '>Edit Product </h2>
         <div class="mb-8 relative overflow-x-auto sm:rounded-lg">
-          <form action="{% url 'add_product' %}" method="post" id='add-product-form' enctype='multipart/form-data'>
+          <form action="{% url 'edit_product' product.id %}" method="post" id='add-product-form' enctype='multipart/form-data'>
             {% csrf_token %}
             {{ form | crispy }}
             <div>
-              <button type="submit" class="mt-6 shadow text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Add product</button>
+              <button type="submit" class="mt-6 shadow text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Edit product</button>
               <a href="{% url 'products'%}" class="mt-6 text-gray-800 bg-white shadow-md border hover:bg-gray-50 focus:outline-none focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-200 dark:hover:bg-gray-300 dark:focus:ring-gray-300 dark:border-gray-300">Cancel</a>
             </div>
            
