@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from icecream import ic
+
+
+ic("heerere 1")
 
 if os.path.exists("env.py"):
     import env  # noqa
@@ -36,6 +40,7 @@ ALLOWED_HOSTS = [
     os.environ.get("HEROKU_HOSTNAME"),
 ]
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "compressor",  # for flowbite CSS components
     "crispy_forms",
@@ -156,7 +162,8 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 
 # if "USE_AWS" in os.environ:
@@ -212,3 +219,8 @@ STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
 DEFAULT_FROM_EMAIL = "glasgowcitycycling@example.com"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+ic("heerere")
+
+# to fix 500 server error when Debug is off
+# https://stackoverflow.com/questions/15128135/setting-debug-false-causes-500-error
+COMPRESS_ENABLED = os.environ.get("COMPRESS_ENABLED", False)
