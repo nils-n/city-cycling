@@ -19,8 +19,13 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, "User Profile successfully updated.")
+        else:
+            messages.error(
+                request, "Could not update user Profile. Is your form valid?"
+            )
+    else:
+        form = UserProfileForm(instance=user_profile)
 
-    form = UserProfileForm(instance=user_profile)
     orders = user_profile.orders.all()
     hide_bag_preview = True
 

@@ -25,7 +25,11 @@
             {% for item in bag_items %}
             <div class="flex items-center w-full max-w-xs p-4 space-x-4   {% if forloop.counter == 1 %}rounded-t-lg {% endif%} rtl:space-x-reverse text-gray-500 bg-white divide-x rtl:divide-x-reverse divide-gray-200  dark:text-gray-400 dark:divide-gray-700 space-x dark:bg-gray-800">
                 <div class='w-1/4'>
-                    <img src="{{item.product.image.url}}" alt="{{item.product.name}}" >
+                    {% if item.product.image %}
+                        <img src="{{item.product.image.url}}" alt="{{item.product.name}}" >
+                    {% else %}
+                        <img src="{{MEDIA_URL}}No-Image-Placeholder.svg" alt="{{item.product.name}}" >
+                    {% endif %}
                 </div>
                 <div class='w-3/4'>
                     <p class="my-0 pl-2 "><strong>{{ item.product.name }}</strong></p>

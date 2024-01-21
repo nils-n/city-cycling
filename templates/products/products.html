@@ -48,7 +48,7 @@
                             <img class="p-8 rounded-t-lg" src="{{ product.image.url }}" alt="{{ product.name }}"/>
                         </a>
                     {% else %}
-                        <a href="#">
+                        <a href="{% url 'product_detail' product.id %}">
                             <img class="p-8 rounded-t-lg"  src="{{ MEDIA_URL }}No-Image-Placeholder.svg" alt="{{ product.name }}" / />
                         </a>
                     {% endif %}
