@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 from products.models import Product, Category, ProductRating
 from products.forms import ProductForm
+from profiles.models import Comment  # noqa
 
 
 def all_products(request):
@@ -189,5 +190,44 @@ def rate_product(request, product_id):
                 messages.success(request, "rating saved.")
             except Exception as e:
                 messages.error(request, f"could not save rating. Error : {e}")
+
+    return redirect(reverse("profile"))
+
+
+@login_required
+def comment_product(request, product_id):
+    """add rating to a purchased product
+    based on  Generic Foreign Keys in Django / GenericForeignKey / GenericRelation
+    https://www.youtube.com/watch?v=Wt4_7ZAE8dI
+    """
+
+    post_data = json.loads(request.body.decode("utf-8"))
+
+    if "comment" in post_data:
+        comment = post_data["comment"].lstrip()
+        user_id = int(post_data["userId"])
+        product_id = int(post_data["productId"])
+        product = Product.objects.get(pk=product_id)
+
+        ic(comment, user_id, product_id)
+        # ensure that the request has been sent by the same user
+        if user_id == request.user.id:
+            ic(product.name)
+            comments = Comment.objects.filter(
+                product__name=product.name, user=request.user
+            )
+            # there is no comment in the database for this user, so create one
+            if comments.count() == 0:
+                new_comment = Comment.objects.create(
+                    text=comment, content_object=product, user=request.user
+                )
+                new_comment.save()
+
+            else:
+                # there is already a comment, so update it now
+                existing_comment = comments.first()
+                existing_comment.text = comment
+                existing_comment.is_approved = False
+                existing_comment.save()
 
     return redirect(reverse("profile"))

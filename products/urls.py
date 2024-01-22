@@ -7,6 +7,7 @@ from products.views import (
     edit_product,
     delete_product,
     rate_product,
+    comment_product,
 )
 
 urlpatterns = [
@@ -16,4 +17,5 @@ urlpatterns = [
     path("edit/<int:product_id>", edit_product, name="edit_product"),
     path("delete/<int:product_id>", delete_product, name="delete_product"),
     path("rate/<int:product_id>", rate_product, name="rate_product"),
+    path("comment/<int:product_id>", comment_product, name="comment_product"),
 ]

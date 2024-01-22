@@ -3,6 +3,10 @@ let countrySelectorEl = document.querySelector(
   "select[name='default_country']",
 );
 const rateProductBtnArray = document.getElementsByClassName("rate-product-btn");
+const submitCommentBtnArray = document.getElementsByClassName(
+  "comment-product-btn",
+);
+
 // Event Listeners for Rating
 for (let rateBtn of rateProductBtnArray) {
   rateBtn.addEventListener("click", (e) => {
@@ -15,6 +19,23 @@ for (let rateBtn of rateProductBtnArray) {
         e.target.dataset.productId,
         e.target.dataset.userId,
         e.target.dataset.rating,
+      );
+    }
+  });
+}
+
+// Event Listeners for Submit Comment Buttons
+for (let commentBtn of submitCommentBtnArray) {
+  commentBtn.addEventListener("click", (e) => {
+    if (
+      e.target.dataset.productId &&
+      e.target.dataset.userId &&
+      e.target.dataset.textareaId
+    ) {
+      handleSubmitCommentClick(
+        e.target.dataset.productId,
+        e.target.dataset.userId,
+        e.target.dataset.textareaId,
       );
     }
   });
@@ -45,6 +66,39 @@ function handleRatingClick(productId, userId, rating) {
     headline: "productRating",
     tag: "productRating",
     rating: `${rating}`,
+    productId: `${productId}`,
+    userId: `${userId}`,
+  });
+
+  let response = fetch(url, {
+    method: "POST",
+    body: data,
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+      "X-CSRFToken": csrftoken,
+    },
+  }).then(() => {
+    //reload the page
+    location.reload();
+  });
+}
+
+// handle action when user clicks on a submitting a comment
+// submit the comment via a post request
+// the post request requires the csrf token
+// https://docs.djangoproject.com/en/3.1/ref/csrf/#ajax
+// https://forum.djangoproject.com/t/send-views-py-request-post-with-javascript/23146/8
+function handleSubmitCommentClick(productId, userId, textareaId) {
+  console.log(productId, userId, textareaId);
+  const csrftoken = getCookie("csrftoken");
+  const url = `/products/comment/${productId}`;
+  const commentText = document.getElementById(textareaId).value;
+
+  const data = JSON.stringify({
+    headline: "productComment",
+    tag: "productComment",
+    comment: `${commentText}`,
     productId: `${productId}`,
     userId: `${userId}`,
   });
