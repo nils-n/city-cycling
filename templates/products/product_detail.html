@@ -192,11 +192,19 @@
   <!-- User Reviews-->
   <div class="mt-8 md:mx-16 lg:mx-32">
     <h3
-    class="mt-16 text-xl font-semibold tracking-tight text-gray-900 dark:text-white"
+    class="mt-16 mb-8 text-xl font-semibold tracking-tight text-gray-900 dark:text-white"
   >
     User Reviews
   </h3>
-    <p class='mt-4'>No Reviews yet.</p>
+    {% if product.has_comments or 1 %}
+      <!-- remember to update the has_comment field when creating a comment. for now i will hardcode it.-->
+        {% for comment in comments %}
+           <p> {{ comment.user.username }}  says on {{ comment.created_at }}   |  <strong 'font-bold '> {{ comment.text }}  </strong> </p>
+        {%  endfor %}
+    {% else %}
+        <p class='mt-4'>No Reviews yet.</p>
+    {% endif  %}
+   
   </div>
 </div>
 {% if request.user.is_superuser %}

@@ -55,13 +55,12 @@ def all_products(request):
 def product_detail(request, product_id):
     """view to display product detail in the shop"""
     product = get_object_or_404(Product, pk=product_id)
+    comments = product.comments.all()
 
     return render(
         request,
         "products/product_detail.html",
-        context={
-            "product": product,
-        },
+        context={"product": product, "comments": comments},
     )
 
 

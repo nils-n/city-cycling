@@ -1,5 +1,8 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.contenttypes.fields import GenericRelation
+
+from profiles.models import Comment  # noqa
 
 
 class Category(models.Model):
@@ -51,6 +54,7 @@ class Product(models.Model):
     has_comments = models.BooleanField(null=True, blank=True, default=False)
     has_rating = models.BooleanField(default=False, null=True, blank=True)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
+    comments = GenericRelation(Comment, related_query_name="product")
 
     def __str__(self):
         return self.name
