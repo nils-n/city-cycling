@@ -1,4 +1,5 @@
 from icecream import ic
+import json
 
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.db.models.functions import Lower
@@ -148,6 +149,16 @@ def delete_product(request, product_id):
 def rate_product(request, product_id):
     """add rating to a purchased product"""
 
-    ic("entering view : rate_product")
+    post_data = json.loads(request.body.decode("utf-8"))
+
+    if "rating" in post_data:
+        rating = int(post_data["rating"])
+        user_id = int(post_data["userId"])
+        product_id = int(post_data["productId"])
+        ic(rating, user_id, product_id)
+        
+        # ensure that the request has been sent by the same user
+        if user_id == request.user.id:
+            ic("verified")
 
     return redirect(reverse("profile"))
