@@ -142,3 +142,12 @@ def delete_product(request, product_id):
     messages.success(request, "Product successfully deleted.")
 
     return redirect(reverse("products"))
+
+
+@login_required
+def rate_product(request, product_id):
+    """add rating to a purchased product"""
+
+    ic("entering view : rate_product")
+
+    return redirect(reverse("profile"))
