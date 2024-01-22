@@ -78,6 +78,140 @@
               </tbody>
           </table>
         </div>
+      </div> 
+    </div>
+    <!-- Product Rating Column -->
+    <div class='mt-16 md:flex md:space-x-1 ' >
+      <div class='lg:mr-4 md:mr-2 ' >
+        <h2 class='text-2xl mb-4  font-bold '>Rate your purchases  </h2>
+        <p class='mt-4 mb-8 leading-6'> Leave a rating and help us and other users choose the right gear for Glasgow! </p>
+
+        <div class="mb-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table class=" w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                      <th scope="col" class="px-16 py-3">
+                          <span class="sr-only">Image</span>
+                      </th>
+                      <th scope="col" class="px-6 py-3">
+                          Product
+                      </th>
+                      <th scope="col" class="px-6 py-3">
+                          Rating
+                      </th>
+                  </tr>
+              </thead>
+              <tbody>
+                <!-- Table of Shopping Bag items -->
+                {% for order in orders %}
+                  {% for order_item in order.lineitems.all %}
+                      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                          <td class="p-4">
+                            {% if order_item.product.image %}
+                            <img
+                              class="w-16 md:w-32 max-w-full max-h-full"
+                              src="{{ order_item.product.image.url }}"
+                              alt="{{ order_item.product.name }}"
+                            />
+                            {% else %}
+                            <img
+                              class="w-16 md:w-32 max-w-full max-h-full"
+                              src="{{ MEDIA_URL }}No-Image-Placeholder.svg"
+                              alt="{{ order_item.product.name }}"
+                            />
+                            {% endif %}
+                          </td>
+                          <td class="px-1 sm:px-4 py-4 font-semibold text-gray-900 dark:text-white">
+                            <p> {{ order_item.product.name}} </p>
+                            {% if order_item.product.has_sizes %} 
+                                <div class="text-left">
+                                  <p class="pt-1 font-normal  text-gray-900 dark:text-white">Size: <strong class'font-bold'> {{ bag_item.size|upper}} </strong> </p>
+                                </div>
+                             {% endif %}
+                          </td>
+                          <td class="px-1 sm:px-4 py-4">
+                            <form action="{%  url 'adjust_bag' order_item.product.id  %}" method="POST" id='quantity-form-{{bag_item.item_id}}'> 
+                                {% csrf_token %}
+                                <!-- Add to Shopping Bag buttons-->
+                                <div class="flex items-baseline space-x-2">
+                                  <!-- Star 1 -->
+                                  <button
+                                    type="button"
+                                    data-product-id="{{ order_item.item_id }}" 
+                                    data-user-id="{{ request.user.id }}"
+                                    data-rating='1'
+                                    id="rating-1-{{ order_item.product.id}}"
+                                    class="quantity-btn  h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  >
+                                    <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                    </svg>
+                                  </button>
+                                  <!-- Star 2 -->
+                                  <button
+                                    type="button"
+                                    data-product-id="{{ order_item.item_id }}" 
+                                    data-user-id="{{ request.user.id }}"
+                                    data-rating='2'
+                                    data-button-type='decrement'
+                                    id="rating-2-{{ order_item.product.id}}"
+                                    class="quantity-btn  h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  >
+                                    <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                    </svg>
+                                  </button>
+                                  <!-- Star 3 -->
+                                  <button
+                                    type="button"
+                                    data-product-id="{{ order_item.item_id }}" 
+                                    data-user-id="{{ request.user.id }}"
+                                    data-rating='3'
+                                    id="rating-3-{{ order_item.product.id}}"
+                                    class="quantity-btn  h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  >
+                                    <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                    </svg>
+                                  </button>
+                                  <!-- Star 4 -->
+                                  <button
+                                    type="button"
+                                    data-product-id="{{ order_item.item_id }}" 
+                                    data-user-id="{{ request.user.id }}"
+                                    data-rating='4'
+                                    id="rating-4-{{ order_item.product.id}}"
+                                    class="quantity-btn  h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  >
+                                    <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                    </svg>
+                                  </button>
+                                  <!-- Star 5 -->
+                                  <button
+                                    type="button"
+                                    data-product-id="{{ order_item.item_id }}" 
+                                    data-user-id="{{ request.user.id }}"
+                                    data-rating='5'
+                                    id="rating-5-{{ order_item.product.id}}"
+                                    class="quantity-btn  h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  >
+                                    <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                    </svg>
+                                  </button>
+                                  
+                                </div>
+                            </form>
+                          </td>
+                         
+                         
+                      </tr>
+                    {% endfor  %}
+                  {% endfor %}
+              </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

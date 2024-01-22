@@ -1323,6 +1323,10 @@ input:checked + .toggle-bg {
   margin-left: 6rem;
 }
 
+.ms-1 {
+  margin-inline-start: 0.25rem;
+}
+
 .block {
   display: block;
 }
