@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from profiles.forms import UserProfileForm
+from profiles.models import Comment
 from checkout.models import Order
 
 User = get_user_model()
@@ -30,12 +31,39 @@ def profile(request):
 
     orders = user_profile.orders.all()
     hide_bag_preview = True
+    comments = Comment.objects.filter(user=request.user)
+
+    from icecream import ic  # noqa
+
+    # store the purchased products
+    purchased_products = []
+    for order in orders:
+        for line_item in order.lineitems.all():
+            product_id = line_item.product.id
+            if product_id not in purchased_products:
+                purchased_products.append(line_item.product)
+
+    # store the user comments
+    user_comments = []
+    for product in purchased_products:
+        try:
+            comment = Comment.objects.get(
+                user=request.user, object_id=product.id
+            )
+            user_comments.append(comment.text)
+        except Exception:
+            user_comments.append("")
+
+
+    # prepare a zipped list
+    products_comments = zip(purchased_products, user_comments)
 
     template = "profiles/profile.html"
     context = {
         "orders": orders,
         "form": form,
         "hide_bag_preview": hide_bag_preview,
+        "products_comments": products_comments,
     }
 
     return render(request, template, context)
