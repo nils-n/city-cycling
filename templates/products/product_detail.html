@@ -135,7 +135,7 @@
                 <p class="mt-4"><strong>Size:</strong></p>
                   <ul class="mt-2 flex w-full gap-5 ">
                       <li>
-                          <input type="radio" id="size-xs" name="product_size" value="size-xs" class="hidden peer" required>
+                          <input type="radio" id="size-xs" name="product_size" value="size-xs" class="size-input-btn hidden peer" required>
                           <label for="size-xs" class="px-5 py-2.5  inline-flex items-center justify-between  text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
                               <div class="block">
                                   <div class="w-full text-lg text-center font-semibold">XS</div>
@@ -143,7 +143,7 @@
                           </label>
                       </li>
                       <li>
-                        <input type="radio" id="size-s" name="product_size" value="s" class="hidden peer" >
+                        <input type="radio" id="size-s" name="product_size" value="s" class="size-input-btn hidden peer" >
                         <label for="size-s" class="px-5 py-2.5  inline-flex items-center justify-between   text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
                             <div class="block text-center">
                                 <div class="w-full text-lg text-center font-semibold">S</div>
@@ -151,8 +151,8 @@
                         </label>
                     </li>
                     <li>
-                      <input type="radio" id="size-m" name="product_size" value="m" class="hidden peer" >
-                      <label for="size-m" class="px-5 py-2.5  inline-flex items-center justify-between   text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                      <input type="radio" id="size-m" name="product_size" value="m" class="size-input-btn hidden peer" >
+                      <label for="size-m" class=" px-5 py-2.5  inline-flex items-center justify-between  text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
                           <div class="block text-center">
                               <div class="w-full text-lg text-center font-semibold">M</div>
                           </div>
@@ -210,6 +210,8 @@
             <button
             type="submit"
             data-product-id="{{ product.id }}" 
+            data-has-sizes="{{ product.has_sizes }}"
+            id='add-to-bag-btn'
             class="rounded-lg bg-blue-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Add to Shopping Bag
@@ -218,6 +220,8 @@
             <input type="hidden" name="redirect_url" value="{{ request.path }}">
         </form>
       </div>
+      <!-- for error messages -->
+      <p class='mt-2 text-red-700 text-sm' class='hidden' id='error-message'> </p>
 
       <!-- Descripton-->
       <div class="mt-12" style="max-width: 60ch; line-height: 1.6">

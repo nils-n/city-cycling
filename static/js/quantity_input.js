@@ -1,4 +1,7 @@
 const incrementBtnArray = document.getElementsByClassName("quantity-btn");
+const addToBagBtn = document.getElementById("add-to-bag-btn");
+const sizeChoiceArray = document.getElementsByName("product_size");
+const errorMessageEl = document.getElementById("error-message");
 
 // check whether a button to change quantity was clicked
 for (let btn of incrementBtnArray) {
@@ -11,6 +14,23 @@ for (let btn of incrementBtnArray) {
       }
     }
   });
+}
+
+//notify user if they selected no size
+addToBagBtn.addEventListener("click", (e) => {
+  const selectedSize = document.querySelector(
+    'input[name="product_size"]:checked',
+  );
+  handleAddToBagClick(e, e.target.dataset.hasSizes, selectedSize);
+});
+
+// flag a warning modal that user needs to select a size before adding to bag
+function handleAddToBagClick(e, hasSizes, selectedSize) {
+  if (hasSizes === "True" && !selectedSize) {
+    e.preventDefault();
+    errorMessageEl.innerText =
+      "Error : Product has sizes, but size was not selected";
+  }
 }
 
 // handle a click on the increment button
