@@ -3,6 +3,7 @@ import json
 
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.db.models.functions import Lower
+from django.db.models import Avg
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -176,5 +177,20 @@ def rate_product(request, product_id):
                 )
                 new_rating.save()
                 messages.success(request, "Rating successfully given. ")
+
+            # update overall rating of the product
+            # https://docs.djangoproject.com/en/5.0/topics/db/aggregation/
+            avg_rating = ProductRating.objects.filter(
+                product__id=product.id
+            ).aggregate(Avg("value", default=0))
+            product.rating = int(100 * int(avg_rating["value__avg"]))
+            try:
+                product.save()
+                ic("stored")
+                messages.success(request, "rating saved.")
+            except Exception as e:
+                ic(f"could not store , error: {e}")
+                messages.error(request, f"could not save rating. Error : {e}")
+            ic(avg_rating)
 
     return redirect(reverse("profile"))
