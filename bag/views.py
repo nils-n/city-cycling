@@ -65,7 +65,6 @@ def add_to_bag(request, item_id):
 
     request.session["bag"] = bag
 
-    ic(bag)
 
     return redirect(redirect_url)
 
