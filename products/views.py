@@ -147,7 +147,9 @@ def delete_product(request, product_id):
 
 @login_required
 def rate_product(request, product_id):
-    """add rating to a purchased product"""
+    """add rating to a purchased product
+    based on  https://docs.djangoproject.com/en/5.0/ref/models/querysets/
+    """
 
     post_data = json.loads(request.body.decode("utf-8"))
 
