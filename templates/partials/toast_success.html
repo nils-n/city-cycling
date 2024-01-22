@@ -1,11 +1,7 @@
 <div id="toast-success" class="fixed right-4 top-20 z-50" role="alert">
   <div class="min-w-20 max-w-xs rounded-lg shadow bg-white">
-    <div
-      class="flex w-full items-center p-4 text-gray-500  dark:bg-gray-800 dark:text-gray-400"
-    >
-      <div
-        class="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200"
-      >
+    <div class="flex w-full items-center p-4 text-gray-500  dark:bg-gray-800 dark:text-gray-400">
+      <div class="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200">
         <svg
           class="h-5 w-5"
           aria-hidden="true"
@@ -66,8 +62,7 @@
           <div class="w-3/4">
             <p class="my-0 pl-2"><strong>{{ item.product.name }}</strong></p>
             <p class="my-0 pl-2 text-sm text-gray-800">
-              Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else
-              %}N/A{% endif %}
+              Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}
             </p>
             <p class="my-0 pl-2 text-sm text-gray-800/50">
               Qty: {{ item.quantity }}
@@ -82,13 +77,10 @@
         <p
           class="text-sm font-semibold leading-8 tracking-tight text-gray-900 dark:text-white"
         >
-          Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: £
-          <span class="text-sm"> {{ total|floatformat:2}} </span>
+          Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}: £<span class="text-sm"> {{ total|floatformat:2}} </span>
         </p>
         {% if free_delivery_delta > 0 %}
-        <p
-          class="leading-2 pb-3 text-xs font-semibold tracking-tight text-gray-400 dark:text-white"
-        >
+        <p class="leading-2 pb-3 text-xs font-semibold tracking-tight text-gray-400 dark:text-white">
           Spend £<span class="text-xs">
             {{ free_delivery_delta|floatformat:2}} more to get free delivery!
           </span>
