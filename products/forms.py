@@ -1,5 +1,5 @@
 from django import forms
-from products.models import Product, Category, Season
+from products.models import Product, Category, Season, ProductRating
 
 
 class ProductForm(forms.ModelForm):
@@ -22,3 +22,11 @@ class ProductForm(forms.ModelForm):
             (s.id, s.get_friendly_name()) for s in seasons
         ]
         self.fields["season"].choices = friendly_seasons_names
+
+
+class ProductRatingForm(forms.ModelForm):
+    """to add rating in the ProductRating table"""
+
+    class Meta:
+        model = ProductRating
+        fields = ("user", "product", "value")

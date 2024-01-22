@@ -1,6 +1,5 @@
 from django.db import models
-
-# Create your models here.
+from django.conf import settings
 
 
 class Category(models.Model):
@@ -56,3 +55,22 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+
+class ProductRating(models.Model):
+    """DB table for a single product rating"""
+
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="ratings",
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="ratings",
+    )
+    value = models.IntegerField(default=0, null=True, blank=True)

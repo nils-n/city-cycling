@@ -6,7 +6,7 @@ from django.db.models.functions import Lower
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from products.models import Product, Category
+from products.models import Product, Category, ProductRating
 from products.forms import ProductForm
 
 
@@ -156,9 +156,23 @@ def rate_product(request, product_id):
         user_id = int(post_data["userId"])
         product_id = int(post_data["productId"])
         ic(rating, user_id, product_id)
-        
+
         # ensure that the request has been sent by the same user
         if user_id == request.user.id:
-            ic("verified")
+            product = get_object_or_404(Product, pk=product_id)
+
+            try:
+                existing_rating = ProductRating.objects.get(
+                    user=request.user, product=product
+                )
+                existing_rating.value = rating
+                existing_rating.save()
+                messages.success(request, "Rating successfully updated. ")
+            except Exception:
+                new_rating = ProductRating(
+                    user=request.user, product=product, value=rating
+                )
+                new_rating.save()
+                messages.success(request, "Rating successfully given. ")
 
     return redirect(reverse("profile"))
