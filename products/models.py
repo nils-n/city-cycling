@@ -55,6 +55,12 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def get_rating(self):
+        """calculate the rating to display in the template"""
+        if (self.rating / 100) < 0.1:
+            return 0.0
+        return self.rating / 100
+
 
 class ProductRating(models.Model):
     """DB table for a single product rating"""

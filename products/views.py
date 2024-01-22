@@ -186,11 +186,8 @@ def rate_product(request, product_id):
             product.rating = int(100 * int(avg_rating["value__avg"]))
             try:
                 product.save()
-                ic("stored")
                 messages.success(request, "rating saved.")
             except Exception as e:
-                ic(f"could not store , error: {e}")
                 messages.error(request, f"could not save rating. Error : {e}")
-            ic(avg_rating)
 
     return redirect(reverse("profile"))
