@@ -184,6 +184,7 @@ def rate_product(request, product_id):
                 product__id=product.id
             ).aggregate(Avg("value", default=0))
             product.rating = int(100 * int(avg_rating["value__avg"]))
+            product.has_rating = True
             try:
                 product.save()
                 messages.success(request, "rating saved.")

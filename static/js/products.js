@@ -1,6 +1,18 @@
 const categoryButtons = document.getElementsByClassName("category-btn");
 const productCards = document.getElementsByClassName("product-card");
 const sortButtons = document.getElementsByClassName("sort-btn");
+const ratingStarsArray = document.getElementsByClassName("rating-star");
+
+//loop over rating stars and adjust fill Color based on rating
+for (let ratingStar of ratingStarsArray) {
+  if (ratingStar.dataset.rating && ratingStar.dataset.avgRating) {
+    handleRatingStarColor(
+      ratingStar,
+      parseFloat(ratingStar.dataset.rating),
+      parseFloat(ratingStar.dataset.avgRating) / 100,
+    );
+  }
+}
 
 // handle category selection
 for (let button of categoryButtons) {
@@ -60,4 +72,13 @@ function handleSortButtonClock(sorting) {
   currentURL.searchParams.set("direction", direction);
 
   window.location.replace(currentURL);
+}
+
+// set fill color of a rating star element
+function handleRatingStarColor(ratingStarEl, rating, averageRating) {
+  if (rating <= averageRating) {
+    ratingStarEl.style.color = "rgb(250,202,21)";
+  } else {
+    ratingStarEl.style.fill = "rgb(229 231 235";
+  }
 }
