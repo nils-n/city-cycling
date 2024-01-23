@@ -1,13 +1,15 @@
 from icecream import ic
 import json
+from datetime import datetime
 
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.db.models.functions import Lower
 from django.db.models import Avg
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
-from products.models import Product, Category, ProductRating
+from products.models import Product, Category, ProductRating, Season
 from products.forms import ProductForm
 from profiles.models import Comment  # noqa
 
@@ -16,13 +18,14 @@ def all_products(request):
     """view to display all products in the shop"""
     products = Product.objects.all()
     all_categories = Category.objects.all()
+    seasons = Season.objects.all()
     categories = None
     sort = None
     direction = None
     category = None
 
+    ic("all products view")
     if request.GET:
-        ic()
         if "sort" in request.GET:
             sortkey = request.GET["sort"]
             sort = sortkey
@@ -35,10 +38,34 @@ def all_products(request):
             if direction == "desc":
                 sortkey = f"-{sortkey}"
             products = products.order_by(sortkey)
-
         if "category" in request.GET:
             categories = request.GET["category"].split(",")
             products = products.filter(category__name__in=categories)
+
+    else:
+        # if no search criteria applied, display products from current season
+        ic("displaying produts from current season only")
+        current_month = datetime.now().month
+        ic(current_month)
+        # have to use a Q object to also account for the winter season
+        products = products.filter(
+            Q(
+                season__start_month__lte=current_month,
+                season__end_month__gte=current_month,
+            )
+            | Q(
+                season__start_month__gte=current_month,
+                season__end_month__gte=current_month,
+                season__end_month__lte=3,
+            )
+            | Q(
+                season__start_month__gte=11,
+                season__end_month__lte=current_month,
+            )
+        )
+        ic("list all products now")
+        for product in products.all():
+            ic(product)
 
     current_sorting = f"{sort}_{direction}"
 

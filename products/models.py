@@ -20,13 +20,32 @@ class Category(models.Model):
 
 
 class Season(models.Model):
+    """table to store seasons to present seasonal products"""
+
+    class Month(models.IntegerChoices):
+        """choices for begin and end of a season"""
+
+        JAN = 1
+        FEB = 2
+        MAR = 3
+        APR = 4
+        MAY = 5
+        JUN = 6
+        JUL = 7
+        AUG = 8
+        SEP = 9
+        OCT = 10
+        NOV = 11
+        DEC = 12
+        UNDEFINED = 0
+
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
-    start = models.DateField(
-        null=True, blank=True, auto_now=False, auto_now_add=False
+    start_month = models.IntegerField(
+        choices=Month.choices, default=Month.UNDEFINED, null=True, blank=True
     )
-    end = models.DateField(
-        null=True, blank=True, auto_now=False, auto_now_add=False
+    end_month = models.IntegerField(
+        choices=Month.choices, default=Month.UNDEFINED, null=True, blank=True
     )
 
     def __str__(self):
