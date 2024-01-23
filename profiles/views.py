@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 
 from products.models import ProductRating
 from profiles.forms import UserProfileForm
@@ -99,3 +100,23 @@ def order_history(request, order_number):
     context = {"order": order, "from_profile": True}
 
     return render(request, template, context)
+
+
+from icecream import ic  # noqa
+
+
+@login_required
+def delete_profile(request, user_id):
+    """view to delete user profile and associated account"""
+
+    if request.user.id != user_id:
+        messages.add_message(
+            request, messages.ERROR, "No permission to do this request"
+        )
+        raise PermissionDenied
+    else:
+        ic(user_id)
+        user = get_object_or_404(User, id=user_id)
+        user.delete()
+        messages.add_message(request, messages.SUCCESS, "User Profile deleted")
+        return redirect(reverse("products"))
