@@ -100,12 +100,12 @@
                   https://flowbite.com/docs/components/rating/
                   https://flowbite.com/docs/components/tables/
                 -->
-                {% for product, user_comment in products_comments %}
+                {% for product, user_comment, user_rating in purchase_information %}
                       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                           <td class="p-2">
                             <div class='flex flex-col md:ml-8 lg:ml-16 md:flex-row md:grow md:items-center md:justify-center'> 
                               <div class='md:min-w-80'>
-                                <div class='p-1'>
+                                <div class='p-1 flex pl-10 sm:pl-0 sm:block'>
                                   <div>
                                     {% if product.image %}
                                         <img
@@ -121,7 +121,7 @@
                                         />
                                   {% endif %}
                                   </div>
-                                  <div class='px-1 sm:px-4 py-4 font-semibold text-gray-900 dark:text-white'>
+                                  <div class='px-1 px-4 py-4 font-semibold text-gray-900 dark:text-white'>
                                     <p > {{ product.name}} </p>
                                     {% if product.has_sizes %} 
                                         <div class="text-left">
@@ -146,7 +146,7 @@
                                       id="rating-1-{{ product.id}}"
                                       class="rate-product-btn h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     >
-                                      <svg data-rating='1' data-avg-rating="{{product.rating}}" class="rating-star w-4 h-4 text-yellow-300 ms-1"  style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <svg data-rating='1' data-avg-rating="{{ user_rating }}" class="rating-star w-4 h-4 text-yellow-300 ms-1"  style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                         <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                       </svg>
                                     </button>
@@ -160,7 +160,7 @@
                                       id="rating-2-{{ product.id}}"
                                       class="rate-product-btn h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     >
-                                      <svg data-rating='2' data-avg-rating="{{product.rating}}" class="rating-star w-4 h-4 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <svg data-rating='2' data-avg-rating="{{ user_rating }}" class="rating-star w-4 h-4 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                         <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                       </svg>
                                     </button>
@@ -173,7 +173,7 @@
                                       id="rating-3-{{ product.id}}"
                                       class="rate-product-btn h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     >
-                                      <svg data-rating='3' data-avg-rating="{{product.rating}}" class="rating-star w-4 h-4 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <svg data-rating='3' data-avg-rating="{{ user_rating }}" class="rating-star w-4 h-4 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                         <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                       </svg>
                                     </button>
@@ -186,7 +186,7 @@
                                       id="rating-4-{{ product.id}}"
                                       class="rate-product-btn h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     >
-                                      <svg data-rating='4' data-avg-rating="{{product.rating}}" class="rating-star w-4 h-4 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <svg data-rating='4' data-avg-rating="{{ user_rating }}" class="rating-star w-4 h-4 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                         <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                       </svg>
                                     </button>
@@ -199,7 +199,7 @@
                                       id="rating-5-{{ product.id}}"
                                       class="rate-product-btn  h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     >
-                                      <svg data-rating='5' data-avg-rating="{{product.rating}}" class="rating-star w-4 h-4 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <svg data-rating='5' data-avg-rating="{{ user_rating }}" class="rating-star w-4 h-4 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                         <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                       </svg>
                                     </button>

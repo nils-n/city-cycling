@@ -76,6 +76,7 @@ function handleSortButtonClock(sorting) {
 
 // set fill color of a rating star element
 function handleRatingStarColor(ratingStarEl, rating, averageRating) {
+  console.log(rating, averageRating);
   if (rating <= averageRating) {
     ratingStarEl.style.color = "rgb(250,202,21)";
   } else {

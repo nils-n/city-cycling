@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+from products.models import ProductRating
 from profiles.forms import UserProfileForm
 from profiles.models import Comment
 from checkout.models import Order
@@ -54,16 +55,30 @@ def profile(request):
         except Exception:
             user_comments.append("")
 
+    # store user ratings
+    user_ratings = []
+    for product in purchased_products:
+        try:
+            rating = ProductRating.objects.get(
+                user=request.user, product=product
+            )
+            # ratings are stored as decimals hence multi
+            decimal_scaling_factor = 100
+            user_ratings.append(decimal_scaling_factor * rating.value)
+        except Exception:
+            user_ratings.append("")
+
+    ic(user_ratings)
 
     # prepare a zipped list
-    products_comments = zip(purchased_products, user_comments)
+    purchase_information = zip(purchased_products, user_comments, user_ratings)
 
     template = "profiles/profile.html"
     context = {
         "orders": orders,
         "form": form,
         "hide_bag_preview": hide_bag_preview,
-        "products_comments": products_comments,
+        "purchase_information": purchase_information,
     }
 
     return render(request, template, context)
