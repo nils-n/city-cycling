@@ -58,10 +58,31 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     comments = product.comments.all()
 
+    # load ratings of all users
+    ratings = []
+    for comment in comments:
+        try:
+            product_id = comment.object_id
+            targeted_product = Product.objects.get(pk=comment.object_id)
+            rating = ProductRating.objects.get(
+                user=comment.user, product=targeted_product
+            )
+            # ratings are stored as decimals hence multi
+            decimal_scaling_factor = 100
+            ratings.append(decimal_scaling_factor * rating.value)
+        except Exception:
+            ratings.append("")
+
+    # prepare a zipped list
+    reviews = zip(comments, ratings)
+
     return render(
         request,
         "products/product_detail.html",
-        context={"product": product, "comments": comments},
+        context={
+            "product": product,
+            "reviews": reviews,
+        },
     )
 
 
