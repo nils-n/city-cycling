@@ -230,4 +230,12 @@ def comment_product(request, product_id):
                 existing_comment.is_approved = False
                 existing_comment.save()
 
+            # store info that product has comments
+            product.has_comments = True
+            try:
+                product.save()
+                messages.success(request, "comment saved.")
+            except Exception as e:
+                messages.error(request, f"could not save comment. Error : {e}")
+
     return redirect(reverse("profile"))
