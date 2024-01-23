@@ -43,7 +43,6 @@
         {% for product in products %}
                 <!--  Product Card -->
                 <div class="product-card my-4 mx-1 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" id='product-{{ product.id }}' data-category='{{product.category}}'>
-                    {{ product.season  }} : {{ product.season.start_month }} to {{ product.season.end_month }}
                     {% if product.image %}
                         <a href="{% url 'product_detail' product.id %}" >
                             <img class="p-8 rounded-t-lg" src="{{ product.image.url }}" alt="{{ product.name }}"/>

@@ -24,7 +24,6 @@ def all_products(request):
     direction = None
     category = None
 
-    ic("all products view")
     if request.GET:
         if "sort" in request.GET:
             sortkey = request.GET["sort"]
@@ -32,7 +31,6 @@ def all_products(request):
             if sortkey == "name":
                 sortkey = "lower_name"
                 products = products.annotate(lower_name=Lower("name"))
-                ic(products)
         if "direction" in request.GET:
             direction = request.GET["direction"]
             if direction == "desc":
@@ -44,9 +42,7 @@ def all_products(request):
 
     else:
         # if no search criteria applied, display products from current season
-        ic("displaying produts from current season only")
         current_month = datetime.now().month
-        ic(current_month)
         # have to use a Q object to also account for the winter season
         products = products.filter(
             Q(
@@ -63,9 +59,6 @@ def all_products(request):
                 season__end_month__lte=current_month,
             )
         )
-        ic("list all products now")
-        for product in products.all():
-            ic(product)
 
     current_sorting = f"{sort}_{direction}"
 

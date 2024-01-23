@@ -61,7 +61,7 @@ function handleSortButtonClock(sorting) {
     sort = "name";
     direction = "asc";
   } else if (sorting === "name-z-to-a") {
-    sort = "price";
+    sort = "name";
     direction = "desc";
   } else {
     return;
