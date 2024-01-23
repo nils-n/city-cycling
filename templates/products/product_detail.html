@@ -72,7 +72,7 @@
           </span> 
         </div>
         <!-- Link to Review -->
-        <a href="#" class="text-gray-500"> (0 Reviews) </a>
+        <a href="#" class="text-gray-500"> ( {{ number_of_reviews }} Reviews) </a>
       </div>
       <!-- Product Price -->
       <div class="mt-4 text-3xl font-bold text-gray-900 dark:text-white">
@@ -195,7 +195,6 @@
     {% if product.has_comments  %}
       <!-- remember to update the has_comment field when creating a comment. for now i will hardcode it.-->
         {% for comment, rating in reviews %}
-              <p> Rating : {{rating}}</p>
               <!-- based on : https://flowbite.com/docs/components/rating/#rating-comment -->
               <article class='mb-12'>
                 <div class="flex items-center mb-2">

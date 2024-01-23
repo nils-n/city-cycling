@@ -73,6 +73,9 @@ def product_detail(request, product_id):
         except Exception:
             ratings.append("")
 
+    number_of_reviews = sum([1 for rating in ratings if not ""])
+    ic(number_of_reviews)
+
     # prepare a zipped list
     reviews = zip(comments, ratings)
 
@@ -82,6 +85,7 @@ def product_detail(request, product_id):
         context={
             "product": product,
             "reviews": reviews,
+            "number_of_reviews": number_of_reviews,
         },
     )
 
