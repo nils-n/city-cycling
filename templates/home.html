@@ -47,7 +47,7 @@
     Based on  https://flowbite.com/docs/components/banner/#newsletter-sign-up-banner
     and template given from Mailchhimp for Embedded Newsletter Form
 -->
-<div id="newsletter-banner" tabindex="-1" class="fixed bottom-0 start-0 z-50 flex justify-between w-full p-4 border-b border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+<div id="newsletter-banner" tabindex="-1" class="fixed bottom-0 start-0 z-50 flex justify-between w-full p-2 border-b border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
     <div class="flex flex-col md:flex-row items-center md:flex-shrink-0 w-full mx-auto sm:w-auto">
         <form 
             action="https://github.us21.list-manage.com/subscribe/post?u=c07408b8e1aa2195dd809f15e&amp;id=31ec6b9e73&amp;f_id=001d6be1f0" 
@@ -55,28 +55,31 @@
             id="mc-embedded-subscribe-form" 
             name="mc-embedded-subscribe-form" 
             target="_blank"
-            class="validate flex flex-col md:flex-row items-center w-full h-16">
+            class="validate flex flex-col sm:flex-row items-center w-full h-16">
             <div id="mc_embed_signup_scroll" class="flex justify-center gap-x-10 ">
-                <div class=" flex flex-col md:flex-col justify-center items-center md:gap-4 md:gap-y-2  mc-field-group">
+                <div class=" flex flex-col md:flex-row justify-center items-center md:gap-4 md:gap-y-2  mc-field-group">
                     <label 
                         for="mce-EMAIL"
-                        class="flex-shrink-0  me-auto text-sm font-medium text-gray-500 md:mb-0 md:me-4 dark:text-gray-400 md:m-0"
+                        class="flex-shrink-0 pb-2 sm:me-auto text-sm font-medium text-gray-500 md:mb-0 md:me-4 dark:text-gray-400 md:m-0"
                         >Sign up for our newsletter
                     </label>
-                    <input 
-                        type="email" 
-                        name="EMAIL"
-                        id="mce-EMAIL" 
-                        placeholder="Enter your email" 
-                        class="required email block w-full p-2.5   text-sm bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-lime-500 focus:border-lime-500  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500" 
-                        required="" 
-                        value="" />
-                    <input 
-                            type="submit" 
-                            name="subscribe" 
-                            id="mc-embedded-subscribe" 
-                            class="  block w-full py-2 px-5 md:min-w-52  text-base font-medium text-center rounded-lg border text-gray-900  border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800" 
-                            value="Subscribe">
+                    <div class="flex flex-row ">
+                        <input 
+                            type="email" 
+                            name="EMAIL"
+                            id="mce-EMAIL" 
+                            placeholder="Enter your email" 
+                            class="required email block w-full p-2.5 my-1  text-sm bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-lime-500 focus:border-lime-500  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500" 
+                            required="" 
+                            value="" />
+                        <input 
+                                type="submit" 
+                                name="subscribe" 
+                                id="mc-embedded-subscribe" 
+                                class="  block w-full py-2 px-5 md:min-w-52  text-base font-medium text-center rounded-lg border text-gray-900  border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800" 
+                                value="Subscribe">
+                    </div>
+
                 </div>
                 
                 <div aria-hidden="true" style="position: absolute; left: -5000px;">
