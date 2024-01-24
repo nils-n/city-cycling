@@ -10,12 +10,12 @@
 
 <div class='md:flex md:flex-row md:justify-center'>
   <div class="mx-8 lg:mx-12 my-10 md:mx-2 md:w-screen lg:max-w-6xl" >
-    <h1 class="text-3xl pb-8 mb-16  font-bold">My Profile</h1>
+    <h1 class="text-3xl md:text-4xl lg:text-5xl pb-8 mb-16  font-bold">My Profile</h1>
     <div class='md:flex md:space-x-1 ' >
       <!-- Profile Details Column -->
       <div class='lg:mr-4 md:mr-2 ' >
-        <h2 class='text-2xl pb-8 font-bold '>Profile Details </h2>
-        <div class="mb-8 relative overflow-x-auto sm:rounded-lg">
+        <h2 class='text-2xl md:text-3xl pb-8 font-bold '>Profile Details </h2>
+        <div class=" mb-8 relative overflow-x-auto sm:rounded-lg">
           <form action="{% url 'profile' %}" method="post" id='profile-update-form'>
             {% csrf_token %}
             {{ form | crispy }}
@@ -26,11 +26,11 @@
       </div>
       <!--Order History Column -->
       <div class='md:w-1/2 z-20'>
-        <h2 class='text-2xl pb-8 font-bold '> Order History</h2>
+        <h2 class='text-2xl md:text-3xl pb-8 font-bold '> Order History</h2>
         <div class="relative overflow-x-auto">
           <!-- https://flowbite.com/docs/components/tables/-->
-          <table class="w-full max-h-80 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <table class="w-full max-h-80 text-sm md:text-base text-left rtl:text-right text-gray-500 dark:text-gray-400">
+              <thead class="text-xs md:text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
                       <th scope="col" class="px-2 py-3">
                           Order Number
@@ -83,11 +83,11 @@
     <!-- Product Rating Column -->
     <div class='mt-16 md:flex md:space-x-1 ' >
       <div class='lg:mr-4 md:mr-2 ' >
-        <h2 class='text-2xl mb-4  font-bold '>Rate your purchases  </h2>
-        <p class='mt-4 mb-8 leading-6'> Leave a rating and help us and other users choose the right gear for Glasgow! </p>
+        <h2 class='text-2xl md:text-3xl mb-4  font-bold '>Rate your purchases  </h2>
+        <p class='md:text-lg mt-4 mb-8 leading-6'> Leave a rating and help us and other users choose the right gear for Glasgow! </p>
         <div class="mb-8 relative overflow-x-auto shadow-md sm:rounded-lg">
-          <table class=" w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <table class=" w-full text-sm md:text-base text-left rtl:text-right text-gray-500 dark:text-gray-400">
+              <thead class="text-xs md:text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
                       <th scope="col" class="px-16 py-3">
                           <span class="px-6 py-3">Product Reviews</span>
@@ -136,7 +136,7 @@
                               <form action="" method="POST" id='rate-product-form-{{order_item.product.id}}'> 
                                   {% csrf_token %}
                                   <!-- Add to Shopping Bag buttons-->
-                                  <div class="flex items-baseline justify-center space-x-1">
+                                  <div class="flex items-baseline justify-center space-x-1 sm:space-x-1">
                                     <!-- Star 1 -->
                                     <button
                                       type="button"
@@ -144,9 +144,9 @@
                                       data-user-id="{{ request.user.id }}"
                                       data-rating='1'
                                       id="rating-1-{{ product.id}}"
-                                      class="rate-product-btn h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                      class="rate-product-btn   text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     >
-                                      <svg data-rating='1' data-avg-rating="{% if user_rating%} {{ user_rating }} {% else %} 0 {% endif %}" class="rating-star w-4 h-4 text-yellow-300 ms-1"  style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <svg data-rating='1' data-avg-rating="{% if user_rating%} {{ user_rating }} {% else %} 0 {% endif %}" class="rating-star w-10 h-10 sm:w-6 sm:h-6 text-yellow-300 ms-1"  style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                         <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                       </svg>
                                     </button>
@@ -160,7 +160,7 @@
                                       id="rating-2-{{ product.id}}"
                                       class="rate-product-btn h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     >
-                                      <svg data-rating='2' data-avg-rating="{% if user_rating%} {{ user_rating }} {% else %} 0 {% endif %}" class="rating-star w-4 h-4 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <svg data-rating='2' data-avg-rating="{% if user_rating%} {{ user_rating }} {% else %} 0 {% endif %}" class="rating-star w-10 h-10 sm:w-6 sm:h-6 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                         <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                       </svg>
                                     </button>
@@ -173,7 +173,7 @@
                                       id="rating-3-{{ product.id}}"
                                       class="rate-product-btn h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     >
-                                      <svg data-rating='3' data-avg-rating="{% if user_rating %} {{ user_rating }} {% else %} 0 {% endif %}" class="rating-star w-4 h-4 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <svg data-rating='3' data-avg-rating="{% if user_rating %} {{ user_rating }} {% else %} 0 {% endif %}" class="rating-star w-10 h-10 sm:w-6 sm:h-6 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                         <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                       </svg>
                                     </button>
@@ -186,7 +186,7 @@
                                       id="rating-4-{{ product.id}}"
                                       class="rate-product-btn h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     >
-                                      <svg data-rating='4' data-avg-rating="{% if user_rating %} {{ user_rating }} {% else %} 0 {% endif %}" class="rating-star w-4 h-4 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <svg data-rating='4' data-avg-rating="{% if user_rating %} {{ user_rating }} {% else %} 0 {% endif %}" class="rating-star w-10 h-10 sm:w-6 sm:h-6 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                         <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                       </svg>
                                     </button>
@@ -199,7 +199,7 @@
                                       id="rating-5-{{ product.id}}"
                                       class="rate-product-btn  h-8  text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     >
-                                      <svg data-rating='5' data-avg-rating="{% if user_rating%} {{ user_rating }} {% else %} 0 {% endif %}" class="rating-star w-4 h-4 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                      <svg data-rating='5' data-avg-rating="{% if user_rating%} {{ user_rating }} {% else %} 0 {% endif %}" class="rating-star w-10 h-10 sm:w-6 sm:h-6 text-yellow-300 ms-1" style="pointer-events: none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                                         <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
                                       </svg>
                                     </button>
@@ -215,18 +215,18 @@
                                             data-product-id="{{ product.id }}"  
                                             name="comment" 
                                             rows="4" 
-                                            class="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" 
+                                            class="w-full px-0 text-sm sm:text-base text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" 
                                             placeholder="Write a comment..." 
                                             required>  {{ user_comment }}
                                     </textarea>
                                 </div>
-                                <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
+                                <div class="flex items-center justify-center md:justify-between px-3 py-2 border-t dark:border-gray-600">
                                     <button 
                                           type="submit" 
                                           data-user-id="{{ request.user.id }}" 
                                           data-product-id="{{ product.id }}" 
                                           data-textarea-id="textarea-{{ product.id }}"
-                                          class="comment-product-btn inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+                                          class="comment-product-btn inline-flex w-100 py-2.5 px-16 sm:px-6 text-sm sm:text-base font-medium text-center text-white bg-gray-700 rounded-lg focus:ring-4 focus:ring-lime-200 dark:focus:ring-lime-900 hover:bg-gray-800"
                                           >Post comment
                                     </button>
                                     
@@ -245,13 +245,13 @@
        <!-- Add option to delete profile-->
        <div class='mt-24 mb-16 max-w-sm '>
         <br> 
-          <h2 class='mt-4 mb-3 font-sm font-bold '>Delete Profile</h2>
-          <p class='font-xs text-gray-500 leading-6'>if you wish to delete your profile, you can click below. 
+          <h2 class='mt-4 mb-3  sm:text-lg font-bold '>Delete Profile</h2>
+          <p class='text-sm  sm:text-lg md:text-xl text-gray-500 leading-6'>if you wish to delete your profile, you can click below. 
             Note: this action cannot be undone, and you will lose access to your purchase history.  </p>
           <button
               data-modal-target="popup-modal" 
               data-modal-toggle="popup-modal"
-              class="mt-6 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              class="mt-6 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 sm:text-lg rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               > Delete Profile
             </button>
        </div>
@@ -272,8 +272,8 @@
                   <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                   </svg>
-                  <h3 class="mb-2 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete your profilet? This action cannot be made undone.</h3>
-                  <p class='mb-5 text-sm font-normal text-gray-400 dark:text-gray-400'>Note: This action will delete all your information stored about your account permanently.
+                  <h3 class="mb-2 text-lg font-normal sm:text-xl text-gray-500 dark:text-gray-400">Are you sure you want to delete your profilet? This action cannot be made undone.</h3>
+                  <p class='mb-5 text-sm sm:text-base  md:text-lg font-normal text-gray-400 dark:text-gray-400'>Note: This action will delete all your information stored about your account permanently.
                          You lose access to your purchase history and will need to find your order details via the link we sent you to your Email account. </p>
                   <a 
                       data-modal-hide="popup-modal" 
