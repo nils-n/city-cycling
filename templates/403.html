@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} 403 {% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- 403 message  -->
+<div class='sm:mt-5 sm:mx-16'>
+    <div class='sm:px-16 px-4 pt-8 pb-16 h-full font-sans font-extrabold bg-lime-200/80 sm:rounded-2xl bg-cover bg-no-repeat  bg-blend-soft-light '  
+    style="background-image: url({% static 'images/bike-from-side-with-person-in-urban-green-place.webp' %});"> 
+        <div class='pt-16 pb-40'>
+            <div class='sm:mt-5 sm:mx-8 lg:ml-0 lg:px-16'>
+                <div class='mx-8 lg:mx-0 mt-20 mb-16  gap-4 flex flex-col flex-wrap  md:justify-center '>
+                    <h1 class='text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 max-w-xs leading-1' style='line-height: 0.8; max-width: 9ch'> Wrong way! This is a 403 page. </h1>
+                    <p class="mt-8 mb-12 text-lg font-semibold text-gray-700 leading-6" style='max-width:20ch'> You don't have permission to do such a thing. (403 Error).</p>      
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content%}
+
