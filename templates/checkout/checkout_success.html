@@ -170,7 +170,7 @@
     <div>
         {% if from_profile  %}
         <a 
-            href={% url 'profile' %} 
+            href={% url 'profile' user.id %} 
             class="mt-12 flex items-center max-w-xs space-x-1 bg-white border-gray-800 border-2 text-gray-800 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-200 dark:hover:bg-gray-100 dark:focus:ring-gray-300 dark:border-gray-300"
             > 
                 <span class='pl-1 inline-block'>

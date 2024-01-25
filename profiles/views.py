@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+from icecream import ic  # noqa
 
 from products.models import ProductRating
 from profiles.forms import UserProfileForm
@@ -13,76 +14,80 @@ User = get_user_model()
 
 
 @login_required
-def profile(request):
+def profile(request, user_id):
     """Display user profile
     https://learndjango.com/tutorials/django-best-practices-referencing-user-model
     """
-    user_profile = get_object_or_404(User, id=request.user.id)
+    if user_id == request.user.id:
+        user_profile = get_object_or_404(User, id=user_id)
 
-    if request.method == "POST":
-        form = UserProfileForm(request.POST, instance=user_profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "User Profile successfully updated.")
+        if request.method == "POST":
+            form = UserProfileForm(request.POST, instance=user_profile)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "User Profile successfully updated.")
+            else:
+                messages.error(
+                    request,
+                    "Could not update user Profile. Is your form valid?",
+                )
         else:
-            messages.error(
-                request, "Could not update user Profile. Is your form valid?"
-            )
+            form = UserProfileForm(instance=user_profile)
+
+        orders = user_profile.orders.all()
+        hide_bag_preview = True
+        comments = Comment.objects.filter(user=request.user)
+
+        # store the purchased products
+        purchased_products = []
+        for order in orders:
+            for line_item in order.lineitems.all():
+                product_id = line_item.product.id
+                if product_id not in purchased_products:
+                    purchased_products.append(line_item.product)
+
+        # store the user comments
+        user_comments = []
+        for product in purchased_products:
+            try:
+                comment = Comment.objects.get(
+                    user=request.user, object_id=product.id
+                )
+                user_comments.append(comment.text)
+            except Exception:
+                user_comments.append("")
+
+        # store user ratings
+        user_ratings = []
+        for product in purchased_products:
+            try:
+                rating = ProductRating.objects.get(
+                    user=request.user, product=product
+                )
+                # ratings are stored as decimals hence multi
+                decimal_scaling_factor = 100
+                user_ratings.append(decimal_scaling_factor * rating.value)
+            except Exception:
+                user_ratings.append("")
+
+        # prepare a zipped list
+        purchase_information = zip(
+            purchased_products, user_comments, user_ratings
+        )
+
+        template = "profiles/profile.html"
+        context = {
+            "orders": orders,
+            "form": form,
+            "hide_bag_preview": hide_bag_preview,
+            "purchase_information": purchase_information,
+        }
+
+        return render(request, template, context)
+
     else:
-        form = UserProfileForm(instance=user_profile)
-
-    orders = user_profile.orders.all()
-    hide_bag_preview = True
-    comments = Comment.objects.filter(user=request.user)
-
-    from icecream import ic  # noqa
-
-    # store the purchased products
-    purchased_products = []
-    for order in orders:
-        for line_item in order.lineitems.all():
-            product_id = line_item.product.id
-            if product_id not in purchased_products:
-                purchased_products.append(line_item.product)
-
-    # store the user comments
-    user_comments = []
-    for product in purchased_products:
-        try:
-            comment = Comment.objects.get(
-                user=request.user, object_id=product.id
-            )
-            user_comments.append(comment.text)
-        except Exception:
-            user_comments.append("")
-
-    # store user ratings
-    user_ratings = []
-    for product in purchased_products:
-        try:
-            rating = ProductRating.objects.get(
-                user=request.user, product=product
-            )
-            # ratings are stored as decimals hence multi
-            decimal_scaling_factor = 100
-            user_ratings.append(decimal_scaling_factor * rating.value)
-        except Exception:
-            user_ratings.append("")
-
-    ic(user_ratings)
-
-    # prepare a zipped list
-    purchase_information = zip(purchased_products, user_comments, user_ratings)
-
-    template = "profiles/profile.html"
-    context = {
-        "orders": orders,
-        "form": form,
-        "hide_bag_preview": hide_bag_preview,
-        "purchase_information": purchase_information,
-    }
-
-    return render(request, template, context)
+        messages.error(request, "No permission to do this.")
+        raise PermissionDenied
 
 
 def order_history(request, order_number):

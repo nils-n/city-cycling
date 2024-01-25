@@ -81,5 +81,6 @@ docstring-code-line-length = "dynamic"
 DJANGO_SETTINGS_MODULE = "city_cycling.settings"
 filterwarnings = [
     "ignore::DeprecationWarning",
-    "ignore::UserWarning"
+    "ignore::UserWarning", 
+    "ignore::django.utils.deprecation.RemovedInDjango41Warning:django",
 ]

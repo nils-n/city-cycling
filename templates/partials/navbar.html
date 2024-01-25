@@ -57,7 +57,7 @@
               </li>
           {% endif %}
           <li>
-            <form method="post" action="{% url 'profile' %}">
+            <form method="post" action="{% url 'profile' user.id %}">
               {% csrf_token %}
               <a  
               href="{% url 'logout' %}" 

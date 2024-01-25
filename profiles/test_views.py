@@ -1,3 +1,7 @@
+import pytest  # noqa
+from icecream import ic  # noqa
+
+
 def test_authenticated_user_can_access_profile_page(client, django_user_model):
     """
     this tests whether a signed in user can access their profile page
@@ -6,5 +10,6 @@ def test_authenticated_user_can_access_profile_page(client, django_user_model):
     password = "1234-abcd"
     django_user_model.objects.create_user(username=username, password=password)
     client.login(username=username, password=password)
-    response = client.get("/profiles/1")
+    response = client.get("/profiles/1/")
+    ic(response)
     assert response.status_code == 200
