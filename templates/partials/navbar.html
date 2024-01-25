@@ -8,7 +8,7 @@
     <!-- Menu Icon and Link to User Profile -->
           {% if user.is_authenticated %}
               <a 
-                  href="{% url 'profile' %}" 
+                  href="{% url 'profile' user.id %}" 
                   class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2  mr-0 md:mr-16 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >{{user.username}}</a>
           {% endif %}
