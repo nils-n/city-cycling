@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /bag/
+Sitemap: https://city-cycling-e08bb339a180.herokuapp.com/sitemap.xml 
