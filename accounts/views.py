@@ -23,17 +23,29 @@ class SignUpView(CreateView):
 
 def notify_after_login(sender, user, request, **kwargs):
     """send a toast notification after successful login"""
-    messages.success(request, "Login successful")
+    messages.success(
+        request,
+        "Login successful",
+        fail_silently=True,
+    )
 
 
 def notify_after_logout(sender, user, request, **kwargs):
     """send a toast notification after successful logout"""
-    messages.success(request, "Logout successful")
+    messages.success(
+        request,
+        "Logout successful",
+        fail_silently=True,
+    )
 
 
 def notify_after_failed_login(sender, credentials, request, **kwargs):
     """send a toast notification after unsuccessful login"""
-    messages.error(request, "Login failed")
+    messages.error(
+        request,
+        "Login failed",
+        fail_silently=True,
+    )
 
 
 user_logged_in.connect(notify_after_login)
