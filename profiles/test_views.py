@@ -51,3 +51,25 @@ def test_authenticated_user_cannot_access_profile_page_of_anther_user(
 
     response = client.get("/profiles/2/")
     assert response.status_code == 403
+
+
+@pytest.mark.parametrize(
+    "fixture_name, input_url, expected_status_code",
+    [
+        ("client", "/wrong-url-1", 404),
+        ("client", "/wrong-url-2", 404),
+        ("client", "/", 200),
+    ],
+)
+def test_404_is_raised_when_providing_wrong_url(
+    fixture_name, input_url, expected_status_code, request, db
+):
+    """
+    this tests whether a 404 error is raised when the website user
+    types in a wrong URL
+    """
+    client = request.getfixturevalue(fixture_name)
+
+    response = client.get(input_url)
+
+    assert response.status_code == expected_status_code
