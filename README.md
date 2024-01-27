@@ -1,4 +1,4 @@
-![GitHub top language](https://img.shields.io/github/languages/top/nils-n/city-cycling?logo=GitHub&style=flat-square&style=plastic) ![GitHub contributors](https://img.shields.io/github/contributors/nils-n/city-cycling?color=oo&logo=Github&style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/nils-n/city-cycling?logo=Github&style=plastic) ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/nils-n/city-cycling/django.yml?style=plastic&logo=github&label=Django%20CI)
+![GitHub top language](https://img.shields.io/github/languages/top/nils-n/city-cycling?logo=GitHub&style=flat-square&style=plastic) ![GitHub contributors](https://img.shields.io/github/contributors/nils-n/city-cycling?color=oo&logo=Github&style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/nils-n/city-cycling?logo=Github&style=plastic) ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/nils-n/city-cycling/django.yml?style=plastic&logo=github&label=Tests)
 
 # City Cycling Glasgow
 
