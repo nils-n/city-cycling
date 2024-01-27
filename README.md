@@ -1,6 +1,6 @@
 # City Cycling Glasgow
 
-Link to deployed version on [Heroku - City Cycling](https://city-cycling-e08bb339a180.herokuapp.com/products/)
+Link to deployed version on [Heroku - City Cycling](https://city-cycling-e08bb339a180.herokuapp.com/)
 
 Link to GitHub Project Board [GitHub Projects - City Cycling](https://github.com/users/nils-n/projects/17/views/1)
 
