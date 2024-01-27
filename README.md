@@ -2,7 +2,14 @@
 
 # City Cycling Glasgow
 
+This project is a website for a fictional eCommerce online shop called 'City Cycling' that sells bike equipment. The shop targets both experienced cyclists and those who are beginning to cycle or planning to commute to work via cycling, with an  more general goal of promoting health, sustainability and a more bike-friendly Glasgow. 
+
 ### Project Goal
+
+- Encourage users to cycle to work and provide high-quality equipment 
+- Generate sales of bike equipment 
+- Provide option of user comments and product rating to allow user feedback 
+
 
 Link to deployed version on [Heroku - City Cycling](https://city-cycling-e08bb339a180.herokuapp.com/)
 
@@ -25,8 +32,8 @@ Link to User Stories incl. MoSCow prioritization [Numbers Document](./assets/she
 ### Table of Content
 
 - [City Cycling Glasgow](#city-cycling-glasgow)
-  - [Project Goal](#project-goal)
-  - [Table of Content](#table-of-content)
+    - [Project Goal](#project-goal)
+    - [Table of Content](#table-of-content)
   - [User Experience (UX)](#user-experience-ux)
     - [Website Aims](#website-aims)
     - [How these needs are addressed](#how-these-needs-are-addressed)
@@ -68,7 +75,7 @@ Link to User Stories incl. MoSCow prioritization [Numbers Document](./assets/she
     - [How to Fork](#how-to-fork)
     - [How to Clone](#how-to-clone)
   - [Testing](#testing)
-    - [Limitation](#limitation)
+      - [Limitation](#limitation)
     - [Solved Bugs](#solved-bugs)
     - [Open Bugs](#open-bugs)
   - [Credits](#credits)
