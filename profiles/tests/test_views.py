@@ -1,7 +1,6 @@
 import pytest  # noqa
 from icecream import ic  # noqa
 
-from django.core.exceptions import PermissionDenied  # noqa
 from django.contrib.messages.storage.fallback import FallbackStorage
 
 
