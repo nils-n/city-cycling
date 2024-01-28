@@ -42,7 +42,7 @@ The idea is that these two groups come together on this website, where the exper
 ## Table of Content
 
 - [City Cycling Glasgow](#city-cycling-glasgow)
-    - [Project Goal](#project-goal)
+  - [Project Goal](#project-goal)
   - [Business Model](#business-model)
   - [Table of Content](#table-of-content)
   - [User Experience (UX)](#user-experience-ux)
@@ -88,7 +88,7 @@ The idea is that these two groups come together on this website, where the exper
     - [How to Fork](#how-to-fork)
     - [How to Clone](#how-to-clone)
   - [Testing](#testing)
-      - [Limitation](#limitation)
+    - [Limitation](#limitation)
     - [Solved Bugs](#solved-bugs)
     - [Open Bugs](#open-bugs)
   - [Credits](#credits)
@@ -445,7 +445,56 @@ This site is the entry point and is accessible for all users.
 
 ### Login/Signup Page
 
+- New users can sign up on the website using the Signup Form.
+- If the username already exists, the user is prompted to choose a different, unique username
+- If the password is too common, i.e. `password` or `1234` the user will be asked to provide a more safe password with instructions on minimal requirement for a safe password
+- Users that have already signed up, can head to the Login page and enter their credentials
+- If the combination of username/password is valid and exists in the DB, the user will be directed back to the home page
+- If the password does not match or the username does not exist, the user will receive feedback that the provided combination has been invalid.
+
+<div style='margin:auto 0;'>
+   <table style='width:95%; margin:auto 0;'>
+    <tr>
+      <th colspan=2> Landing Page </th>
+    </tr> 
+      <tr>
+        <th> Mobile </th>
+        <th> Desktop </th> 
+      </tr>
+      <tr>
+        <td  style=' vertical-align:top'>  <img src="./assets/images/login.png"; alt="login page (mobile) " > </td>
+        <td  style='vertical-align:top'>  <img src="./assets/images/login-desktop.png"; alt="login page (dekstop) " > </td>
+      </tr>
+      <tr>
+        <td  style=' vertical-align:top'>  <img src="./assets/images/signup-mobile.png"; alt="signup page (mobile) " > </td>
+        <td  style='vertical-align:top'>  <img src="./assets/images/signup.png"; alt="signup page (dekstop) " > </td>
+      </tr>
+    </table>
+</div>
+
 ### Profile Page
+
+This is the page for signed-in users where they can update their delivery address, view their purchase history and find links to each order they have done in the shop.
+
+On this page, they can also give a rating and a comment to each product they have bought, which is then displayed to all users below the product. The average rating is updated either as average of all users that rated the product, or without rating if it has not been rated.
+
+They can also click on this page on the 'delete Profile' button to delete all personal information stored about (address, ratings, comments). A modal pops up to confirm the deletion warning the user that this operation cannot be made undone.
+
+<div style='margin:auto 0;'>
+   <table style='width:95%; margin:auto 0;'>
+    <tr>
+      <th colspan=2> Landing Page </th>
+    </tr> 
+      <tr>
+        <th> Mobile </th>
+        <th> Desktop </th> 
+      </tr>
+      <tr>
+        <td  style=' vertical-align:top'>  <img src="./assets/images/profile-mobile.png"; alt="login page (mobile) " > </td>
+        <td  style='vertical-align:top'>  <img src="./assets/images/profile.png"; alt="login page (dekstop) " > </td>
+      </tr>
+    </table>
+</div>
 
 ### Shop Page
 
