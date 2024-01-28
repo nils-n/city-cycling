@@ -2,11 +2,11 @@
 
 # City Cycling Glasgow
 
-This project is a website for a fictional eCommerce online shop called 'City Cycling' that sells bike equipment. The shop targets both experienced cyclists and those who are beginning to cycle or planning to commute to work via cycling, with an more general goal of promoting health, sustainability and a more bike-friendly Glasgow.
+This project is a website for a fictional mobile-first eCommerce online shop called 'City Cycling' that generates sales for bike equipment. The shop targets both experienced cyclists and those who are beginning to cycle or planning to commute to work via cycling, with an more general goal of promoting health, sustainability and a more bike-friendly Glasgow.
 
 ### Project Goal
 
-- Encourage users to cycle to work and provide high-quality equipment
+- Encourage users to cycle to work and purchase high-quality equipment
 - Generate sales of bike equipment
 - Provide option of user comments and product rating to allow user feedback
 
@@ -28,10 +28,22 @@ Link to User Stories incl. MoSCow prioritization [Numbers Document](./assets/she
 
 ---
 
-### Table of Content
+## Business Model
+
+This e-Commerce website is based on a Business-to-Customer (B2C) model, with two groups of people from the Greater Glasgow as target users creating single-time purchases:
+
+- local inhabitants open to the idea of cycling in the city, but are unsure about practicalities - these people require cycling gear (rain trousers, rain gear, winter gear, maintainance items) and practical guidance how to get into cycling
+- regular cyclists who are already well equipped, but require regular updates and are interested in improvements and new additions to their cycling gear.
+
+The idea is that these two groups come together on this website, where the experienced cyclists can share ideas, routes and give advices to the new cyclists, encouraging the overall idea creating a greener and more bike-friendly Glasgow.
+
+---
+
+## Table of Content
 
 - [City Cycling Glasgow](#city-cycling-glasgow)
-  - [Project Goal](#project-goal)
+    - [Project Goal](#project-goal)
+  - [Business Model](#business-model)
   - [Table of Content](#table-of-content)
   - [User Experience (UX)](#user-experience-ux)
     - [Website Aims](#website-aims)
@@ -43,9 +55,6 @@ Link to User Stories incl. MoSCow prioritization [Numbers Document](./assets/she
     - [Design](#design)
       - [Color Scheme](#color-scheme)
       - [Typography](#typography)
-  - [Marketing Strategies](#marketing-strategies)
-    - [Business Model](#business-model)
-    - [SEO](#seo)
   - [Features](#features)
     - [General Features](#general-features)
     - [Navbar](#navbar)
@@ -56,6 +65,11 @@ Link to User Stories incl. MoSCow prioritization [Numbers Document](./assets/she
     - [Product Detail Page](#product-detail-page)
     - [Checkout Pages](#checkout-pages)
     - [Other Pages](#other-pages)
+  - [Marketing Strategies](#marketing-strategies)
+    - [Social Media](#social-media)
+    - [Newsletter](#newsletter)
+  - [SEO](#seo)
+    - [Keywords](#keywords)
   - [Logic and Flow Diagrams](#logic-and-flow-diagrams)
     - [Landing Page](#landing-page-1)
     - [Shop Page](#shop-page-1)
@@ -74,13 +88,15 @@ Link to User Stories incl. MoSCow prioritization [Numbers Document](./assets/she
     - [How to Fork](#how-to-fork)
     - [How to Clone](#how-to-clone)
   - [Testing](#testing)
-    - [Limitation](#limitation)
+      - [Limitation](#limitation)
     - [Solved Bugs](#solved-bugs)
     - [Open Bugs](#open-bugs)
   - [Credits](#credits)
     - [Code Used](#code-used)
     - [Content](#content)
 - [Acknowledgements](#acknowledgements)
+
+---
 
 ---
 
@@ -343,14 +359,6 @@ For all text and headings of the website, the`font-sans` utility class from Tail
 
 ---
 
-## Marketing Strategies
-
-### Business Model
-
-### SEO
-
----
-
 ## Features
 
 ### General Features
@@ -377,6 +385,118 @@ These pages contain a friendly message when the 404 and 403 server error has occ
 - 403 page: appears when users try to enter a site that they have no authorization for
 
 ---
+
+## Marketing Strategies
+
+### Social Media
+
+A Facebook mockup page was created for the shop that would aim to increase attention on social media if the shop was not fictious. It was decided to not create actual implementation as Facebook does not allow fake businesses.
+
+<div style='text-align:center'>
+   <table style='width:90%; content-align:center; '>
+      <tr>
+        <th colspan=2> Facbook Mockup Page  </th>
+      </tr> 
+       <tr>
+        <td > <img src="./assets/images/marketing-socialmedia-mockup.png"; alt='mockup social media page of the shop' > </td>
+      </tr>
+    </table>
+
+</div>
+
+### Newsletter
+
+A signup form for a newsletter was added using [Inuit Mailchimp](https://mailchimp.com/) to the site where the user can sign up for a newsletter to receive offers.
+
+<div style='text-align:center'>
+   <table style='width:90%; content-align:center; '>
+      <tr>
+        <th colspan=2> Newsletter Signup (Desktop/Mobile Screen) </th>
+      </tr> 
+       <tr>
+        <td > <img src="./assets/images/newsletter-signup.png"; alt="newsletter signup form on main page, desktop version " > </td>
+      </tr>
+      <tr>
+        <td > <img src="./assets/images/newsletter-signup-mobile.png"; alt="newsletter signup form on main page, mobile version " > </td>
+      </tr>
+    </table>
+</div>
+
+---
+
+## SEO
+
+The main focus in terms of SEO was put on creating an accessible, high-quality website that creates value to the user following the principle 'content is king'. Semantic HTML was used throughout the pages to convey intention and make the site rank high on search engines.
+
+A `sitemap.xml` was created using [XML-Sitemaps](https://www.xml-sitemaps.com/) and added to the page in order to help search engines classify the site as high-quality, together with a `robots.txt` for this site .
+
+### Keywords
+
+While a focus was to put on reducing keyword-stuffing, a set of steps was applied to create a succint list of well-matched keywords. Fisrt, short-tail keywords was created how users may search for this website:
+
+1. Bike accessories
+2. Cycling gear
+3. Bike lights
+4. Bike helmets
+5. Cycling clothes
+6. Maintenance tools
+7. Bike locks
+8. Bike racks
+9. Repair kits
+10. Bike pumps
+11. Cycling shoes
+12. Bicycle accessories
+13. Urban cycling gear
+14. Mountain biking equipment
+15. Commuter bike accessories
+16. Road cycling gear
+17. Bike safety items
+
+Next, this list was refined to create a shorter list of long-tail keywords:
+
+1. "Bike lights for night cycling"
+2. "Waterproof cycling jacket for women"
+3. "Maintenance kit for bikes"
+4. "Best road bike helmets under £100"
+5. "Cycling shoes with SPD cleats"
+6. "Commuter bikes equipment in Glasgow"
+7. "Urban cycling clothes for men"
+8. "Repair kit for punctured tires in Glasgow"
+
+These keywords were then put into google search and it was noted down what the search engine wrote under 'People also ask' and 'Related Searches' as well as google search suggestions in the inbox element in order to further refine the keywords.
+
+<div style='text-align:center'>
+   <table style='width:90%; content-align:center; '>
+      <tr>
+        <th colspan=2> Keyword Refinement  </th>
+      </tr> 
+       <tr>
+        <td > <img src="./assets/images/marketing-keywords-1.png"; alt="margeting strategies " > </td>
+      </tr>
+      <tr>
+        <td > <img src="./assets/images/marketing-keywords-3.png"; alt="margeting strategies " > </td>
+      </tr>
+      <tr>
+        <td > <img src="./assets/images/marketing-keywords-2.png"; alt="margeting strategies " > </td>
+      </tr>
+       <tr>
+        <td > <img src="./assets/images/marketing-keywords-4.png"; alt="margeting strategies " > </td>
+      </tr>
+    </table>
+</div>
+
+The most promising long-tail keywords were then tested using [wordtracker](https://www.wordtracker.com/). Those keywords with a high volume and relatively low competition were then included in the site's metadata.
+
+<div style='text-align:center'>
+   <table style='width:90%; content-align:center; '>
+      <tr>
+        <th colspan=2> Keyword Refinement  </th>
+      </tr> 
+       <tr>
+        <td > <img src="./assets/images/marketing-wordtracker.png"; alt="keyword refinement using wordtracker " > </td>
+      </tr>
+    </table>
+</div>
 
 ---
 
@@ -434,6 +554,9 @@ These pages contain a friendly message when the 404 and 403 server error has occ
 - [icecream](https://github.com/gruns/icecream) for more expressive print statements
 - [ruff](https://docs.astral.sh/ruff/) for code formatting
 - [Flowbite](https://flowbite.com/) components for Tailwind CSS
+- [XML-Sitemaps](https://www.xml-sitemaps.com/) to create a sitemap.xml file
+- [Wordtracker](https://www.wordtracker.com/) for keyword refinement
+- [Inuit Mailchimp](https://mailchimp.com/) for newsletter signup functionality
 
 ### Languages
 
