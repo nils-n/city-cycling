@@ -363,7 +363,6 @@ For all text and headings of the website, the`font-sans` utility class from Tail
 
 ### General Features
 
-
 The website consits of a landing page, a shop page, pages for product details, checkout and order detail page, a personal profile page, a 404/403 pages. All pages are responsive, designed using a mobile-first approach.
 
 - `Landing Page` : this is the entry point where the website users arrive. From here, they can reach login/signup page to reach their personal page, visit the shop or navigate to their profile and check their order history, ratings and comments
@@ -378,10 +377,47 @@ The website consits of a landing page, a shop page, pages for product details, c
 
 The landing page and the shop page is accessible for all users, whereas the Profile page can only be accessed by authenticated users after signing in with their credentials. The page to edit Product Details is only accesible for users with admin rights. Any attempt for unauthorized access redirects directly to the 403 error page (unauthorized access).
 
-
 ### Navbar
 
+On top of each page, a navbar is placed leading to sites available to the user based on [Flowbite](https://flowbite.com/docs/components/navbar/)'s `navbar` component :
 
+- When a user is not signed in: links are displayed to `Shop`, `Routes` and `Blog` `Login` , `Signup` and the `Shopping Bag` Page
+- When a user is signed in: links are displayed to `Shop`, `Routes` and `Blog`, `Logout`, the personal `Profile` page and the `Shopping Bag` page. The Profile link is displayed as name of the signed-in user and directs to their individual profile page.
+- On large screen, the main link is listed in the center of the screen, only the `Profile` and `Shopping Bage` page links are on top left on the navigation bar.
+- On small screen, the navbar collaps to a Hamburger Button. When clicked, a list of links appears. Another click on the Hamburg Icon and the Hamburger Menu closes and returns to the collapsed state.
+
+<div style='margin:auto 0;'>
+   <table style='width:95%; margin:auto 0;'>
+    <tr>
+      <th colspan=2> Navigation Bar </th>
+    </tr> 
+      <tr>
+        <th> Name </th>
+        <th> Preview </th> 
+      </tr>
+      <tr>
+        <td> Navbar (mobile)
+        </td>
+        <td  style=' vertical-align:top'>  
+            <img src="./assets/images/navbar-mobile.png"; alt="landing page (mobile) - expanded " > 
+        </td>
+      </tr>
+        <tr>
+        <td> Navbar (mobile) expanded
+        </td>
+        <td  style=' vertical-align:top'>  
+            <img src="./assets/images/navbar-mobile-expanded.png"; alt="landing page (mobile) - expanded " > 
+        </td>
+      </tr>
+        <tr>
+        <td> Navbar (Desktop)
+        </td>
+        <td  style=' vertical-align:top'>  
+            <img src="./assets/images/navbar.png"; alt="landing page (desktop) " > 
+        </td>
+      </tr>
+    </table>
+</div>
 
 ### Landing Page
 
