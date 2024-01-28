@@ -601,6 +601,26 @@ These pages contain a friendly message when the 404 and 403 server error has occ
 - 404 page: appears when the user enters a URL that does not exist
 - 403 page: appears when users try to enter a site that they have no authorization for
 
+<div style='margin:auto 0;'>
+     <table style='width:95%; margin:auto 0;'>
+      <tr>
+        <th colspan=2> Checkout Page </th>
+      </tr> 
+        <tr>
+          <th> Mobile </th>
+          <th> Desktop </th> 
+        </tr>
+        <tr>
+          <td  style=' vertical-align:top'>  <img src="./assets/images/404-mobile.png"; alt="404 page (mobile) " > </td>
+          <td  style='vertical-align:top'>  <img src="./assets/images/404.png"; alt="404 page (dekstop) " > </td>
+        </tr>
+        <tr>
+          <td  style=' vertical-align:top'>  <img src="./assets/images/403-mobile.png"; alt="403 page (mobile) " > </td>
+          <td  style='vertical-align:top'>  <img src="./assets/images/403.png"; alt="404 page (dekstop) " > </td>
+        </tr>
+      </table>
+  </div>
+
 ---
 
 ## Marketing Strategies
