@@ -42,7 +42,7 @@ The idea is that these two groups come together on this website, where the exper
 ## Table of Content
 
 - [City Cycling Glasgow](#city-cycling-glasgow)
-  - [Project Goal](#project-goal)
+    - [Project Goal](#project-goal)
   - [Business Model](#business-model)
   - [Table of Content](#table-of-content)
   - [User Experience (UX)](#user-experience-ux)
@@ -88,7 +88,7 @@ The idea is that these two groups come together on this website, where the exper
     - [How to Fork](#how-to-fork)
     - [How to Clone](#how-to-clone)
   - [Testing](#testing)
-    - [Limitation](#limitation)
+      - [Limitation](#limitation)
     - [Solved Bugs](#solved-bugs)
     - [Open Bugs](#open-bugs)
   - [Credits](#credits)
@@ -363,9 +363,49 @@ For all text and headings of the website, the`font-sans` utility class from Tail
 
 ### General Features
 
+
+The website consits of a landing page, a shop page, pages for product details, checkout and order detail page, a personal profile page, a 404/403 pages. All pages are responsive, designed using a mobile-first approach.
+
+- `Landing Page` : this is the entry point where the website users arrive. From here, they can reach login/signup page to reach their personal page, visit the shop or navigate to their profile and check their order history, ratings and comments
+- `Login/Signup Page` : New users can sign up with a username/password, and users who already signed up can login with their details entering their login credentials here.
+- `Shop Page`: The main shop page where all various bike equipment products are listed as cards. The products can be sorted via categories, price or name in order for the user to find quickly their items. The average rating is displayed on each card. By default, products that belong to the current season are displayed when entering the shop (i.e. gloves and baselayers in the winter, sun glasses and shirts in the summer) based on real-world date.
+- `Product Detail Page`: A page to display more details and to customize the purchase. Buttons are placed to select a desired size and quantity. All reviews and individual ratings of verified purchases are displayed below the product, and a button to place the product in the shopping bag. When the user has admin rights, buttons are added to either update details or to delete the product from the shop.
+- `Product Admin Page`: Admins can edit details on this page for each product, by adapting the elements in the form and clicking on 'confim edit' button.
+- `Shopping Bag Page`: A page to list all current items in the shopping bag. The user can adjust the quantity or delete items from the bag before clicking on the 'Secure Checkout' button that leads to the checkout page.
+- `Checkout Page`: A page that lists all products contained in the order,including a summary and preview image of each item. There is a form for the user to enter the credit card details, and a 'Complete Order' button to confirm the purchase and start the payment via Stripe. If users are logged in , they can tick a checkbox and store their information so that this form is pre-filled in teh next purchase.
+- `Profile Page`: On the profile page, users can add or edit their delivery address, and see list of links to previous purchases that they have done in the shop. For each item that they have purchased, they can give a rating by adjust the number on the stars next to the item. Optionally, they can leave a comment about their purchases that will be displayed for each user on the Product Detail Page.
+- `403/404/500 Page`: Customized pages that handle errors such as typing in a wrong URL or trying to access a URL that they had no access rights for.
+
+The landing page and the shop page is accessible for all users, whereas the Profile page can only be accessed by authenticated users after signing in with their credentials. The page to edit Product Details is only accesible for users with admin rights. Any attempt for unauthorized access redirects directly to the 403 error page (unauthorized access).
+
+
 ### Navbar
 
+
+
 ### Landing Page
+
+This site is the entry point and is accessible for all users.
+
+- It shows a hero image with a person and a bike, a main heading of the page and two CTA buttons
+- When a user is not signed in, the CTA buttons lead to `Go to Shop` and `Login` page to allow users fast access to the main functionality of the page
+- When a user is signed in, the CTA buttons lead to the `Go to Shop` and the personal `Profile` page
+
+<div style='margin:auto 0;'>
+   <table style='width:95%; margin:auto 0;'>
+    <tr>
+      <th colspan=2> Landing Page </th>
+    </tr> 
+      <tr>
+        <th> Mobile </th>
+        <th> Desktop </th> 
+      </tr>
+      <tr>
+        <td  style=' vertical-align:top'>  <img src="./assets/images/home-mobile.png"; alt="landing page (mobile) " > </td>
+        <td  style='vertical-align:top'>  <img src="./assets/images/home.png"; alt="landing page (dekstop) " > </td>
+      </tr>
+    </table>
+</div>
 
 ### Login/Signup Page
 
@@ -615,6 +655,7 @@ Wireframes were created in [Figma](https://www.figma.com/), using a mobile-first
 
 - The next iteration will include a blog that allows the page owner to produce high-quality content about cycling in Glasgow, allowing users to interact with other cyclists and foster a community of cyclists in Glasgow
 - Another iteration will consist of a routing page where users can share, discuss and present their best routes to work in Glasgow. The database used in this iteration is already designed for this purpose, including a generic `Comment` model that is based on the `ContentType` model. This model allows user comments on any model type using `GenericForeinKeys` , and comments are therefore not only constraint to purchases by design.
+- Sortings on the products based on rating (ie.e. avg. rating from high to low, show only items with 4 stars and above on average)
 
 ---
 
@@ -637,6 +678,7 @@ Wireframes were created in [Figma](https://www.figma.com/), using a mobile-first
 - [XML-Sitemaps](https://www.xml-sitemaps.com/) to create a sitemap.xml file
 - [Wordtracker](https://www.wordtracker.com/) for keyword refinement
 - [Inuit Mailchimp](https://mailchimp.com/) for newsletter signup functionality
+- [Eagle](https://eagle.cool/store) to capture page previews and organize assets
 
 ### Languages
 
