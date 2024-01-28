@@ -63,6 +63,7 @@ The idea is that these two groups come together on this website, where the exper
     - [Profile Page](#profile-page)
     - [Shop Page](#shop-page)
     - [Product Detail Page](#product-detail-page)
+    - [Shopping Bag Page](#shopping-bag-page)
     - [Checkout Pages](#checkout-pages)
     - [Other Pages](#other-pages)
   - [Marketing Strategies](#marketing-strategies)
@@ -476,14 +477,14 @@ This site is the entry point and is accessible for all users.
 
 This is the page for signed-in users where they can update their delivery address, view their purchase history and find links to each order they have done in the shop.
 
-On this page, they can also give a rating and a comment to each product they have bought, which is then displayed to all users below the product. The average rating is updated either as average of all users that rated the product, or without rating if it has not been rated.
-
-They can also click on this page on the 'delete Profile' button to delete all personal information stored about (address, ratings, comments). A modal pops up to confirm the deletion warning the user that this operation cannot be made undone.
+- On this page, they can also give a rating and a comment to each product they have bought, which is then displayed to all users below the product.
+- The average rating is updated either as average of all users that rated the product, or without rating if it has not been rated.
+- They can also click on this page on the 'delete Profile' button to delete all personal information stored about (address, ratings, comments). A modal pops up to confirm the deletion warning the user that this operation cannot be made undone.
 
 <div style='margin:auto 0;'>
    <table style='width:95%; margin:auto 0;'>
     <tr>
-      <th colspan=2> Landing Page </th>
+      <th colspan=2> User Profile Page </th>
     </tr> 
       <tr>
         <th> Mobile </th>
@@ -498,9 +499,100 @@ They can also click on this page on the 'delete Profile' button to delete all pe
 
 ### Shop Page
 
+This is the page to display all items in the shop.
+
+- By default, products of the current season are displayed (i.e. gloves and rain jackets in the autumn and summer gloves/short cycling trousers in the summer).
+- Users can sort and filter the products by categories, name, and price in order to find quickly what they are searching for
+- Each product card contains a preview image, the price, the average rating. Clicking on a card leads to the product detail page for this item
+
+<div style='margin:auto 0;'>
+   <table style='width:95%; margin:auto 0;'>
+    <tr>
+      <th colspan=2> Shop Page </th>
+    </tr> 
+      <tr>
+        <th> Mobile </th>
+        <th> Desktop </th> 
+      </tr>
+      <tr>
+        <td  style=' vertical-align:top'>  <img src="./assets/images/products-mobile.png"; alt="login page (mobile) " > </td>
+        <td  style='vertical-align:top'>  <img src="./assets/images/products.png"; alt="login page (dekstop) " > </td>
+      </tr>
+    </table>
+</div>
+
 ### Product Detail Page
 
+This is the page to display details for a selected product.
+
+- In addition to the main visual elements (product name, price and preview image), a short description is display
+- The users can select a size and quanitity. When clicking on 'add to Bag' button, the selected size and quantity is added to the shopping bag.
+- On the bottom of the page, each individual comment and rating is displayed that other users have given for the selected product.
+- User can also get back to the shop also via clicking a 'back to shop' button or by clicking on the 'shop' item in the navbar
+
+<div style='margin:auto 0;'>
+   <table style='width:95%; margin:auto 0;'>
+    <tr>
+      <th colspan=2> Product Details Page </th>
+    </tr> 
+      <tr>
+        <th> Mobile </th>
+        <th> Desktop </th> 
+      </tr>
+      <tr>
+        <td  style=' vertical-align:top'>  <img src="./assets/images/product-details-mobile.png"; alt="product-details page (mobile) " > </td>
+        <td  style='vertical-align:top'>  <img src="./assets/images/product-details.png"; alt="product-details page (dekstop) " > </td>
+      </tr>
+    </table>
+</div>
+
+### Shopping Bag Page
+
+This page summarizes all elements that the user has in their shopping bag
+
+- Users see the slected size, quantity and a preview image of each item. They can update or delete items from the bag by clicking the respective buttons
+- The bag total and the grand total (incl. delivery costs) are displayed below the bag summary
+- A link to 'Secure Checkout' is listed on the bottom of the page where they will be directed to the page to checkout and place their order
+
+<div style='margin:auto 0;'>
+   <table style='width:95%; margin:auto 0;'>
+    <tr>
+      <th colspan=2> Shopping Bag Page </th>
+    </tr> 
+      <tr>
+        <th> Mobile </th>
+        <th> Desktop </th> 
+      </tr>
+      <tr>
+        <td  style=' vertical-align:top'>  <img src="./assets/images/bag-mobile.png"; alt="bag page (mobile) " > </td>
+        <td  style='vertical-align:top'>  <img src="./assets/images/bag.png"; alt="bag page (dekstop) " > </td>
+      </tr>
+    </table>
+</div>
+  
 ### Checkout Pages
+
+This page summarizes the content of an order and allows the user to finally place the order.
+
+- The usesr can enter their delivery information. If they are logged in , they have the option to save the delivery address to their profile by ticking the checkbox on the form
+- Once the delivery address and card detail are valid, the users can click on the 'Complete Order' button and send the order to Stripe.
+- A loading screen indicates to the user that the payment is in process. Once the payment is confirmed, the order is stored in the database, and the user receives a confirmation email. The user is then redirected to the checkout success page. Logged-in users can find a link to this page on their profile page.
+
+<div style='margin:auto 0;'>
+   <table style='width:95%; margin:auto 0;'>
+    <tr>
+      <th colspan=2> Checkout Page </th>
+    </tr> 
+      <tr>
+        <th> Mobile </th>
+        <th> Desktop </th> 
+      </tr>
+      <tr>
+        <td  style=' vertical-align:top'>  <img src="./assets/images/checkout-mobile.png"; alt="checkout page (mobile) " > </td>
+        <td  style='vertical-align:top'>  <img src="./assets/images/checkout.png"; alt="checkout page (dekstop) " > </td>
+      </tr>
+    </table>
+</div>
 
 ### Other Pages
 
@@ -764,6 +856,7 @@ Wireframes were created in [Figma](https://www.figma.com/), using a mobile-first
 - [Wordtracker](https://www.wordtracker.com/) for keyword refinement
 - [Inuit Mailchimp](https://mailchimp.com/) for newsletter signup functionality
 - [Eagle](https://eagle.cool/store) to capture page previews and organize assets
+- [Leonardo.ai](https://leonardo.ai/) to generate fake preview images for the products for the shop
 
 ### Languages
 
@@ -774,9 +867,10 @@ Wireframes were created in [Figma](https://www.figma.com/), using a mobile-first
 
 ### Frameworks
 
-- [Django](https://www.djangoproject.com/) for backend server
-- [Tailwind CSS](https://tailwindcss.com/) for frontend / UI / CSS
-- [Pytest](https://docs.pytest.org/en/7.4.x/) for Unit Testing
+- [Django](https://www.djangoproject.com/) for the backend server functionality
+- [Tailwind CSS](https://tailwindcss.com/) for frontend functionality
+- [Tailwind - Flowbite](https://flowbite.com/) as basis for UI components
+- [pytest](https://docs.pytest.org/en/7.4.x/) for python unit tests
 - [Stripe](https://stripe.com/en-de) for Payments
 
 ---
