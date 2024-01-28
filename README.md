@@ -31,8 +31,8 @@ Link to User Stories incl. MoSCow prioritization [Numbers Document](./assets/she
 ### Table of Content
 
 - [City Cycling Glasgow](#city-cycling-glasgow)
-    - [Project Goal](#project-goal)
-    - [Table of Content](#table-of-content)
+  - [Project Goal](#project-goal)
+  - [Table of Content](#table-of-content)
   - [User Experience (UX)](#user-experience-ux)
     - [Website Aims](#website-aims)
     - [How these needs are addressed](#how-these-needs-are-addressed)
@@ -74,7 +74,7 @@ Link to User Stories incl. MoSCow prioritization [Numbers Document](./assets/she
     - [How to Fork](#how-to-fork)
     - [How to Clone](#how-to-clone)
   - [Testing](#testing)
-      - [Limitation](#limitation)
+    - [Limitation](#limitation)
     - [Solved Bugs](#solved-bugs)
     - [Open Bugs](#open-bugs)
   - [Credits](#credits)
@@ -100,7 +100,7 @@ Link to User Stories incl. MoSCow prioritization [Numbers Document](./assets/she
 - Seasonal Products are being presented first when visiting the general shop page
 - Comments and average product ratings are displayed to every shop user, but only signed-in users are allowed to express their opinion about their purchased items using comments and ratings
 - The overall site aims to create a positive emotion and the user should feel that their are interacting with a high-quality website, engaging them to spend more time and money on the site and to create a user profile.
-- A frontend implementation using `Tailwind CSS` ensures a modern, professional and clean look that aims to create a positive feeling when interacting with the elements on the site.
+- A mobile-first implementation using `Tailwind` ensures a modern, professional and clean look that aims for best UX on smaller devices in order to account for the fact that ca. `60%` of users will access the shop via mobile devices
 
 ### Opportunities
 
@@ -126,31 +126,31 @@ Link to User Stories incl. MoSCow prioritization [Numbers Document](./assets/she
   <tr>
     <td>3</td>
     <td>Allow signed-up users to comment on purchased items, and to change their comments in retrospective (full CRUD)</td>
-    <td>5</td>
+    <td>4</td>
     <td>5</td>
   </tr>
     <tr>
     <td>4</td>
     <td>Allow all website users to read comments about a product from the product detail page </td>
-    <td>5</td>
+    <td>4</td>
     <td>5</td>
   </tr>
     </tr>
     <tr>
     <td>5</td>
     <td>Allow all website users to read the average rating and individual ratings of other users from the product detail page </td>
-    <td>5</td>
+    <td>4</td>
     <td>5</td>
   </tr>
   <tr>
     <td>6</td>
-    <td>Connect the website to an external database allowing authenticated users to enter and modify all data stored from them (CRUD)</td>
+    <td>Connect the website to a database allowing authenticated users to enter and modify all externally stored data (CRUD)</td>
     <td>5</td>
     <td>5</td>
   </tr>
   <tr>
     <td>7</td>
-    <td> Allow users to search the store and purchase bike equipment  </td>
+    <td> Allow signed-up and anonymous users to search the store and purchase bike equipment  </td>
     <td>5</td>
     <td>3</td>
   </tr>
@@ -169,8 +169,8 @@ Link to User Stories incl. MoSCow prioritization [Numbers Document](./assets/she
     <tr>
     <td>10</td>
     <td>Add a routing planner to the site where signed up users can publish their best cycling routes in Glasgow </td>
+    <td>4</td>
     <td>3</td>
-    <td>2</td>
   </tr>
 </table>
 
@@ -298,7 +298,48 @@ In addition to the `MuSCoW` labels, Acceptance Criterias have been added to each
 
 #### Color Scheme
 
+A color scheme with a single primary color scheme (lime green) was selected from Tailwind's color system in order to create a clean theme of sustainability and nature. The use of colour was intentionally reduced in order to not distract the user's attention from the products in the shop.
+
+The main color choices were:
+
+- A light gray was chosen as background color to create a clean, professional tone and less aggressive than pure white
+- For text and heading, shades of gray were carfefully selected from the Tailwind Color Palette to improve visual hierachy of the layout
+- For accents, colors from the green and red spectrum were selected to contrast the rest of the color scheme in order to direct the attention of the user to these elements
+
+<div style='text-align:center'>
+   <table style='width:90%; content-align:center'>
+      <tr>
+        <th> Type </th>
+        <th> Color </th>
+        <th> Used for</th>
+      </tr>
+      <tr>
+        <td> Primary </td>
+        <td style='width:60%; height:40%; text-align:left'>  <img src="./assets/images/colors-primary.png"; alt="primary colors palette" > </td>
+        <td> Landing Page,Hover States </td>
+      </tr>
+      <tr>
+        <td> Secondary </td>
+        <td  style='width:60%; height:40%; text-align:left'>  <img src="./assets/images/colors-secondary.png"; alt="secondary colors palette" > </td>
+        <td> Background, Buttons, Text, Tables, Subheadings </td>
+      </tr>
+       <tr>
+        <td> Accent </td>
+        <td  style='width:60%; height:40%; text-align:left'>  <img src="./assets/images/colors-accent.png"; alt="accent colors palette" > </td>
+        <td> Toasts, Warnings, Error, Info Messages </td>
+      </tr>
+    </table>
+</div>
+
 #### Typography
+
+It was chosen to go with Tailwind's cross-browser `ui-sans-serif` font stack, taking into account that these system fonts get shipped with the brower and do not need to be imported explicitly, further decreasing page load time and therefore positively affect conversion rate of the shop.
+
+For all text and headings of the website, the`font-sans` utility class from Tailwind CSS was applied, with a `font-size` depending on the screen size to ensure best readibility for all screens:
+
+- Headings : `Sans-serif` 500/800 bold, 2.25rem/ 3rem/ 3.75rem , line-height 0.9
+- Subheadings: `Sans-serif` 600 semibold, 2.25rem/ 2rem, line-height 1.5
+- Text: `Sans-serif`, 400 light, 1.25rem/ 1.5rem, line-height 1.6
 
 ---
 
