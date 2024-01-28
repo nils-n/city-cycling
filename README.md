@@ -42,7 +42,7 @@ The idea is that these two groups come together on this website, where the exper
 ## Table of Content
 
 - [City Cycling Glasgow](#city-cycling-glasgow)
-    - [Project Goal](#project-goal)
+  - [Project Goal](#project-goal)
   - [Business Model](#business-model)
   - [Table of Content](#table-of-content)
   - [User Experience (UX)](#user-experience-ux)
@@ -88,7 +88,7 @@ The idea is that these two groups come together on this website, where the exper
     - [How to Fork](#how-to-fork)
     - [How to Clone](#how-to-clone)
   - [Testing](#testing)
-      - [Limitation](#limitation)
+    - [Limitation](#limitation)
     - [Solved Bugs](#solved-bugs)
     - [Open Bugs](#open-bugs)
   - [Credits](#credits)
@@ -527,14 +527,94 @@ The most promising long-tail keywords were then tested using [wordtracker](https
 
 ## Wireframes
 
-![Wireframe - Landing](./assets/images/wireframe-landing.png)
-![Wireframe - Products](./assets/images/wireframe-products.png)
-![Wireframe - Product Detail](./assets/images/wireframe-product-details.png)
-![Wireframe - Order Summary](./assets/images/wireframe-order.png)
+Wireframes were created in [Figma](https://www.figma.com/), using a mobile-first approach using components from the [Flowbite](https://flowbite.com/) library for Tailwind CSS. Wireframes were created for:
+
+<div style='margin:auto 0;'>
+   <table style='width:95%; margin:auto 0;'>
+    <tr>
+      <th colspan=2> Wireframes - Product Page </th>
+    </tr> 
+      <tr>
+        <th> Mobile </th>
+        <th> Desktop </th>
+      </tr>
+      <tr>
+        <td  style=' vertical-align:top'>  <img src="./assets/wireframes/landing-mobile.png"; alt="wireframe for Shop (mobile) " > </td>
+        <td  style='vertical-align:top'>  <img src="./assets/wireframes/landing.png"; alt="wireframe for Shop (dekstop) " > </td>
+      </tr>
+    </table>
+</div>
+
+<div style='margin:auto 0;'>
+   <table style='width:95%; margin:auto 0;'>
+    <tr>
+      <th colspan=2> Wireframes - Product Page </th>
+    </tr> 
+      <tr>
+        <th> Mobile </th>
+        <th> Desktop </th>
+      </tr>
+      <tr>
+        <td  style=' vertical-align:top'>  <img src="./assets/wireframes/products-mobile.png"; alt="wireframe for Shop (mobile) " > </td>
+        <td  style='vertical-align:top'>  <img src="./assets/wireframes/products.png"; alt="wireframe for Shop (dekstop) " > </td>
+      </tr>
+    </table>
+</div>
+
+<div style='margin:auto 0;'>
+   <table style='width:95%; margin:auto 0;'>
+    <tr>
+      <th colspan=2> Wireframes - Product Details Page </th>
+    </tr> 
+      <tr>
+        <th> Mobile </th>
+        <th> Desktop </th>
+      </tr>
+      <tr>
+        <td  style=' vertical-align:top'>  <img src="./assets/wireframes/product-details-mobile.png"; alt="wireframe for Shop (mobile) " > </td>
+        <td  style='vertical-align:top'>  <img src="./assets/wireframes/product-details.png"; alt="wireframe for Shop (dekstop) " > </td>
+      </tr>
+    </table>
+</div>
+
+<div style='margin:auto 0;'>
+   <table style='width:95%; margin:auto 0;'>
+    <tr>
+      <th colspan=2> Wireframes - Shopping Bag Page </th>
+    </tr> 
+      <tr>
+        <th> Mobile </th>
+        <th> Desktop </th>
+      </tr>
+      <tr>
+        <td  style=' vertical-align:top'>  <img src="./assets/wireframes/shopping-bag-mobile.png"; alt="wireframe for Shop (mobile) " > </td>
+        <td  style='vertical-align:top'>  <img src="./assets/wireframes/shopping-bag.png"; alt="wireframe for Shop (dekstop) " > </td>
+      </tr>
+    </table>
+</div>
+
+<div style='margin:auto 0;'>
+   <table style='width:95%; margin:auto 0;'>
+    <tr>
+      <th colspan=2> Wireframes - Order Confirmation Page </th>
+    </tr> 
+      <tr>
+        <th> Mobile </th>
+        <th> Desktop </th>
+      </tr>
+      <tr>
+        <td  style=' vertical-align:top'>  <img src="./assets/wireframes/order-details-mobile.png"; alt="wireframe for Shop (mobile) " > </td>
+        <td  style='vertical-align:top'>  <img src="./assets/wireframes/order-details.png"; alt="wireframe for Shop (dekstop) " > </td>
+      </tr>
+    </table>
+</div>
 
 ---
 
 ### Future Implementations
+
+- The next iteration will include a blog that allows the page owner to produce high-quality content about cycling in Glasgow, allowing users to interact with other cyclists and foster a community of cyclists in Glasgow
+- Another iteration will consist of a routing page where users can share, discuss and present their best routes to work in Glasgow. The database used in this iteration is already designed for this purpose, including a generic `Comment` model that is based on the `ContentType` model. This model allows user comments on any model type using `GenericForeinKeys` , and comments are therefore not only constraint to purchases by design.
 
 ---
 
