@@ -51,6 +51,109 @@ The test strategy consisted of a combination of manual and automated tests.
 
 #### Results WebAIM Accesibility Test
 
+While the home page could be checkecd via URL in the automatic color contrast checker, that was not possible for the authenticated pages. For the pages that required authentication, only the color contrast check was done manually for each background-to-text color pair on the page. All Tests passed.
+
+<table>
+  <tr>
+    <th>
+      Wave WebAim Accessibility evalulation - Home Page
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/wave-home.png'  alt='Wave WebAim Check - Home Page'>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>
+      Wave WebAim Accessibility evalulation - Shop Page
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/wave-shop.png'  alt='Wave WebAim Check - Shop Page'>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>
+      Wave WebAim Accessibility evalulation - Product Detail Page
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/wave-product.png'  alt='Wave WebAim Check - product detail Page'>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>
+      Wave WebAim Accessibility evalulation - Shopping Bag Page
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/wave-bag.png'  alt='Wave WebAim Check - bag Page'>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>
+      Wave WebAim Accessibility evalulation - Checkout  Page
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/wave-checkout.png'  alt='Wave WebAim Check - Checkout Page'>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <strong>Note</strong> : The eight errors occur due to a know error of crispy-tailwind. I chose not fix it manually as this part of the page is rendered by an external package, and write a fix would be counter-productive in terms of readibility and maintainability.
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>
+      Wave WebAim Accessibility evalulation - Checkout Success Page
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/wave-success.png'  alt='Wave WebAim Check - successful checkout Page'>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>
+      Wave WebAim Accessibility evalulation - Checkout  Page
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/wave-profile.png'  alt='Wave WebAim Check - Checkout Page'>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <strong>Note</strong> : The same eight errors occur on the form field due to a know error of crispy-tailwind. Same, I chose not fix it manually as this part of the page is rendered by an external package, and writing a fix would be counter-productive in terms of readibility and maintainability.
+    </td>
+  </tr>
+</table>
+
 #### Results Chrome Lighthouse
 
 ### Tests for Compatibility
