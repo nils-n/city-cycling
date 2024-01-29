@@ -909,7 +909,8 @@ All pages were designed with accessibility in mind for website users that requir
 - convert markdown tables to html via [HTML Table Converter](https://tableconvert.com/markdown-to-html)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) VS Code formatter
 - [icecream](https://github.com/gruns/icecream) more expressive alternative to python's `print` method
-- [ruff](https://docs.astral.sh/ruff/) for code formatting
+- [ruff](https://docs.astral.sh/ruff/) for python code formatting
+- [djlint](https://www.djlint.com/) for html formatting with django tags
 - [Flowbite](https://flowbite.com/) components for Tailwind CSS
 - [XML-Sitemaps](https://www.xml-sitemaps.com/) to create a sitemap.xml file
 - [Wordtracker](https://www.wordtracker.com/) for keyword refinement

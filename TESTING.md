@@ -128,7 +128,7 @@ There were several issues found during Manual Testing that required refactoring 
       <td> 
          <ul>
             <li> In the first round, the HTML validator noted: a quote in an attribute name , a stray end div, and that the value for a for label did not have a matching ID of a form control element </li>
-            <li> After adjusting the HTML code, the test still failed with an error </li>
+            <li> After adjusting the HTML code, the test still failed with an error regarding the label of the country form field </li>
             <img src="./assets/testing/html-checkout-crispy-1.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
             <img src="./assets/testing/html-checkout-crispy-2.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
             <li> This part of the HTML is rendered by `Crispy-Tailwind` [Link](https://django-crispy-forms.github.io/crispy-tailwind/). It did not seem reasonable in terms of code readibility and maintainability to overwrite the behaviour of this package.</li>
@@ -152,7 +152,24 @@ There were several issues found during Manual Testing that required refactoring 
       <td> 
          <ul>
             <li> In the first round, the HTML validator noted: Element ul not allowed as child of element ul,End tag td seen, but there were open element, Unclosed element ul  , Quote ' in attribute name, Duplicate ID error,the value of the for attribute of the label element must be the ID of a non-hidden form control. </li>
-            <li> After adjusting the HTML code, the test passed </li>
+            <li> After adjusting the HTML code, the test still failed with the same error as the Checkout Page complaining about the country form fields rendered by Crispy-Tailwind </li>
+            <img src="./assets/testing/html-profile-crispy-1.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
+            <img src="./assets/testing/html-profile-crispy-2.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
+            <li> This part of the HTML is rendered by `Crispy-Tailwind` [Link](https://django-crispy-forms.github.io/crispy-tailwind/). It did not seem reasonable in terms of code readibility and maintainability to overwrite the behaviour of this package.</li>
+            <li> Aside from this single error, the test passes. </li>
+         </ul>
+    </td>
+    </tr>
+    <tr>
+      <td style="text-align:center"> TC_19 </td>
+      <td> Validate that all pages pass W3C HTML Validation Tool  (Signup Page)    </td>
+      <td> 
+         <ul>
+            <li> In the first round, the HTML validator noted an Error: Element ul not allowed as child of element small in this context. (Suppressing further errors from this subtree.).  </li>
+             <img src="./assets/testing/html-signup-crispy-1.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
+            <img src="./assets/testing/html-signup-crispy-2.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
+            <li> This part of the HTML is rendered by `Crispy-Tailwind` [Link](https://django-crispy-forms.github.io/crispy-tailwind/). It did not seem reasonable in terms of code readibility and maintainability to overwrite the behaviour of this package.</li>
+            <li> Aside from this single error, the test passes. </li>
          </ul>
     </td>
     </tr>

@@ -236,7 +236,7 @@ def rate_product(request, product_id):
             except Exception as e:
                 messages.error(request, f"could not save rating. Error : {e}")
 
-    return redirect(reverse("profile"))
+    return redirect(reverse("profile", args=(user_id,)))
 
 
 @login_required
@@ -283,4 +283,4 @@ def comment_product(request, product_id):
             except Exception as e:
                 messages.error(request, f"could not save comment. Error : {e}")
 
-    return redirect(reverse("profile"))
+    return redirect(reverse("profile", args=(user_id,)))
