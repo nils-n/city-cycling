@@ -1488,6 +1488,10 @@ input:checked + .toggle-bg {
   height: 5rem;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .max-h-72 {
   max-height: 18rem;
 }
@@ -1502,6 +1506,18 @@ input:checked + .toggle-bg {
 
 .min-h-dvh {
   min-height: 100dvh;
+}
+
+.min-h-24 {
+  min-height: 6rem;
+}
+
+.min-h-32 {
+  min-height: 8rem;
+}
+
+.min-h-0 {
+  min-height: 0px;
 }
 
 .w-1\/2 {
@@ -3068,12 +3084,20 @@ input:checked + .toggle-bg {
     visibility: visible;
   }
 
+  .sm\:static {
+    position: static;
+  }
+
   .sm\:left-auto {
     left: auto;
   }
 
   .sm\:bottom-auto {
     bottom: auto;
+  }
+
+  .sm\:bottom-10 {
+    bottom: 2.5rem;
   }
 
   .sm\:mx-16 {
@@ -3126,6 +3150,14 @@ input:checked + .toggle-bg {
     margin-top: 6rem;
   }
 
+  .sm\:mt-8 {
+    margin-top: 2rem;
+  }
+
+  .sm\:mt-4 {
+    margin-top: 1rem;
+  }
+
   .sm\:block {
     display: block;
   }
@@ -3144,6 +3176,10 @@ input:checked + .toggle-bg {
 
   .sm\:h-16 {
     height: 4rem;
+  }
+
+  .sm\:min-h-32 {
+    min-height: 8rem;
   }
 
   .sm\:w-6 {
@@ -3217,6 +3253,10 @@ input:checked + .toggle-bg {
     border-radius: 0.5rem;
   }
 
+  .sm\:p-16 {
+    padding: 4rem;
+  }
+
   .sm\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
@@ -3255,6 +3295,14 @@ input:checked + .toggle-bg {
 
   .sm\:pt-8 {
     padding-top: 2rem;
+  }
+
+  .sm\:pl-16 {
+    padding-left: 4rem;
+  }
+
+  .sm\:pt-4 {
+    padding-top: 1rem;
   }
 
   .sm\:text-2xl {
@@ -3668,6 +3716,22 @@ input:checked + .toggle-bg {
   .xl\:mx-auto {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .xl\:mt-10 {
+    margin-top: 2.5rem;
+  }
+
+  .xl\:mt-24 {
+    margin-top: 6rem;
+  }
+
+  .xl\:pt-10 {
+    padding-top: 2.5rem;
+  }
+
+  .xl\:pt-24 {
+    padding-top: 6rem;
   }
 }
 
