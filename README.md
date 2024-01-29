@@ -77,8 +77,8 @@ The idea is that these two groups come together on this website, where the exper
     - [Profile Page](#profile-page-1)
   - [Models](#models)
   - [Wireframes](#wireframes)
-    - [Future Implementations](#future-implementations)
-    - [Accessibility](#accessibility)
+  - [Future Implementations](#future-implementations)
+  - [Accessibility](#accessibility)
   - [Technologies Used](#technologies-used)
     - [Languages](#languages)
     - [Frameworks](#frameworks)
@@ -879,7 +879,7 @@ Wireframes were created in [Figma](https://www.figma.com/), using a mobile-first
 
 ---
 
-### Future Implementations
+## Future Implementations
 
 - The next iteration will include a blog that allows the page owner to produce high-quality content about cycling in Glasgow, allowing users to interact with other cyclists and foster a community of cyclists in Glasgow
 - Another iteration will consist of a routing page where users can share, discuss and present their best routes to work in Glasgow. The database used in this iteration is already designed for this purpose, including a generic `Comment` model that is based on the `ContentType` model. This model allows user comments on any model type using `GenericForeinKeys` , and comments are therefore not only constraint to purchases by design.
@@ -887,7 +887,7 @@ Wireframes were created in [Figma](https://www.figma.com/), using a mobile-first
 
 ---
 
-### Accessibility
+## Accessibility
 
 All pages were designed with accessibility in mind for website users that require screen reading tools:
 
@@ -1022,7 +1022,20 @@ Login to Heroku Website and Create a new App (EU)
 
 ## Testing
 
+This website was tested using a mix of manual and automated tests for several apsects of this Django application. The results were documented in [TESTING.md](./TESTING.md). The testing scope was:
+
+- Authentication
+- Functionality
+- Usability
+- Accessibility
+- Synatx
+- Accessibility
+
+All of the `pytest` test cases were also integrated in a [GitHub actions](https://github.com/features/actions) workflow that runs all tests for each pull request and push to the main branch, spotting erros in the code when submitting a Pull Request.
+
 #### Limitation
+
+The coverage of the automated tests were below the percentage that I was aiming for when I started testing. There was simply not enough time left in the timebox for this first iteration to create the `MVP`. In a future iteration, this percentage will be increased to cover more edge cases and to make the application more robust.
 
 ---
 
