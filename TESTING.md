@@ -116,6 +116,41 @@ All tests passed.
 
 ### Results Jshint Javascript Validation
 
+In the table below the outputs of the JSHint Validation results. No significant errors occured.
+
+<table>
+  <tr>
+    <th>File</th>
+    <th style='width:20%'>Result</th>
+    <th> Justificaction of insignificant errors  </th>
+  </tr>
+  <tr>
+    <td>home.js</td>
+    <td> 0 errors, 3 warnings </td>
+    <td>   warnings regarding ES6 modules. 'const' is available in ES6 (use 'esversion: 6').  Was considered not significant</td>
+  </tr>
+   <tr>
+    <td>products.js</td>
+    <td>0 errors, 19  warnings  </td>
+    <td>  warnings regarding ES6 and ES8 modules. 'const' is available in ES6 (use 'esversion: 6').  Was considered not significant </td>
+  </tr>
+   <tr>
+    <td>profiles.js</td>
+    <td>0 errors,  40 warnings </td>
+    <td> warnings regarding ES6 and ES8 modules. 'const' is available in ES6 (use 'esversion: 6'). or  'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6'). Was considered not significant. Another warning 'Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (handleCategoryClick); was also considered not significant as I do find the script readable and clean, hence warning not significant. </td>
+  </tr>
+   <tr>
+    <td>quantity_input.js</td>
+    <td>0 errors, 18 warnings </td>
+    <td> warnings regarding ES8 modules. 'Trailing comma in arguments lists' is only available in ES8 (use 'esversion: 8'). Was considered not significant   </td>
+  </tr>
+  <tr>
+    <td>stripe_element.js</td>
+    <td>0 errors, 17 warnings </td>
+    <td> warnings regarding ES8 modules. 'Trailing comma in arguments lists' is only available in ES8 (use 'esversion: 8'). Was considered not significant   </td>
+  </tr>
+</table>
+
 ### Results Flake8 Python Syntax Validation
 
 ### Results of Authentication Tests
@@ -231,6 +266,18 @@ There were several issues found during Manual Testing that required refactoring 
          </ul>
     </td>
     </tr>
+    <tr>
+      <td style="text-align:center"> TC_21 </td>
+      <td> Validate that all javascript files pass jshint validator    </td>
+      <td> 
+         <ul>
+            <li> In the first round, the js validator noted the user of ES6 tags such as arrow functions and const variables which I call as insignificant.  </li>
+            <li> For various javascript files, jshint complained as well that I was using function delcarations out of the scope (' Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (handleSubmitCommentClick)').  In this instance, I do find my way of declaring function not confusing and call this an insignifcant error</li>
+            <li> Aside from these insignificant warnings, the test passes. </li>
+         </ul>
+    </td>
+    </tr>
+
 </table>
 
 ---
