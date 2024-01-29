@@ -42,7 +42,7 @@ The idea is that these two groups come together on this website, where the exper
 ## Table of Content
 
 - [City Cycling Glasgow](#city-cycling-glasgow)
-    - [Project Goal](#project-goal)
+  - [Project Goal](#project-goal)
   - [Business Model](#business-model)
   - [Table of Content](#table-of-content)
   - [User Experience (UX)](#user-experience-ux)
@@ -84,12 +84,14 @@ The idea is that these two groups come together on this website, where the exper
     - [Languages](#languages)
     - [Frameworks](#frameworks)
   - [Deployment](#deployment)
-    - [Setup for Heroku](#setup-for-heroku)
+    - [Setup for DB (PostgreSQL)](#setup-for-db-postgresql)
     - [Setup for AWS (Static Files)](#setup-for-aws-static-files)
+    - [Setup for Heroku](#setup-for-heroku)
+    - [Setup for Stripe](#setup-for-stripe)
     - [How to Fork](#how-to-fork)
     - [How to Clone](#how-to-clone)
   - [Testing](#testing)
-      - [Limitation](#limitation)
+    - [Limitation](#limitation)
     - [Solved Bugs](#solved-bugs)
     - [Open Bugs](#open-bugs)
   - [Credits](#credits)
@@ -873,6 +875,14 @@ Wireframes were created in [Figma](https://www.figma.com/), using a mobile-first
 
 ### Accessibility
 
+All pages were designed with accessibility in mind for website users that require screen reading tools:
+
+- semantic html such as `<main>`, `<nav>` and `<header>` were used across all pages to express a clear intent of all page elements
+- all headings `<h1>-<h3>` were used with the purpose to clearly organize the content (and not for styling) and to convey clear page structures
+- All buttons and links have a matching `aria-label` that explains its purpose
+- Additional headings and spans are added with a `sr-only` label in order to give more context to sections and buttons
+- Color Contrast has been thoroughly tested to ensure a minimum colour contrast of all background-text pairs of at least `4.5:1`
+
 ---
 
 ## Technologies Used
@@ -912,9 +922,75 @@ Wireframes were created in [Figma](https://www.figma.com/), using a mobile-first
 
 ## Deployment
 
-### Setup for Heroku
+The deployment consists of 4 steps :
+
+1.  setting up backend DB (PostgreSQL)
+2.  setting up host for static files (AWS)
+3.  setting up Heroku app and connect to DB and AWS
+4.  setting up payments via Stripe
+
+### Setup for DB (PostgreSQL)
+
+- Create ElephantSQL account (if needed) and login on website
+  - click on `create New Instance` and choose a name (recommend not using `-` or `.` in the name - that seems to cause issues)
+  - use `Tiny Turtle` plan, leave Tags empty. Then select region
+  - enter the new project from dashboard and copy the URL into your `env.py` template of the `DATABASE_URL` variable
+- open the `settings.py` of your main django project and update the `DATABASE_URL`
+
+```python
+
+ DATABASES = {
+     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+ }
+```
+
+- To confirm that we can now connect to the BD hosted on ElephantSQL, Run the migration command in your terminal to migrate your database structure to the newly-connected ElephantSQL database
+
+```
+python manage.py makemigrations
+python manage.py migrate
+```
 
 ### Setup for AWS (Static Files)
+
+- Create AWS account (if needed) and login to `S3` on their website
+- click on `create bucket` and choose a name, ensure to set `ACLs enabled`
+- search for the `properties` tab for `static website hosting` and adapt `permissions` and `policies` to configure your bucket settings
+- Create a new IAM user group and a new User, and attach the permissions policy you created earlier to this group
+- Retrieve your access keys by downloading the `.csv` file containing the access keys for the user created before (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`)
+- In the Django App, ensure to serve static files using AWS when the site is deployed. This is done by creating a new environment variable `USE_AWS` this is set to `FALSE` during development and `True` in the deployed version
+- create a public read-only `media` directory that will contain the static media files to be hosted in the bucket
+
+### Setup for Heroku
+
+Login to Heroku Website and Create a new App (EU)
+
+- Connect the App with your GitHub Repository on the Heroku Website
+- a `SECRET_KEY` can be generated and copied from here [Django Secret Key Generator](https://miniwebtool.com/django-secret-key-generator/)
+- the `DATABASE_URL` is taken from your ElephantSQL project as described above (copy entire `URL`)
+- for writing static files on `AWS` copy access keys from your `.csv` file
+
+- Go to `Settings > Config Vars` and enter your secret environment variables from your `env.py` using the following variables:
+
+```python
+  SECRET_KEY=SECRET_KEY
+  DATABASE_URL=DATABASE_URL
+  USE_AWS=USE_AWS
+  AWS_ACCESS_KEY_ID=AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY=AWS_SECRET_ACCESS_KEY
+  STRIPE_PUBLIC_KEY=STRIPE_PUBLIC_KEY
+  STRIPE_SECRET_KEY=STRIPE_SECRET_KEY
+  STRIPE_WH_SECRET=STRIPE_WH_SECRET
+  PORT=8000
+  DEBUG=False
+```
+
+### Setup for Stripe
+
+- Create Stripe account (if needed) and switch to `Developer` tab on their website
+- Click on `API Keys` and copy both the `STRIPE_PUBLIC_KEY` and `STRIPE_SECRET_KEY` into your environment variables
+- If you want to test webhooks, you can also add the `STRIPE_WH_SECRET` to your variables but it is not necessary to handle payments on the deployed site
+- add those keys to `settings.py` and extract them via environment variables (make sure to not hard-code your keys here as the settings file is publicly available on Github)
 
 ### How to Fork
 
