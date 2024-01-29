@@ -18,7 +18,7 @@ The test strategy consisted of a combination of manual and automated tests.
   - [Tests of Accessibility](#tests-of-accessibility)
     - [Results A11y Color Test](#results-a11y-color-test)
     - [Results WebAIM Accesibility Test](#results-webaim-accesibility-test)
-    - [Results Chrome Lighthouse](#results-chrome-lighthouse)
+    - [Results Google Lighthouse](#results-google-lighthouse)
   - [Tests for Compatibility](#tests-for-compatibility)
   - [Results W3C HTML Validation](#results-w3c-html-validation)
   - [Results W3C CSS Validation](#results-w3c-css-validation)
@@ -154,7 +154,106 @@ While the home page could be checkecd via URL in the automatic color contrast ch
   </tr>
 </table>
 
-#### Results Chrome Lighthouse
+#### Results Google Lighthouse
+
+All pages were tested with Google lighthouse using the `chrome-debug` browser as described in this document, using Option 4 of the Lighthouse documentation for testing authenticated pages [Running Lighthouse on Authenticated Pages](https://github.com/GoogleChrome/lighthouse/blob/main/docs/authenticated-pages.md), after globablly installing `lighthouse` with `node`. All Tests passed.
+
+<table>
+  <tr>
+    <th>
+      Google Lighthouse - Home Page (No Authentication needed)
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/lighthouse-home.png'  alt='Lighthouse Scores - Home Page'>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>
+      Google Lighthouse - Shop Detail Page (No Authentication needed)
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/lighthouse-shop.png'  alt='Lighthouse Scores - checkout Bag Page'>
+    </td>
+  </tr>
+   <tr>
+    <td>
+    <strong>Note</strong> : Performance could be higher and in one of the next iteration this issue should be addressed, as there is no need to load all the cards before rending the page. For this iteration,  accessibility was prioritized over performance. But for the next iteration, this issue needs to be addressed. 
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>
+      Google Lighthouse - Product Detail Page (No Authentication needed)
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/lighthouse-product-detail.png'  alt='Lighthouse Scores - checkout Bag Page'>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>
+      Google Lighthouse - Profile Page (Authentication needed)
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/lighthouse-profile.png'  alt='Lighthouse Scores - Home Page'>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>
+      Google Lighthouse - Shopping Bag Page (No Authentication needed)
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/lighthouse-bag.png'  alt='Lighthouse Scores - Shopping Bag Page'>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>
+      Google Lighthouse - Checkout Page (No Authentication needed)
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/lighthouse-checkout.png'  alt='Lighthouse Scores - checkout Bag Page'>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>
+      Google Lighthouse - Checkout Success Page (No Authentication needed)
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/lighthouse-success.png'  alt='Lighthouse Scores - checkout Bag Page'>
+    </td>
+  </tr>
+</table>
+
 
 ### Tests for Compatibility
 
