@@ -56,6 +56,64 @@ The test strategy consisted of a combination of manual and automated tests.
 
 ### Results W3C HTML Validation
 
+All Pages were tested with the offical W2C HTML validator [Markup Validation Service](https://validator.w3.org/) using the option 'Validate by Direct Input', copying the rendered html code from the browser with `Right Click > View Page Source`.
+
+All tests passed.
+
+<table style="width:90%">
+  <tr>
+      <th style="width:10%; text-align:center"> Page</th>
+      <th style="width:70%"> Output</th>
+      <th style="width:20%"> Result</th>
+   </tr>
+   <tr>
+      <td style="text-align:center"> Home</td>
+      <td style="width:70%"> <img src='/assets/testing/html-home.png'  alt='Validation Results screenshot'></td>
+      <td style="width:20%"> Passed </td>
+   </tr>
+    <tr>
+      <td style="text-align:center"> Login</td>
+      <td style="width:70%"> <img src='/assets/testing/html-login.png'  alt='Validation Results screenshot'></td>
+      <td style="width:20%"> Passed </td>
+   </tr>
+     <tr>
+      <td style="text-align:center"> Signup</td>
+      <td style="width:70%"> <img src='/assets/testing/html-signup.png'  alt='Validation Results screenshot'></td>
+      <td style="width:20%"> Passed* (a form field rendered by crispy-tailwind caused an error - see Argumentation for TC_19 below)</td>
+   </tr>
+     </tr>
+     <tr>
+      <td style="text-align:center"> Shopping bag</td>
+      <td style="width:70%"> <img src='/assets/testing/html-bag.png'  alt='Validation Results screenshot'></td>
+      <td style="width:20%"> Passed</td>
+   </tr>
+    <tr>
+      <td style="text-align:center"> Checkout</td>
+      <td style="width:70%"> <img src='/assets/testing/html-checkout.png'  alt='Validation Results screenshot'></td>
+      <td style="width:20%"> Passed* (a form field rendered by crispy-tailwind caused an error - see Argumentation for TC_19 below)</td>
+   </tr>
+     <tr>
+      <td style="text-align:center"> Checkout Success</td>
+      <td style="width:70%"> <img src='/assets/testing/html-checkout-success.png'  alt='Validation Results screenshot'></td>
+      <td style="width:20%"> Passed* (a form field rendered by crispy-tailwind caused an error - see Argumentation for TC_19 below)</td>
+   </tr>
+     <tr>
+      <td style="text-align:center"> Product Detail </td>
+      <td style="width:70%"> <img src='/assets/testing/html-product-detail.png'  alt='Validation Results screenshot'></td>
+      <td style="width:20%"> Passed</td>
+   </tr>
+     <tr>
+      <td style="text-align:center"> Profile </td>
+      <td style="width:70%"> <img src='/assets/testing/html-profile.png'  alt='Validation Results screenshot'></td>
+      <td style="width:20%"> Passed* (a form field rendered by crispy-tailwind caused an error - see Argumentation for TC_19 below)</td>
+   </tr>
+     <tr>
+      <td style="text-align:center">  Shop </td>
+      <td style="width:70%"> <img src='/assets/testing/html-shop.png'  alt='Validation Results screenshot'></td>
+      <td style="width:20%"> Passed</td>
+   </tr>
+</table>
+
 ### Results Jshint Javascript Validation
 
 ### Results Flake8 Python Syntax Validation
