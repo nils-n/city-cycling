@@ -1,7 +1,5 @@
-const modalBtn = document.getElementById("newsletter-btn");
 const newsletterInputEl = document.getElementById("mc-embedded-subscribe");
 const newsletterMailInputEl = document.getElementById("mce-EMAIL");
-console.log("home js loaded");
 
 // // make newsletter modal appear after.5
 document.addEventListener("DOMContentLoaded", (e) => {
@@ -14,10 +12,4 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   newsletterMailInputEl.style.marginBottom = "0.5em";
   newsletterMailInputEl.style.marginTop = "0.5em";
-
-  console.log(newsletterInputEl.style.marginTop);
-  //   setTimeout(() => {
-  //     modalBtn.click();
-  //     console.log("loadin modal");
-  //   }, 3000);
 });
