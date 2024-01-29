@@ -41,7 +41,7 @@ target-version = "py311"
 # Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
 # McCabe complexity (`C901`) by default.
 select = ["E4", "E7", "E9", "F"]
-ignore = []
+ignore = ["E203", "E501"]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
 fixable = ["ALL"]
@@ -75,7 +75,7 @@ docstring-code-format = false
 #
 # This only has an effect when the `docstring-code-format` setting is
 # enabled.
-docstring-code-line-length = "dynamic"
+#docstring-code-line-length = "dynamic"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "city_cycling.settings"
@@ -84,3 +84,9 @@ filterwarnings = [
     "ignore::UserWarning", 
     "ignore::django.utils.deprecation.RemovedInDjango41Warning:django",
 ]
+
+
+[tool.black]
+line-length = 79
+target-version = ['py311']
+include = '\.pyi?$'

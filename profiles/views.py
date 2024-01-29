@@ -36,7 +36,6 @@ def profile(request, user_id):
 
         orders = user_profile.orders.all()
         hide_bag_preview = True
-        comments = Comment.objects.filter(user=request.user)
 
         # store the purchased products
         purchased_products = []
@@ -98,7 +97,8 @@ def order_history(request, order_number):
 
     messages.info(
         request,
-        f"This is a past confirmation for {order_number}. A confirmation Email was sent on the order date.",
+        f"This is a past confirmation for {order_number}. \
+            A confirmation Email was sent on the order date.",
     )
 
     template = "checkout/checkout_success.html"

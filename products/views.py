@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
-from products.models import Product, Category, ProductRating, Season
+from products.models import Product, Category, ProductRating
 from products.forms import ProductForm
 from profiles.models import Comment  # noqa
 
@@ -18,11 +18,10 @@ def all_products(request):
     """view to display all products in the shop"""
     products = Product.objects.all()
     all_categories = Category.objects.all()
-    seasons = Season.objects.all()
     categories = None
     sort = None
     direction = None
-    category = None
+    categories = None
 
     if request.GET:
         if "sort" in request.GET:
@@ -162,7 +161,8 @@ def edit_product(request, product_id):
             form = ProductForm(instance=product)
             messages.error(
                 request,
-                "Faild to update Product. Have you entered the form correctly?",
+                "Faild to update Product.\
+                 Have you entered the form correctly?",
             )
 
     else:
@@ -242,7 +242,8 @@ def rate_product(request, product_id):
 @login_required
 def comment_product(request, product_id):
     """add rating to a purchased product
-    based on  Generic Foreign Keys in Django / GenericForeignKey / GenericRelation
+    based on  Generic Foreign Keys in Django
+    / GenericForeignKey / GenericRelation, see:
     https://www.youtube.com/watch?v=Wt4_7ZAE8dI
     """
 
