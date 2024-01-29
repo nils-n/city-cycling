@@ -22,6 +22,6 @@ class Comment(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey("content_type", "object_id")
-    is_approved = models.BooleanField(default=False, null=True, blank=True)
+    is_approved = models.BooleanField(default=True, null=True, blank=True)
     created_at = models.DateField(auto_now=True)
     updated_at = models.DateField(auto_now=True)

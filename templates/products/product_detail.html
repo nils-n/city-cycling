@@ -310,7 +310,11 @@
                                     Reviewed on <span>{{ comment.created_at }}</span>
                                 </p>
                             </footer>
-                            <p class="mb-2 text-gray-500 dark:text-gray-400">{{ comment.text }}</p>
+                            {% if comment.is_approved %}
+                                <p class="mb-2 text-gray-500 dark:text-gray-400">{{ comment.text }}</p>
+                            {% else %}
+                                <p class="mb-2 text-gray-400 dark:text-gray-400">  </p>
+                            {% endif %}
                         </article>
                     {% endfor %}
                 {% else %}
