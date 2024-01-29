@@ -33,8 +33,6 @@ The test strategy consisted of a combination of manual and automated tests.
   - [Results of Testing the deployed version](#results-of-testing-the-deployed-version)
   - [Results of Marketing Functionality Tests](#results-of-marketing-functionality-tests)
   - [Results of Accessibility Tests](#results-of-accessibility-tests)
-  - [Results of Syntax Validation Tests](#results-of-syntax-validation-tests)
-  - [Results of Browser Compatibility Tests](#results-of-browser-compatibility-tests)
   - [Issues Found During Manual Testing](#issues-found-during-manual-testing)
 - [Automated Tests](#automated-tests)
   - [Results of pytest automated testing](#results-of-pytest-automated-testing)
@@ -254,7 +252,6 @@ All pages were tested with Google lighthouse using the `chrome-debug` browser as
   </tr>
 </table>
 
-
 ### Tests for Compatibility
 
 ### Results W3C HTML Validation
@@ -394,10 +391,6 @@ In the table below the outputs of the Flake8 Python Validation results. No signi
 ### Results of Marketing Functionality Tests
 
 ### Results of Accessibility Tests
-
-### Results of Syntax Validation Tests
-
-### Results of Browser Compatibility Tests
 
 ### Issues Found During Manual Testing
 

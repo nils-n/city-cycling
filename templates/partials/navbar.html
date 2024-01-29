@@ -1,88 +1,80 @@
-
 <nav class="bg-gray-50 border-gray-200 dark:bg-gray-900">
-  <div class="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="{% url 'home' %}" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-gray-800">CCG</span>
-  </a>
-  <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse items-center">
-    <!-- Menu Icon and Link to User Profile -->
-          {% if user.is_authenticated %}
-              <a 
-                  href="{% url 'profile' user.id %}" 
-                  class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2  mr-0 md:mr-16 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >{{user.username}}</a>
-          {% endif %}
-              <!--Shopping Bag Icon -->
-              <!-- How fix accessibility issue : Link has no text 
-                https://stackoverflow.com/questions/32631180/link-contain-no-text-showing-error-in-wave-accessibility-evaluation-tool -->
-          <a  
-              href="{% url 'view_bag' %}" 
-              class="mx-4 md:mr-16 px-4 py-2 text-white bg-gray-50 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm  text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-300"
-              > <svg fill="#27272a" xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 448 512">
-                <path d="M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160V112zm-48 48H48c-26.5 0-48 21.5-48 48V416c0 53 43 96 96 96H352c53 0 96-43 96-96V208c0-26.5-21.5-48-48-48H336V112C336 50.1 285.9 0 224 0S112 50.1 112 112v48zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm152 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/>
-            </svg>
-            <span class="sr-only">Shopping Bag</span>
+    <div class="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="{% url 'home' %}"
+           class="flex items-center space-x-3 rtl:space-x-reverse">
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-gray-800">CCG</span>
         </a>
-        <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-        </svg>
-    </button>
-  </div>
-  <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
-    <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-gray-50 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-      <li>
-        <a  
-            href="{% url 'products' %}" 
-            class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" 
-            aria-current="page">Shop</a>
-      </li>
-      <li>
-        <a    
-            href="#" 
-            class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >Routes</a>
-      </li>
-      <li>
-        <a 
-            href="#" 
-            class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >Blog</a>
-      </li>
-      {% if user.is_authenticated %}
-          {% if user.is_superuser %}
-              <li>
-                <a  
-                    href="{% url 'add_product' %}" 
-                    class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" 
-                    aria-current="page"> Product Admin</a>
-              </li>
-          {% endif %}
-          <li>
-            <form method="post" action="{% url 'profile' user.id %}">
-              {% csrf_token %}
-              <a  
-              href="{% url 'logout' %}" 
-              class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" 
-              aria-current="page"> Logout</a>            
-            </form>
-          </li>
-      {% else %}
-        <li>
-          <a 
-              href="{% url 'login' %}" 
-              class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >Login</a>
-        </li>
-        <li>
-          <a 
-              href="{% url 'signup' %}" 
-              class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >Sign Up</a>
-        </li>
-      {% endif %}
-    </ul>
-  </div>
-  </div>
+        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse items-center">
+            <!-- Menu Icon and Link to User Profile -->
+            <!--Shopping Bag Icon -->
+            <!-- How fix accessibility issue : Link has no text
+                https://stackoverflow.com/questions/32631180/link-contain-no-text-showing-error-in-wave-accessibility-evaluation-tool -->
+            <a href="{% url 'view_bag' %}"
+               class="mx-4 md:mr-16 px-4 py-2 text-white bg-gray-50 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm  text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-300">
+                <svg fill="#27272a"
+                     xmlns="http://www.w3.org/2000/svg"
+                     height="30"
+                     width="30"
+                     viewBox="0 0 448 512">
+                    <path d="M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160V112zm-48 48H48c-26.5 0-48 21.5-48 48V416c0 53 43 96 96 96H352c53 0 96-43 96-96V208c0-26.5-21.5-48-48-48H336V112C336 50.1 285.9 0 224 0S112 50.1 112 112v48zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm152 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z" />
+                </svg>
+                <span class="sr-only">Shopping Bag</span>
+            </a>
+            <button data-collapse-toggle="navbar-cta"
+                    type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-cta"
+                    aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5"
+                     aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+             id="navbar-cta">
+            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-gray-50 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <li>
+                    <a href="{% url 'products' %}"
+                       class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                       aria-current="page">Shop</a>
+                </li>
+                 {% if user.is_authenticated %}
+                    
+                    {% if user.is_superuser %}
+                        <li>
+                            <a href="{% url 'add_product' %}"
+                               class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                               aria-current="page">Product Admin</a>
+                        </li>
+                    {% endif %}
+                    <li>
+                        <form method="post" action="{% url 'profile' user.id %}">
+                            {% csrf_token %}
+                            <a href="{% url 'logout' %}"
+                               class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                               aria-current="page">Logout</a>
+                        </form>
+                    </li>
+                    <li class="py-2 sm:py-0">
+                        <a href="{% url 'profile' user.id %}"
+                           class="px-4 py-2  mr-0 md:mr-16 text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{ user.username }}</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'login' %}"
+                           class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'signup' %}"
+                           class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Sign Up</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 </nav>
