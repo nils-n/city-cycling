@@ -13,12 +13,15 @@
                   >{{user.username}}</a>
           {% endif %}
               <!--Shopping Bag Icon -->
+              <!-- How fix accessibility issue : Link has no text 
+                https://stackoverflow.com/questions/32631180/link-contain-no-text-showing-error-in-wave-accessibility-evaluation-tool -->
           <a  
               href="{% url 'view_bag' %}" 
               class="mx-4 md:mr-16 px-4 py-2 text-white bg-gray-50 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm  text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-300"
               > <svg fill="#27272a" xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 448 512">
                 <path d="M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160V112zm-48 48H48c-26.5 0-48 21.5-48 48V416c0 53 43 96 96 96H352c53 0 96-43 96-96V208c0-26.5-21.5-48-48-48H336V112C336 50.1 285.9 0 224 0S112 50.1 112 112v48zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm152 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/>
             </svg>
+            <span class="sr-only">Shopping Bag</span>
         </a>
         <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
         <span class="sr-only">Open main menu</span>

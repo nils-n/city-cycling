@@ -312,6 +312,19 @@ There were several issues found during Manual Testing that required refactoring 
          </ul>
     </td>
     </tr>
+    <tr>
+      <td style="text-align:center"> TC_24 </td>
+      <td> Validate that website passes WAVE WebAIM  Accessibility Check with no Errors     </td>
+      <td> 
+         <ul>
+            <li> In the first round, the Home Page raised 3 errors (link has no text error),  and the Profile page raised 40 errors  </li>
+            <li>The errors on the Home Page we addressed by adding a span of class 'sr-only' with the label 'shopping bag', then the error was cleared</li>
+            <li> On the Profile field, most of the errors were 'empty button' and 'missing form label' errors rated the rating with stars. After adding an appropriate label to each star and form field, error was cleared</li>
+            <li> After these corrections, the test passes. </li>
+         </ul>
+    </td>
+    </tr>
+
 </table>
 
 ---

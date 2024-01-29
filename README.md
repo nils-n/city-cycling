@@ -1127,6 +1127,7 @@ The coverage of the automated tests were below the percentage that I was aiming 
 
 - User and Login/Logout functionality using a Custom User Model : [LearnDjango - Django Best Practices: Custom User Model](https://learndjango.com/tutorials/django-custom-user-model)
 - Cookie setup for handling CSRF Tokens when using AJAX [Github](https://github.com/realpython/django-form-fun/blob/master/part1/main.js) as referenced in this blog post [Django and AJAX Form Submissions – Say 'Goodbye' to the Page Refresh](https://realpython.com/django-and-ajax-form-submissions/)
+- How to send POST requests from Javascript [Django Forum - send views.py request.POST with JavaScript](https://forum.djangoproject.com/t/send-views-py-request-post-with-javascript/23146/8)
 
 ### Content
 
