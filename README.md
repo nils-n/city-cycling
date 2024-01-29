@@ -75,7 +75,6 @@ The idea is that these two groups come together on this website, where the exper
     - [Landing Page](#landing-page-1)
     - [Shop Page](#shop-page-1)
     - [Profile Page](#profile-page-1)
-  - [Flow Charts](#flow-charts)
   - [Models](#models)
   - [Wireframes](#wireframes)
     - [Future Implementations](#future-implementations)
@@ -743,18 +742,33 @@ The most promising long-tail keywords were then tested using [wordtracker](https
 
 ### Landing Page
 
+On the main page, users can:
+
+- login with their credentials if they are already signed up
+- signup and create a new profile. If the credentials are valid, they are redirected to the login
+
 ![Flow Chart - Landing](./assets/images/flowchart-landing.png)
 
 ### Shop Page
+
+On the shop page, users can
+
+- (optionally) select a filter to display only a desired subset of the products
+- (optionally) select a sort criteria to sort the results, of the either filtered or unfiltered product list
+- When they click on a card, they are directed to the product detail page where they need to select a size and a quantity before they can add the product to the shopping bag when pressing the corresponding button
 
 ![Flow Chart - Shop](./assets/images/flowchart-shop.png)
 
 ### Profile Page
 
+On the profile page, users can:
+
+- see a list of products that they have purchased in the past
+- (optionally) they can either give a new rating or set a new rating for a purchased product. This updates the overall average rating of the product
+- (optionally) they can give a new comment or edit their current comment on a purchased product. The comment will then be listed on the product detail page. By default, the comments are approved but admin has the opportunity to set the `is_approved` field to `False`.
+
 ![Flow Chart - Rating](./assets/images/flowchart-rating.png)
 ![Flow Chart - Comments](./assets/images/flowchart-comments.png)
-
-## Flow Charts
 
 ---
 
@@ -969,7 +983,6 @@ Login to Heroku Website and Create a new App (EU)
 - a `SECRET_KEY` can be generated and copied from here [Django Secret Key Generator](https://miniwebtool.com/django-secret-key-generator/)
 - the `DATABASE_URL` is taken from your ElephantSQL project as described above (copy entire `URL`)
 - for writing static files on `AWS` copy access keys from your `.csv` file
-
 - Go to `Settings > Config Vars` and enter your secret environment variables from your `env.py` using the following variables:
 
 ```python
