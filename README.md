@@ -1028,6 +1028,79 @@ Login to Heroku Website and Create a new App (EU)
 
 ### Solved Bugs
 
+- Bug: Static Files would not be served properly on the deployed version. All advises from our slack channel or Stackoverflow standard did not seem apply on this issue (i.e. removing `DISABLE_COLLECTSTATIC` from the environment variables). It was in the end caused by mis-spelling the variable `settings.DEFAULT_STORAGE`
+<div style='text-align:center'>
+    <table style='width:90%; content-align:center'>
+       <tr>
+       <th> Before</th>
+       <th> After</th>
+      </tr>
+       <tr>
+      <td> <img src="./assets/images/bugs/bug_product_admin-1.png"; alt="example of bug" >  </td>
+      <td> <img src="./assets/images/bugs/bug_product_admin-2.png"; alt="example of bug" >  </td>
+      </tr>
+    </table>
+</div>
+
+--> **Solution** : Rename the wrong variable `settings.DEFAULT_FILES_STORAGE` into the correct name `settings.DEFAULT_STORAGE`. After renaming, static files would be served by AWS.
+
+- Bug: When only a few items were in the shopping bag, the total grand for an order would be much too high, with a grand total that was too high.
+
+<div style='text-align:center'>
+    <table style='width:90%; content-align:center'>
+       <tr>
+       <th> Description</th>
+       <th> Image</th>
+      </tr>
+       <tr>
+        <td style='width:33%; content-align:center'>Problem: Wrong Grand Total of a bag item  </td>
+        <td> <img src="./assets/images/bugs/bug-delivery-costs-2.png"; alt="example of bug" >  </td>
+      </tr>
+      <tr>
+        <td>Diagnois: Bag items and quantities are are correct, but delivery costs are wrong  </td>
+       <td> <img src="./assets/images/bugs/bug-delivery-costs.png"; alt="example of bug" >  </td>
+      </tr>
+      <tr>
+        <td>Solution: in the backend, Dividing the delivery costs by factor of 100 to correct for storing costs as Decimals </td>
+        <td> <img src="./assets/images/bugs/bug-delivery-costs-3.png"; alt="example of bug" >  </td>
+      </tr>
+    </table>
+</div>
+
+- Bug: The test webhooks would respond with a 400 server error
+  <div style='text-align:center'>
+    <table style='width:90%; content-align:center'>
+       <tr>
+       <th> Problem: Stripe WH repsonds with 500</th>
+      </tr>
+       <tr>
+      <td> <img src="./assets/images/bugs/bug-no-wh-secret.png"; alt="example of bug - no WH secret set" >  </td>
+      </tr>
+    </table>
+</div>
+
+--> **Solution** I simply forgot to add an environment variable `STRIPE_WH_SECRET`. Adding this to `settings.STRIPE_WH_SECRET`, and the POST requests responded with 200 status code.
+
+- Bug: While testing pages that send messages via the `django.contrib.messages` , `pytest` would flag a `MessageFailure` error as this framework (and for that matter the standard unit testing framework too) and fail the test.
+  <div style='text-align:center'>
+      <table style='width:90%; content-align:center'>
+         <tr>
+          <th> Description </th>
+          <th> Image </th>
+         </tr>
+         <tr>
+          <td>Error Message: pytest cannot access messages Middleware </td>
+          <td> <img src="./assets/images/bugs/bug-pytest-django-messages.png"; alt="example of bug - pyest messages" >  </td>
+         </tr>
+         <tr>
+          <td> Solution: Allow message system to fail silently </td>
+          <td> <img src="./assets/images/bugs/bug-pytest-django-messages-2.png"; alt="example of bug -  pyest messages" >  </td>
+         </tr>
+      </table>
+  </div>
+
+  **Solution** The final cue to solve this problem was found on the third answer of [Stackoverflow - Why don't my Django unittests know that MessageMiddleware is installed?](https://stackoverflow.com/questions/11938164/why-dont-my-django-unittests-know-that-messagemiddleware-is-installed) that pointed to the right location in the Django documentation: [Failing silently when the message framework is disabled](https://docs.djangoproject.com/en/dev/ref/contrib/messages/#failing-silently-when-the-message-framework-is-disabled) : Adding the keyword `fail_silently` to each `django.messages` solved the issue and made the tests pass.
+
 ---
 
 ### Open Bugs
@@ -1057,4 +1130,9 @@ Login to Heroku Website and Create a new App (EU)
 - Setup of automatic tests using Github Actions and pytest
   - Okken, Brian. "Python Testing with pytest." (2nd ed.) Pragmatic Bookshelf, 2022.
   - Automated Testing in Python with pytest, tox, and GitHub Actions [mCoding (Youtube) ](https://www.youtube.com/watch?v=DhUpxWjOhME)
+- Various articles from William S. Vincent on his [Django Blog](https://learndjango.com/) :
+  - Tips when using a CustomUser model: [Django Best Practices: Referencing the User Model](https://learndjango.com/tutorials/django-best-practices-referencing-user-model)
+  - Best practices for adding a 404/500 page: [Customizing Django 404 and 500 Error Pages](https://learndjango.com/tutorials/customizing-django-404-and-500-error-pages)
+  - Adding Favicon image: [Django Favicon Tutorial](https://learndjango.com/tutorials/django-favicon-tutorial)
+  - Background information about how Django handles static files: [Django Static Files](https://learndjango.com/tutorials/django-static-files-and-templates)
 - Thanks to my mentor Ronan (Code Institute) for providing insightful feedback and engaging discussions
