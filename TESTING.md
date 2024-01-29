@@ -24,7 +24,7 @@ The test strategy consisted of a combination of manual and automated tests.
   - [Results Jshint Javascript Validation](#results-jshint-javascript-validation)
   - [Results Flake8 Python Syntax Validation](#results-flake8-python-syntax-validation)
   - [Results of Authentication Tests](#results-of-authentication-tests)
-- [Functionality Tests](#functionality-tests)
+- [Functionality Tests / User Stories Test](#functionality-tests--user-stories-test)
   - [Results of User Profile Functionality Tests](#results-of-user-profile-functionality-tests)
   - [Results of Comments + Ratings Functionality Tests](#results-of-comments--ratings-functionality-tests)
   - [Results of Checkout Functionality Tests](#results-of-checkout-functionality-tests)
@@ -62,7 +62,7 @@ The test strategy consisted of a combination of manual and automated tests.
 
 ### Results of Authentication Tests
 
-## Functionality Tests
+## Functionality Tests / User Stories Test
 
 ### Results of User Profile Functionality Tests
 
@@ -83,6 +83,47 @@ The test strategy consisted of a combination of manual and automated tests.
 ### Results of Browser Compatibility Tests
 
 ### Issues Found During Manual Testing
+
+There were several issues found during Manual Testing that required refactoring of the code to make it pass the test.
+
+<table style="width:90%">
+    <tr>
+        <th style="text-align:center;width:10%"> Test Case</th>
+        <th style="width:35%"> Description </th>
+        <th style="width:60%"> Errors Found  </th>
+    </tr>
+    <tr>
+      <td style="text-align:center"> TC_19 </td>
+      <td> Validate that all pages pass W3C HTML Validation Tool (Landing Page)   </td>
+      <td> 
+         <ul>
+            <li> In the first round, the HTML validator noted a stray div HTML element at the end of the landing page, and raised an error. </li>
+            <li> After removing the stray div, the test passed </li>
+         </ul>
+     </td>
+    <tr>
+     <tr>
+      <td style="text-align:center"> TC_19 </td>
+      <td> Validate that all pages pass W3C HTML Validation Tool (Product Detail Page)   </td>
+      <td> 
+         <ul>
+            <li> In the first round, the HTML validator noted:  a div inside a label element,  an unclosed div elemen end of a form element but but no opening element of a form, a duplicate 'class attribute' and an unclosed paragraph </li>
+            <li> After adjusting the HTML code, the test passed </li>
+         </ul>
+     </td>
+    <tr>
+     <tr>
+     <tr>
+      <td style="text-align:center"> TC_19 </td>
+      <td> Validate that all pages pass W3C HTML Validation Tool  (Shopping Bag Page)    </td>
+      <td> 
+         <ul>
+            <li> In the first round, the HTML validator noted: a quote in an attribute name , and unclosed body tag and an unclosed div </li>
+            <li> After adjusting the HTML code, the test passed </li>
+         </ul>
+     </td>
+    <tr>
+</table>
 
 ---
 
