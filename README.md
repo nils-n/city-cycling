@@ -1042,7 +1042,7 @@ Login to Heroku Website and Create a new App (EU)
     </table>
 </div>
 
---> **Solution** : Rename the wrong variable `settings.DEFAULT_FILES_STORAGE` into the correct name `settings.DEFAULT_STORAGE`. After renaming, static files would be served by AWS.
+**Solution** : Rename the wrong variable `settings.DEFAULT_FILES_STORAGE` into the correct name `settings.DEFAULT_STORAGE`. After renaming, static files would be served by AWS.
 
 - Bug: When only a few items were in the shopping bag, the total grand for an order would be much too high, with a grand total that was too high.
 
@@ -1079,7 +1079,7 @@ Login to Heroku Website and Create a new App (EU)
     </table>
 </div>
 
---> **Solution** I simply forgot to add an environment variable `STRIPE_WH_SECRET`. Adding this to `settings.STRIPE_WH_SECRET`, and the POST requests responded with 200 status code.
+**Solution** I simply forgot to add an environment variable `STRIPE_WH_SECRET`. Adding this to `settings.STRIPE_WH_SECRET`, and the POST requests responded with 200 status code.
 
 - Bug: While testing pages that send messages via the `django.contrib.messages` , `pytest` would flag a `MessageFailure` error as this framework (and for that matter the standard unit testing framework too) and fail the test.
   <div style='text-align:center'>
