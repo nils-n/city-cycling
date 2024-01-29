@@ -254,6 +254,21 @@ All pages were tested with Google lighthouse using the `chrome-debug` browser as
 
 ### Tests for Compatibility
 
+The website has been tested for compatibility between browsers, and that the website is responsive and displays correctly on all screen sizes as specified during the design stage. All tests passed.
+
+<table>
+  <tr>
+    <th>
+      Results of Browser compatibility tests
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/compatibility.png'  alt='Results of Browser compatibility tests'>
+    </td>
+  </tr>
+</table>
+
 ### Results W3C HTML Validation
 
 All Pages were tested with the offical W2C HTML validator [Markup Validation Service](https://validator.w3.org/) using the option 'Validate by Direct Input', copying the rendered html code from the browser with `Right Click > View Page Source`.
@@ -403,9 +418,19 @@ There were several issues found during Manual Testing that required refactoring 
         <th style="width:60%"> Errors Found  </th>
     </tr>
     <tr>
+      <td style="text-align:center"> TC_08 </td>
+      <td> Links and Buttons are working consistent   </td>
+      <td> 
+         <ul>
+            <li>   In the first pass, there was still a ‘Login’ button present on the Homepage although the user was logged in </li>
+            <li>    After fixing the corresponding template, test passes  </li>
+         </ul>
+     </td>
+    </tr>
+    <tr>
       <td style="text-align:center"> TC_19 </td>
       <td> Validate that all pages pass W3C HTML Validation Tool (Landing Page)   </td>
-      <td> 
+      <td>
          <ul>
             <li> In the first round, the HTML validator noted a stray div HTML element at the end of the landing page, and raised an error. </li>
             <li> After removing the stray div, the test passed </li>
@@ -415,7 +440,7 @@ There were several issues found during Manual Testing that required refactoring 
     <tr>
       <td style="text-align:center"> TC_19 </td>
       <td> Validate that all pages pass W3C HTML Validation Tool (Product Detail Page)   </td>
-      <td> 
+      <td>
          <ul>
             <li> In the first round, the HTML validator noted:  a div inside a label element,  an unclosed div elemen end of a form element but but no opening element of a form, a duplicate 'class attribute' and an unclosed paragraph </li>
             <li> After adjusting the HTML code, the test passed </li>
@@ -425,7 +450,7 @@ There were several issues found during Manual Testing that required refactoring 
     <tr>
       <td style="text-align:center"> TC_19 </td>
       <td> Validate that all pages pass W3C HTML Validation Tool  (Shopping Bag Page)    </td>
-      <td> 
+      <td>
          <ul>
             <li> In the first round, the HTML validator noted: a quote in an attribute name , and unclosed body tag and an unclosed div </li>
             <li> After adjusting the HTML code, the test passed </li>
@@ -435,12 +460,12 @@ There were several issues found during Manual Testing that required refactoring 
     <tr>
       <td style="text-align:center"> TC_19 </td>
       <td> Validate that all pages pass W3C HTML Validation Tool  (Checkout Page)    </td>
-      <td> 
+      <td>
          <ul>
             <li> In the first round, the HTML validator noted: a quote in an attribute name , a stray end div, and that the value for a for label did not have a matching ID of a form control element </li>
             <li> After adjusting the HTML code, the test still failed with an error regarding the label of the country form field </li>
-            <img src="./assets/testing/html-checkout-crispy-1.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
-            <img src="./assets/testing/html-checkout-crispy-2.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
+            <img src="./assets/testing/html-checkout-crispy-1.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" >
+            <img src="./assets/testing/html-checkout-crispy-2.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" >
             <li> This part of the HTML is rendered by `Crispy-Tailwind` [Link](https://django-crispy-forms.github.io/crispy-tailwind/). It did not seem reasonable in terms of code readibility and maintainability to overwrite the behaviour of this package.</li>
             <li> Aside from this single error, the test passes. </li>
          </ul>
@@ -449,7 +474,7 @@ There were several issues found during Manual Testing that required refactoring 
      <tr>
       <td style="text-align:center"> TC_19 </td>
       <td> Validate that all pages pass W3C HTML Validation Tool  (Checkout Success Page)    </td>
-      <td> 
+      <td>
          <ul>
             <li> In the first round, the HTML validator noted: an obsolete scope element in the td element which should only be used in the th element (table header).  </li>
             <li> After adjusting the HTML code, the test passed </li>
@@ -459,12 +484,12 @@ There were several issues found during Manual Testing that required refactoring 
      <tr>
       <td style="text-align:center"> TC_19 </td>
       <td> Validate that all pages pass W3C HTML Validation Tool  (Profile Page)    </td>
-      <td> 
+      <td>
          <ul>
             <li> In the first round, the HTML validator noted: Element ul not allowed as child of element ul,End tag td seen, but there were open element, Unclosed element ul  , Quote ' in attribute name, Duplicate ID error,the value of the for attribute of the label element must be the ID of a non-hidden form control. </li>
             <li> After adjusting the HTML code, the test still failed with the same error as the Checkout Page complaining about the country form fields rendered by Crispy-Tailwind </li>
-            <img src="./assets/testing/html-profile-crispy-1.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
-            <img src="./assets/testing/html-profile-crispy-2.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
+            <img src="./assets/testing/html-profile-crispy-1.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" >
+            <img src="./assets/testing/html-profile-crispy-2.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" >
             <li> This part of the HTML is rendered by `Crispy-Tailwind` [Link](https://django-crispy-forms.github.io/crispy-tailwind/). It did not seem reasonable in terms of code readibility and maintainability to overwrite the behaviour of this package.</li>
             <li> Aside from this single error, the test passes. </li>
          </ul>
@@ -473,11 +498,11 @@ There were several issues found during Manual Testing that required refactoring 
     <tr>
       <td style="text-align:center"> TC_19 </td>
       <td> Validate that all pages pass W3C HTML Validation Tool  (Signup Page)    </td>
-      <td> 
+      <td>
          <ul>
             <li> In the first round, the HTML validator noted an Error: Element ul not allowed as child of element small in this context. (Suppressing further errors from this subtree.).  </li>
-             <img src="./assets/testing/html-signup-crispy-1.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
-            <img src="./assets/testing/html-signup-crispy-2.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
+             <img src="./assets/testing/html-signup-crispy-1.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" >
+            <img src="./assets/testing/html-signup-crispy-2.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" >
             <li> This part of the HTML is rendered by `Crispy-Tailwind` [Link](https://django-crispy-forms.github.io/crispy-tailwind/). It did not seem reasonable in terms of code readibility and maintainability to overwrite the behaviour of this package.</li>
             <li> Aside from this single error, the test passes. </li>
          </ul>
@@ -486,7 +511,7 @@ There were several issues found during Manual Testing that required refactoring 
     <tr>
       <td style="text-align:center"> TC_21 </td>
       <td> Validate that all javascript files pass jshint validator    </td>
-      <td> 
+      <td>
          <ul>
             <li> In the first round, the js validator noted the user of ES6 tags such as arrow functions and const variables which I call as insignificant.  </li>
             <li> For various javascript files, jshint complained as well that I was using function delcarations out of the scope (' Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (handleSubmitCommentClick)').  In this instance, I do find my way of declaring function not confusing and call this an insignifcant error</li>
@@ -497,7 +522,7 @@ There were several issues found during Manual Testing that required refactoring 
     <tr>
       <td style="text-align:center"> TC_22 </td>
       <td> Validate that all custom python files pass flake8 validator    </td>
-      <td> 
+      <td>
          <ul>
             <li> In the first round, flake8 noted many files that were auto-generated by Django, i.e.: ./accounts/tests.py:1:1: F401 'django.test.TestCase' imported but unused , ./bag/admin.py:1:1: F401 'django.contrib.admin' imported but unused </li>
             <li> Some files created by Django (i.e. Migrations) I did not touch</li>
@@ -510,7 +535,7 @@ There were several issues found during Manual Testing that required refactoring 
     <tr>
       <td style="text-align:center"> TC_24 </td>
       <td> Validate that website passes WAVE WebAIM  Accessibility Check with no Errors     </td>
-      <td> 
+      <td>
          <ul>
             <li> In the first round, the Home Page raised 3 errors (link has no text error),  and the Profile page raised 40 errors  </li>
             <li>The errors on the Home Page we addressed by adding a span of class 'sr-only' with the label 'shopping bag', then the error was cleared</li>
@@ -518,8 +543,8 @@ There were several issues found during Manual Testing that required refactoring 
             <li> After these corrections, form fields still have no label. It seems like an open bug from 'tailwind-crispy'. I tried the options listed on their GihThub issue page (https://github.com/django-crispy-forms/crispy-tailwind/issues/110) but none of these fixed the error. There is the option of manually adding aria labels via javascript - but I find it not ideal in terms of code readibility to mess with an imported package, and leave the error for now.   </li>
             <li> Same error with tailwind-crispy form happens on the checkout page</li>
             <li> I call this error not significant and let it pass with this notice of an external dependency failing</li>
-             <img src="./assets/testing/tailwind-crispy-1.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
-             <img src="./assets/testing/tailwind-crispy-2.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
+             <img src="./assets/testing/tailwind-crispy-1.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" >
+             <img src="./assets/testing/tailwind-crispy-2.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" >
          </ul>
     </td>
     </tr>
