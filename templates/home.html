@@ -15,18 +15,18 @@
 
 <!-- Hero Image -->
  <!-- based on https://flowbite.com/docs/components/jumbotron/-->
-<div class='sm:mt-5 sm:mx-16 max-w-6xl xl:mx-auto xl:min-w-4xl  '>
+<div class='sm:mt-5 sm:mx-16 max-w-6xl xl:mx-auto xl:min-w-4xl  sm:h-full h-screen'>
     <div class='sm:px-16 px-4 pt-4 sm:pt-8 pb-16 h-full font-sans font-extrabold bg-lime-200/80 sm:rounded-2xl bg-cover bg-no-repeat  bg-blend-soft-light '  
     style="background-image: url({% static 'images/bike-from-side-with-person-in-urban-green-place.webp' %});"> 
         <div class='pt-0 ms:pt-16 pb-20 sm:pb-40'>
             <div class='sm:mt-5 sm:mx-8 lg:ml-0 lg:px-16'>
-                <div class='mx-8 lg:mx-0 mt-20 mb-16  gap-4 flex flex-col flex-wrap  md:justify-center '>
-                    <h1 class='text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 max-w-xs leading-1' style='line-height: 0.8; max-width: 9ch'> Be the change you want to see in Glasgow</h1>
-                    <p class="mt-8 mb-12 text-lg font-semibold text-gray-700 leading-6" style='max-width:20ch'> Get the perfect gear for the season, find your ideal route to work and start saving our trees.</p>
+                <div class='mx-8 lg:mx-0 mt-10 sm:mt-24 mb-16  gap-4 flex flex-col flex-wrap  md:justify-center '>
+                    <h1 class='text-4xl mt-8 sm:mt-0 mb-16 sm:mb-0 md:text-5xl lg:text-6xl font-bold text-gray-800 max-w-xs leading-1' style='line-height: 0.8; max-width: 9ch'> Be the change you want to see in Glasgow</h1>
+                    <p class="mt-8 mb-12 text-lg font-semibold text-gray-700 leading-6 hidden sm:block" style='max-width:20ch'> Get the perfect gear for the season, find your ideal route to work and start saving our trees.</p>
                     <!--CTA Buttons -->
                     <div class="flex flex-col gap-4 md:flex-row ">
                         <a  href="{% url 'products' %}" 
-                            class=" md:mr-8 md:pr-4 inline-flex justify-center items-center   md:w-24 py-3 px-5 md:min-w-52 text-base font-medium text-center text-white rounded-lg bg-gray-700 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:focus:ring-lime-900"
+                            class=" md:mr-8 md:pr-4 inline-flex justify-center items-center  mt-8 sm:mt-0 md:w-24 py-3 px-5 md:min-w-52 text-base font-medium text-center text-white rounded-lg bg-gray-700 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:focus:ring-lime-900"
                             >
                             Visit Shop
                             <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -41,7 +41,22 @@
             </div>
         </div>
     </div>
+    <!-- Link to external Page (Facebook)-->
+    <div class='absolute bottom-10 left-10 sm:block sm:left-auto sm:bottom-auto sm:-translate-y-20 sm:ml-4 '>
+        <a 
+            href='https://www.facebook.com/' 
+            target="_blank" 
+            rel='noopener' 
+            aria-label="Visit our Facebook Page (opens new Tab)">
+                <svg class="w-20 h-20  sm:h-16 sm: w-16 ms-2 rtl:rotate-180 text-gray-900/80 drop-shadow-xl" 
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 320 512"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/>
+                </svg>
+        </a>
+    </div>
 </div>
+
 
 <!-- Newsletter signup form 
     Based on  https://flowbite.com/docs/components/banner/#newsletter-sign-up-banner
