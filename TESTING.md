@@ -320,7 +320,11 @@ There were several issues found during Manual Testing that required refactoring 
             <li> In the first round, the Home Page raised 3 errors (link has no text error),  and the Profile page raised 40 errors  </li>
             <li>The errors on the Home Page we addressed by adding a span of class 'sr-only' with the label 'shopping bag', then the error was cleared</li>
             <li> On the Profile field, most of the errors were 'empty button' and 'missing form label' errors rated the rating with stars. After adding an appropriate label to each star and form field, error was cleared</li>
-            <li> After these corrections, the test passes. </li>
+            <li> After these corrections, form fields still have no label. It seems like an open bug from 'tailwind-crispy'. I tried the options listed on their GihThub issue page (https://github.com/django-crispy-forms/crispy-tailwind/issues/110) but none of these fixed the error. There is the option of manually adding aria labels via javascript - but I find it not ideal in terms of code readibility to mess with an imported package, and leave the error for now.   </li>
+            <li> Same error with tailwind-crispy form happens on the checkout page</li>
+            <li> I call this error not significant and let it pass with this notice of an external dependency failing</li>
+             <img src="./assets/testing/tailwind-crispy-1.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
+             <img src="./assets/testing/tailwind-crispy-2.png"; alt="error message of HTML validator that was left unfixed - Argumentation: this part of the HTML was rendered by Tailwind-Crispyforms" > 
          </ul>
     </td>
     </tr>

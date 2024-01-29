@@ -107,9 +107,6 @@ def order_history(request, order_number):
     return render(request, template, context)
 
 
-from icecream import ic  # noqa
-
-
 @login_required
 def delete_profile(request, user_id):
     """view to delete user profile and associated account"""

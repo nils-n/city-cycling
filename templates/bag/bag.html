@@ -55,6 +55,7 @@
                                                         data-product-id="{{ bag_item.item_id }}"
                                                         data-button-type='decrement'
                                                         id="decrement-qty-{{ product.id }}"
+                                                        aria-label='decrement quantity'
                                                         class="quantity-btn  h-8 w-8 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                     -
                                                 </button>
@@ -64,11 +65,13 @@
                                                        style='width:4em'
                                                        readonly="readonly"
                                                        id="qty-{{ bag_item.item_id }}"
+                                                       aria-label="quantity of {{ bag_item.product.name}}"
                                                        class="disabled rounded-lg bg-gray-100 px-3 py-2 text-center text-sm font-medium text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 <button type="button"
                                                         data-product-id="{{ bag_item.item_id }}"
                                                         data-button-type='increment'
                                                         id="increment-qty-{{ bag_item.item_id }}"
+                                                        aria-label='increment quantity'
                                                         class="quantity-btn  h-8 w-8 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                     +
                                                 </button>
@@ -98,7 +101,7 @@
                         Delivery :  £ <span class='text-xl'>{{ delivery|floatformat:2 }}</span>
                     </p>
                     {% if free_delivery_delta > 0 %}
-                        <p class="txt-lg  leading-5 font-semibold tracking-tight text-gray-400 dark:text-white">
+                        <p class="txt-lg  leading-5 font-semibold tracking-tight text-gray-500 dark:text-white">
                             You could get free delivery by spending  £ <span class='text-xl'>{{ free_delivery_delta|floatformat:2 }} more!</span>
                         </p>
                     {% endif %}
