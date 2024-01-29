@@ -1,186 +1,149 @@
 {% extends "base.html" %}
-
-{% load static %} 
-
+{% load static %}
 {% block title %}Home{% endblock %}
-
 {% block content %}
-<div class="container mx-auto mt-4">
-
-  <div class="md:mx-12 mx-4 my-10">
-
-    <h2 class="sr-only text-2xl pb-4 font-bold">Shopping Bag</h2>
-
-    {% if bag_items %}
-      <div class="mb-8 relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class=" w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                    <th scope="col" class="px-16 py-3">
-                        <span class="sr-only">Image</span>
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Product
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Qty
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Price
-                    </th> 
-                    <th scope="col" class="px-6 py-3">
-                        Action
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-              <!-- Table of Shopping Bag items -->
-              {% for bag_item in bag_items %}
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="p-4">
-                          {% if bag_item.product.image %}
-                          <img
-                            class="w-16 md:w-32 max-w-full max-h-full"
-                            src="{{ bag_item.product.image.url }}"
-                            alt="{{ bag_item.product.name }}"
-                          />
-                          {% else %}
-                          <img
-                            class="w-16 md:w-32 max-w-full max-h-full"
-                            src="{{ MEDIA_URL }}No-Image-Placeholder.svg"
-                            alt="{{ bag_item.product.name }}"
-                          />
-                          {% endif %}
-                        </td>
-                        <td class="px-1 sm:px-4 py-4 font-semibold text-gray-900 dark:text-white">
-                          <p> {{ bag_item.product.name}} </p>
-                          {% if bag_item.product.has_sizes %} 
-                              <div class="text-left">
-                                <p class="pt-1 font-normal  text-gray-900 dark:text-white">Size: <strong class'font-bold'> {{ bag_item.size|upper}} </strong> </p>
-                              </div>
-                          {% endif %}
-                        </td>
-                        <td class="px-1 sm:px-4 py-4">
-                          <form action="{%  url 'adjust_bag' bag_item.item_id  %}" method="POST" id='quantity-form-{{bag_item.item_id}}'> 
-                              {% csrf_token %}
-                              <!-- Add to Shopping Bag buttons-->
-                              <div class="flex items-baseline space-x-2">
-                                <button
-                                  type="button"
-                                  data-product-id="{{ bag_item.item_id }}" 
-                                  data-button-type='decrement'
-                                  id="decrement-qty-{{ product.id}}"
-                                  class="quantity-btn  h-8 w-8 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                >
-                                  -
-                                </button>
-                                <input
-                                  type="number"
-                                  name='quantity'
-                                  value='{{bag_item.quantity}}'
-                                  style='width:4em;'
-                                  readonly="readonly"
-                                  id="qty-{{bag_item.item_id }}"
-                                  class="disabled rounded-lg bg-gray-100 px-3 py-2 text-center text-sm font-medium text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                >
-                                <button
-                                  type="button"
-                                  data-product-id="{{ bag_item.item_id }}" 
-                                  data-button-type='increment'
-                                  id="increment-qty-{{ bag_item.item_id}}"
-                                  class="quantity-btn  h-8 w-8 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                >
-                                  +
-                                </button>
-                              </div>
-                          </form>
-                        </td>
-                        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                            {{ bag_item.product.price|floatformat:2}} 
-                        </td>
-                        <td class="px-6 py-4">
-                            <a 
-                                href="#"
-                                id="remove_{{ bag_item.item_id }}"
-                                data-size="{{ bag_item.size }}"
-                                data-product-id="{{ bag_item.item_id}}"
-                                class="remove-item inline-block leading-8 font-medium text-red-600 dark:text-red-500 hover:underline"
-                            >Remove </a>
-                            <a 
-                              href="#"
-                              id='update_{{ bag_item.item_id }}' 
-                              data-size="{{ bag_item.size }}"
-                              data-product-id={{ bag_item.item_id}}
-                              class="update-link inline-block  font-medium text-indigo-600 dark:text-indigo-500 hover:underline"
-                            >Update</a>
-                        </td>
-                    </tr>
-                  {% endfor  %}
-                
-            </tbody>
-        </table>
-      </div>
-
-      <!-- Summary of the Shopping Bag -->
-      <div class="mt-16 mb-12 left-3 leading-10 flex flex-col place-items-end">
-        <p class="text-lg leading-8 font-semibold tracking-tight text-gray-900 dark:text-white"> Bag Total :  £ <span class='text-xl'> {{ total|floatformat:2}} </span> </p>
-        <p class="text-lg leading-8 font-semibold tracking-tight text-gray-900 dark:text-white"> Delivery :  £ <span class='text-xl'> {{ delivery|floatformat:2}} </span> </p>
-        {% if free_delivery_delta > 0 %}
-            <p class="txt-lg  leading-5 font-semibold tracking-tight text-gray-400 dark:text-white"> You could get free delivery by spending  £ <span class='text-xl'> {{ free_delivery_delta|floatformat:2}} more! </span> </p>
-        {% endif%}
-        <p class="text-xl  leading-5 font-bold tracking-tight text-gray-900 dark:text-white"> Grand Total :  £ <span class='text-2xl'> {{ grand_total|floatformat:2}} </span> </p>
-
-      </div>
-
-  {% else %}
-  <p class='mb-8'> Your shopping bag is empty.</p>
-
-  {% endif %}
-
-  <div class='flex flex-row justify-end'>
-    <a 
-    href={% url 'products' %} 
-    class="mt-12 flex items-center space-x-1 bg-white border-gray-800 border-2 text-gray-800 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-200 dark:hover:bg-gray-100 dark:focus:ring-gray-300 dark:border-gray-300"
-    > 
-          <span class='pl-1 inline-block'>
-            <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                height="16" 
-                width="10" 
-                viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
-            </svg>
-          </span>  
-          <span> Back to Shop</span> 
-  </a>
-    {% if bag_items %}
-        <a 
-        href={% url 'checkout' %} 
-        class="mt-12 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-        > 
-            <span class=''>Secure Checkout
-              <span class='pl-1 inline-block'>
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  height="16" 
-                  width="14" 
-                  viewBox="0 0 448 512"
-                  fill='#f9fafb'>
-                  <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"
-                /></svg>
-              </span> 
-            </span> 
-      </a>
-      {% endif %}
-  </div>
-</div>
-
-{% endblock %}
-
-
-{% block javascript %}
-
-<script src=" {%  static 'js/quantity_input.js' %}" type='module'></script>
-<script src=" {%  static 'js/bag.js' %}" type='module'></script>
-
-
-{% endblock javascript  %}
+    <div class="container mx-auto mt-4">
+        <div class="md:mx-12 mx-4 my-10">
+            <h2 class="sr-only text-2xl pb-4 font-bold">Shopping Bag</h2>
+            {% if bag_items %}
+                <div class="mb-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class=" w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-16 py-3">
+                                    <span class="sr-only">Image</span>
+                                </th>
+                                <th scope="col" class="px-6 py-3">Product</th>
+                                <th scope="col" class="px-6 py-3">Qty</th>
+                                <th scope="col" class="px-6 py-3">Price</th>
+                                <th scope="col" class="px-6 py-3">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Table of Shopping Bag items -->
+                            {% for bag_item in bag_items %}
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <td class="p-4">
+                                        {% if bag_item.product.image %}
+                                            <img class="w-16 md:w-32 max-w-full max-h-full"
+                                                 src="{{ bag_item.product.image.url }}"
+                                                 alt="{{ bag_item.product.name }}" />
+                                        {% else %}
+                                            <img class="w-16 md:w-32 max-w-full max-h-full"
+                                                 src="{{ MEDIA_URL }}No-Image-Placeholder.svg"
+                                                 alt="{{ bag_item.product.name }}" />
+                                        {% endif %}
+                                    </td>
+                                    <td class="px-1 sm:px-4 py-4 font-semibold text-gray-900 dark:text-white">
+                                        <p>{{ bag_item.product.name }}</p>
+                                        {% if bag_item.product.has_sizes %}
+                                            <div class="text-left">
+                                                <p class="pt-1 font-normal  text-gray-900 dark:text-white">
+                                                    Size: <strong class="font-bold">{{ bag_item.size|upper }}</strong>
+                                                </p>
+                                            </div>
+                                        {% endif %}
+                                    </td>
+                                    <td class="px-1 sm:px-4 py-4">
+                                        <form action="{% url 'adjust_bag' bag_item.item_id %}"
+                                              method="POST"
+                                              id='quantity-form-{{ bag_item.item_id }}'>
+                                            {% csrf_token %}
+                                            <!-- Add to Shopping Bag buttons-->
+                                            <div class="flex items-baseline space-x-2">
+                                                <button type="button"
+                                                        data-product-id="{{ bag_item.item_id }}"
+                                                        data-button-type='decrement'
+                                                        id="decrement-qty-{{ product.id }}"
+                                                        class="quantity-btn  h-8 w-8 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                    -
+                                                </button>
+                                                <input type="number"
+                                                       name='quantity'
+                                                       value='{{ bag_item.quantity }}'
+                                                       style='width:4em'
+                                                       readonly="readonly"
+                                                       id="qty-{{ bag_item.item_id }}"
+                                                       class="disabled rounded-lg bg-gray-100 px-3 py-2 text-center text-sm font-medium text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                <button type="button"
+                                                        data-product-id="{{ bag_item.item_id }}"
+                                                        data-button-type='increment'
+                                                        id="increment-qty-{{ bag_item.item_id }}"
+                                                        class="quantity-btn  h-8 w-8 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                    +
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">{{ bag_item.product.price|floatformat:2 }}</td>
+                                    <td class="px-6 py-4">
+                                        <a href="#"
+                                           id="remove_{{ bag_item.item_id }}"
+                                           data-size="{{ bag_item.size }}"
+                                           data-product-id="{{ bag_item.item_id }}"
+                                           class="remove-item inline-block leading-8 font-medium text-red-600 dark:text-red-500 hover:underline">Remove </a>
+                                        <a href="#" id='update_{{ bag_item.item_id }}' data-size="{{ bag_item.size }}" data-product-id={{ bag_item.item_id }} class="update-link inline-block  font-medium text-indigo-600 dark:text-indigo-500 hover:underline">Update</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Summary of the Shopping Bag -->
+                <div class="mt-16 mb-12 left-3 leading-10 flex flex-col place-items-end">
+                    <p class="text-lg leading-8 font-semibold tracking-tight text-gray-900 dark:text-white">
+                        Bag Total :  £ <span class='text-xl'>{{ total|floatformat:2 }}</span>
+                    </p>
+                    <p class="text-lg leading-8 font-semibold tracking-tight text-gray-900 dark:text-white">
+                        Delivery :  £ <span class='text-xl'>{{ delivery|floatformat:2 }}</span>
+                    </p>
+                    {% if free_delivery_delta > 0 %}
+                        <p class="txt-lg  leading-5 font-semibold tracking-tight text-gray-400 dark:text-white">
+                            You could get free delivery by spending  £ <span class='text-xl'>{{ free_delivery_delta|floatformat:2 }} more!</span>
+                        </p>
+                    {% endif %}
+                    <p class="text-xl  leading-5 font-bold tracking-tight text-gray-900 dark:text-white">
+                        Grand Total :  £ <span class='text-2xl'>{{ grand_total|floatformat:2 }}</span>
+                    </p>
+                </div>
+            {% else %}
+                <p class='mb-8'>Your shopping bag is empty.</p>
+            {% endif %}
+            <div class='flex flex-row justify-end'>
+                <a href="{% url 'products' %}"
+                   class="mt-12 flex items-center space-x-1 bg-white border-gray-800 border-2 text-gray-800 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-200 dark:hover:bg-gray-100 dark:focus:ring-gray-300 dark:border-gray-300">
+                    <span class='pl-1 inline-block'>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             height="16"
+                             width="10"
+                             viewBox="0 0 320 512">
+                            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                            <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                        </svg>
+                    </span>
+                    <span>Back to Shop</span>
+                </a>
+                {% if bag_items %}
+                    <a href="{% url 'checkout' %}"
+                       class="mt-12 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+                        <span class=''>Secure Checkout
+                            <span class='pl-1 inline-block'>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     height="16"
+                                     width="14"
+                                     viewBox="0 0 448 512"
+                                     fill='#f9fafb'>
+                                    <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z" />
+                                </svg>
+                            </span>
+                        </span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    {% block javascript %}
+        <script src=" {%  static 'js/quantity_input.js' %}" type='module'></script>
+        <script src=" {%  static 'js/bag.js' %}" type='module'></script>
+    {% endblock javascript %}

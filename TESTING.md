@@ -101,8 +101,8 @@ There were several issues found during Manual Testing that required refactoring 
             <li> After removing the stray div, the test passed </li>
          </ul>
      </td>
+    </tr>
     <tr>
-     <tr>
       <td style="text-align:center"> TC_19 </td>
       <td> Validate that all pages pass W3C HTML Validation Tool (Product Detail Page)   </td>
       <td> 
@@ -111,9 +111,8 @@ There were several issues found during Manual Testing that required refactoring 
             <li> After adjusting the HTML code, the test passed </li>
          </ul>
      </td>
+    </tr>
     <tr>
-     <tr>
-     <tr>
       <td style="text-align:center"> TC_19 </td>
       <td> Validate that all pages pass W3C HTML Validation Tool  (Shopping Bag Page)    </td>
       <td> 
@@ -121,8 +120,18 @@ There were several issues found during Manual Testing that required refactoring 
             <li> In the first round, the HTML validator noted: a quote in an attribute name , and unclosed body tag and an unclosed div </li>
             <li> After adjusting the HTML code, the test passed </li>
          </ul>
-     </td>
+    </td>
+    </tr>
     <tr>
+      <td style="text-align:center"> TC_19 </td>
+      <td> Validate that all pages pass W3C HTML Validation Tool  (Checkout Page)    </td>
+      <td> 
+         <ul>
+            <li> In the first round, the HTML validator noted: a quote in an attribute name , a stray end div, and that the value for a for label did not have a matching ID of a form control element </li>
+            <li> After adjusting the HTML code, the test passed </li>
+         </ul>
+    </td>
+    </tr>
 </table>
 
 ---
