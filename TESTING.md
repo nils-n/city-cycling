@@ -24,15 +24,14 @@ The test strategy consisted of a combination of manual and automated tests.
   - [Results W3C CSS Validation](#results-w3c-css-validation)
   - [Results Jshint Javascript Validation](#results-jshint-javascript-validation)
   - [Results Flake8 Python Syntax Validation](#results-flake8-python-syntax-validation)
-  - [Results of Authentication Tests](#results-of-authentication-tests)
 - [Functionality Tests / User Stories Test](#functionality-tests--user-stories-test)
+  - [Results of Authentication Tests](#results-of-authentication-tests)
   - [Results of User Profile Functionality Tests](#results-of-user-profile-functionality-tests)
   - [Results of Comments + Ratings Functionality Tests](#results-of-comments--ratings-functionality-tests)
   - [Results of Checkout Functionality Tests](#results-of-checkout-functionality-tests)
   - [Results of Products Functionality Tests](#results-of-products-functionality-tests)
   - [Results of Testing the deployed version](#results-of-testing-the-deployed-version)
-  - [Results of Marketing Functionality Tests](#results-of-marketing-functionality-tests)
-  - [Results of Accessibility Tests](#results-of-accessibility-tests)
+  - [Results of Marketing User Stories Tests](#results-of-marketing-user-stories-tests)
   - [Issues Found During Manual Testing](#issues-found-during-manual-testing)
 - [Automated Tests](#automated-tests)
   - [Results of pytest automated testing](#results-of-pytest-automated-testing)
@@ -389,23 +388,114 @@ In the table below the outputs of the Flake8 Python Validation results. No signi
   </tr>
 </table>
 
-### Results of Authentication Tests
+---
 
 ## Functionality Tests / User Stories Test
 
+### Results of Authentication Tests
+
+The authentication mechanisms of all pages of the website have been tested, including throwing of 403 erros for unauthorized acess, and the entire signup/login functionality. All tests passed.
+
+<table>
+  <tr>
+    <th style='width:100%'> Verify User Stories</th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/authentication.png'  alt='Results for Authentication Tests'>
+    </td>
+  </tr>
+</table>
+
 ### Results of User Profile Functionality Tests
+
+The User Profile Page has been tested for functionality. All tests passed.
+
+<table>
+  <tr>
+    <th style='width:100%'> Verify User Stories</th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/functionality-profile.png'  alt='Results for Functionality Tests'>
+    </td>
+  </tr>
+</table>
 
 ### Results of Comments + Ratings Functionality Tests
 
+The Commenting and Rating functionality has been tested. All tests passed.
+
+<table>
+  <tr>
+    <th style='width:100%'> Verify User Stories</th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/comments-ratings.png'  alt='Results for Commenting and Rating Tests'>
+    </td>
+  </tr>
+</table>
+
 ### Results of Checkout Functionality Tests
+
+The Checkout Page has been tested for functionality. All tests passed.
+
+<table>
+  <tr>
+    <th style='width:100%'> Verify User Stories</th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/functionality-checkout.png'  alt='Results for Functionality of Checkout Page Tests'>
+    </td>
+  </tr>
+</table>
 
 ### Results of Products Functionality Tests
 
+The main Shop Page has been tested for functionality. All tests passed.
+
+<table>
+  <tr>
+    <th style='width:100%'> Verify User Stories</th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/functionality-products.png'  alt='Results for Functionality of Main Shop Page Tests'>
+    </td>
+  </tr>
+</table>
+
 ### Results of Testing the deployed version
 
-### Results of Marketing Functionality Tests
+The tests for functionality have been repeated with different browsers. All tests passed.
 
-### Results of Accessibility Tests
+<table>
+  <tr>
+    <th style='width:100%'> Verify User Stories</th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/functionality-deployment.png'  alt='Results for Functionality of Main Shop Page Tests'>
+    </td>
+  </tr>
+</table>
+
+### Results of Marketing User Stories Tests
+
+The user stories for marketing have been tested. All tests passed.
+
+<table>
+  <tr>
+    <th style='width:100%'> Verify User Stories</th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/functionality-deployment.png'  alt='Results for Marketing User Story Tests'>
+    </td>
+  </tr>
+</table>
 
 ### Issues Found During Manual Testing
 
