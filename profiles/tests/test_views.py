@@ -1,5 +1,4 @@
 import pytest  # noqa
-from icecream import ic  # noqa
 
 from django.contrib.messages.storage.fallback import FallbackStorage
 
@@ -13,7 +12,7 @@ def test_authenticated_user_can_access_profile_page(client, django_user_model):
     django_user_model.objects.create_user(username=username, password=password)
     client.login(username=username, password=password)
     response = client.get("/profiles/1/")
-    ic(response)
+
     assert response.status_code == 200
 
 

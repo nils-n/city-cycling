@@ -1,9 +1,9 @@
+""" view function for the profiles app"""
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from icecream import ic  # noqa
 
 from products.models import ProductRating
 from profiles.forms import UserProfileForm
@@ -120,7 +120,6 @@ def delete_profile(request, user_id):
         )
         raise PermissionDenied
     else:
-        ic(user_id)
         user = get_object_or_404(User, id=user_id)
         user.delete()
         messages.add_message(request, messages.SUCCESS, "User Profile deleted")

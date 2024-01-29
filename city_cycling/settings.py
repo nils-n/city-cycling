@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-from icecream import ic
 
 
 if os.path.exists("env.py"):
@@ -161,7 +160,6 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 
 if "USE_AWS" in os.environ:
-    ic("using AWS")
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
         "Expires": "Thu, 31 Dec 2099 20:00:00 GMT",
@@ -184,8 +182,6 @@ if "USE_AWS" in os.environ:
     # override static and media URLs in production
     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}"
     MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
-else:
-    ic("DEV --> not using AWS")
 
 
 # Default primary key field type

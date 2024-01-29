@@ -1,4 +1,4 @@
-from icecream import ic
+""" view function for the products app"""
 import json
 from datetime import datetime
 
@@ -93,7 +93,6 @@ def product_detail(request, product_id):
             ratings.append("")
 
     number_of_reviews = sum([1 for rating in ratings if not ""])
-    ic(number_of_reviews)
 
     # prepare a zipped list
     reviews = zip(comments, ratings)
@@ -203,7 +202,6 @@ def rate_product(request, product_id):
         rating = int(post_data["rating"])
         user_id = int(post_data["userId"])
         product_id = int(post_data["productId"])
-        ic(rating, user_id, product_id)
 
         # ensure that the request has been sent by the same user
         if user_id == request.user.id:
@@ -255,10 +253,8 @@ def comment_product(request, product_id):
         product_id = int(post_data["productId"])
         product = Product.objects.get(pk=product_id)
 
-        ic(comment, user_id, product_id)
         # ensure that the request has been sent by the same user
         if user_id == request.user.id:
-            ic(product.name)
             comments = Comment.objects.filter(
                 product__name=product.name, user=request.user
             )

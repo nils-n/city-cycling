@@ -1,8 +1,8 @@
+""" view function for the bag app"""
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 from products.models import Product
-from icecream import ic
 import json
 
 
@@ -25,8 +25,6 @@ def add_to_bag(request, item_id):
 
     # get bag from session if it exists
     bag = request.session.get("bag", {})
-
-    ic(bag)
 
     # allow for multiple size of a product that has sizes
     if size:
@@ -147,8 +145,6 @@ def remove_from_bag(request, item_id):
             messages.success(request, f"Removed { product.name} from your bag")
 
         request.session["bag"] = bag
-
-        ic(bag)
 
         return HttpResponse(status=200)
 

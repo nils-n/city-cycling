@@ -26,15 +26,12 @@ for (let button of categoryButtons) {
 // handle product sorting
 for (let button of sortButtons) {
   button.addEventListener("click", (e) => {
-    console.log("sort button clicked");
     handleSortButtonClock(e.target.dataset.sorting);
   });
 }
 
 // filter product list of the shop by checking if a category button was clicked
 function handleCategoryClick(category) {
-  console.log(category);
-
   for (let product of productCards) {
     if (product.dataset.category === category) {
       product.classList.remove("hidden");
@@ -76,7 +73,6 @@ function handleSortButtonClock(sorting) {
 
 // set fill color of a rating star element
 function handleRatingStarColor(ratingStarEl, rating, averageRating) {
-  console.log(rating, averageRating);
   if (rating <= averageRating) {
     ratingStarEl.style.color = "rgb(250,202,21)";
   } else {
