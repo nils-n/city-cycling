@@ -10,11 +10,9 @@ This project is a website for a fictional mobile-first eCommerce online shop cal
 - Generate sales of bike equipment
 - Provide option of user comments and product rating to allow user feedback
 
-Link to deployed version on [Heroku - City Cycling](https://city-cycling-e08bb339a180.herokuapp.com/)
+Link to deployed version : [Heroku - City Cycling](https://city-cycling-e08bb339a180.herokuapp.com/)
 
-Link to GitHub Project Board [GitHub Projects - City Cycling](https://github.com/users/nils-n/projects/17/views/1)
-
-Link to User Stories incl. MoSCow prioritization [Numbers Document](./assets/sheets/user-stories-moscow-bikes.numbers)
+---
 
   <div style='text-align:center'>
     <table style='width:90%; content-align:center'>
@@ -267,7 +265,9 @@ The implementation of this project followed agile principles using the GitHub Pr
 - `should-have` : User Stories in this category would be implemented only if the other stories are already implemented in this timebox
 - `wont-have`: stories in this category will not be implemented in this iteration - but they are kept for documentation purpose
 
-See below the [GitHub Project board](https://github.com/users/nils-n/projects/17/views/1), after reaching the first Milestone (Project submission for assessment to Code Institute).
+A complete documentation of the Agile Project can be found here : [GitHub Projects - City Cycling](https://github.com/users/nils-n/projects/17/views/1)
+
+After reaching the first Milestone (Project submission for assessment to Code Institute):
 
 - All **28** `must-have` stories were implemented
 - **0** `should-have` stories (did not fit into the timebox and will be pushed to the next iteration)
