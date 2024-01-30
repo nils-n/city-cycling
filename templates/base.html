@@ -20,6 +20,7 @@
   {% endblock extra_css %}
   <title>{% block title %} {% endblock title%}  {% block extra_title %} {% endblock extra_title %} </title>
   {% compress css %}
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" >
   <link rel="stylesheet" href="{% static 'src/output.css' %}">
   {% endcompress %}
   {% block corejs %}
