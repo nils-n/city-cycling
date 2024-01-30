@@ -248,12 +248,13 @@
                 </h3>
                 {% if product.has_comments %}
                     <!-- remember to update the has_comment field when creating a comment. for now i will hardcode it.-->
+                    <div class='flex flex-wrap flex-col '> 
                     {% for comment, rating in reviews %}
                         <!-- based on : https://flowbite.com/docs/components/rating/#rating-comment -->
-                        <article class='mb-12'>
+                        <article class='px-4 pt-6 pb-2 mb-5 rounded-xl bg-gray-100 '>
                             <h4 class='sr-only'> Review from {{ comment.user.username }} </h4>
-                            <div class="flex items-center mb-2">
-                                <div class="font-medium md:text-lg dark:text-white">
+                            <div class="flex items-center mb-2 ">
+                                <div class="font-medium md:text-lg dark:text-white ">
                                    <p>{{ comment.user.username }} </p>
                                    <p class="block text-sm  text-gray-500 dark:text-gray-400">Joined on {{ comment.user.created_at }}</p>
                                 </div>
@@ -316,12 +317,13 @@
                                 </p>
                             </footer>
                             {% if comment.is_approved %}
-                                <p class="mb-2 text-gray-500 dark:text-gray-400">{{ comment.text }}</p>
+                                <p class="mb-2  text-gray-500 dark:text-gray-400">{{ comment.text }}</p>
                             {% else %}
                                 <p class="mb-2 text-gray-400 dark:text-gray-400">  </p>
                             {% endif %}
                         </article>
                     {% endfor %}
+                    </div>
                 {% else %}
                     <p class='mt-4'>No Reviews yet.</p>
                 {% endif %}
