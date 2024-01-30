@@ -40,7 +40,7 @@ The idea is that these two groups come together on this website, where the exper
 ## Table of Content
 
 - [City Cycling Glasgow](#city-cycling-glasgow)
-  - [Project Goal](#project-goal)
+    - [Project Goal](#project-goal)
   - [Business Model](#business-model)
   - [Table of Content](#table-of-content)
   - [User Experience (UX)](#user-experience-ux)
@@ -88,7 +88,7 @@ The idea is that these two groups come together on this website, where the exper
     - [How to Fork](#how-to-fork)
     - [How to Clone](#how-to-clone)
   - [Testing](#testing)
-    - [Limitation](#limitation)
+      - [Limitation](#limitation)
     - [Solved Bugs](#solved-bugs)
     - [Open Bugs](#open-bugs)
   - [Credits](#credits)
@@ -884,6 +884,7 @@ Wireframes were created in [Figma](https://www.figma.com/), using a mobile-first
 - The next iteration will include a blog that allows the page owner to produce high-quality content about cycling in Glasgow, allowing users to interact with other cyclists and foster a community of cyclists in Glasgow
 - Another iteration will consist of a routing page where users can share, discuss and present their best routes to work in Glasgow. The database used in this iteration is already designed for this purpose, including a generic `Comment` model that is based on the `ContentType` model. This model allows user comments on any model type using `GenericForeinKeys` , and comments are therefore not only constraint to purchases by design.
 - Sortings on the products based on rating (ie.e. avg. rating from high to low, show only items with 4 stars and above on average)
+- Signup via social media and a proper email backend that sends actual verification emails when a user signs up. Currently, a Django admin user has to approve new users manually.
 
 ---
 
@@ -1120,6 +1121,9 @@ The coverage of the automated tests were below the percentage that I was aiming 
 
 ### Open Bugs
 
+- All major bugs have been fixed for this iteration.
+- There are some minor imperfect UI positioning issues that could benefit from some optimization, but taking into account the scope of creating a working MVP these issues were considered minor for this iteration.
+
 ---
 
 ## Credits
@@ -1142,6 +1146,7 @@ The coverage of the automated tests were below the percentage that I was aiming 
 - Images from [Pexels](https://pexels.com/) using [this image](https://www.pexels.com/photo/diverse-girlfriends-riding-bicycles-on-street-5965721/) for background image on landing page
   - Photographer : [Charlotte May](https://www.pexels.com/@charlotte-may/)
 - Example Readme from Kera Cudmore [Kera's Github](https://github.com/kera-cudmore/readme-examples/blob/main/milestone1-readme.md)
+- Very detailed and helpful peer review from Karolis in [Code Insitute](https://codeinstitute.net/)'s slack community
 - How to use factoryboy with pytest for testing functions (Very Academy) [Pytest | Django | Introducing Factory Boy and Faker - Fixture Replacement](https://youtu.be/qrvqNdCDKjM?feature=shared)
 - Setup of automatic tests using Github Actions and pytest
   - Okken, Brian. "Python Testing with pytest." (2nd ed.) Pragmatic Bookshelf, 2022.
