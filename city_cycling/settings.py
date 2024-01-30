@@ -241,7 +241,7 @@ COMPRESS_URL = "/static/"
 # COMPRESS_ROOT = STATIC_ROOT
 
 
-if DEBUG:
+if "DEVELOPMENT" in os.environ:
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     DEFAULT_FROM_EMAIL = "citycycling@example.com"
 else:
