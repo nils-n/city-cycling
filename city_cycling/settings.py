@@ -47,6 +47,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
     "compressor",  # for flowbite CSS components
     "crispy_forms",
     "crispy_tailwind",
@@ -87,6 +91,28 @@ TEMPLATES = [
         },
     },
 ]
+
+
+# for allauth
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    # `allauth` specific authentication methods, such as login by email
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+# for allauth
+SITE_ID = 1
+
+# for allauth
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/"
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
@@ -192,7 +218,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # https://learndjango.com/tutorials/django-custom-user-model
 AUTH_USER_MODEL = "accounts.CustomUser"  # new
 
-LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
 # use Tailwind crispy forms
@@ -208,7 +233,6 @@ STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
 STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
 DEFAULT_FROM_EMAIL = "glasgowcitycycling@example.com"
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # to fix 500 server error when Debug is off
 # https://stackoverflow.com/questions/15128135/setting-debug-false-causes-500-error
