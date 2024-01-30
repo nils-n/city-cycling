@@ -1,4 +1,6 @@
 {% extends "account/base.html" %}
+{% load tailwind_filters %}
+
 
 {% load i18n %}
 {% load account socialaccount %}
@@ -7,9 +9,9 @@
 
 {% block inner_content %}
 
-<hr>
-<h2 class="logo-font mb-4">{% trans "Sign In" %}</h2>
-<hr>
+
+<h2 class="logo-font mb-4 sr-only">{% trans "Sign In" %}</h2>
+
 
 {% get_providers as socialaccount_providers %}
 
@@ -31,21 +33,45 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 {% include "socialaccount/snippets/login_extra.html" %}
 
 {% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-{% endif %}
+<div class='flex justify-center'>
+  <div class="max-w-screen-lg mx-auto md:p-4">
+    <div class="md:mx-8 mx-4  my-10 md:max-w-md md:1/2">
+      <div class="md:w-full">
+        <p>{% blocktrans %}If you have not created an account yet, then please
+        <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+      </div> 
+    </div>
+  </div>
+</div>
 
-<form class="login" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  {{ form|crispy }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <a class="btn btn-outline-black rounded-0" href="{% url 'home' %}">Home</a>
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-  <p class="mt-2">
-    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  </p>
-</form>
+
+{% endif %}
+<div class='flex justify-center'>
+  <div class="max-w-screen-xl  md:p-4 ">
+    <div class="md:mx-8 mx-2 sm:mx-4  my-10  w-full">
+      <div class="md:w-full">
+          <h2 class="text-2xl pb-8 font-bold w-60 sm:w-80">Login</h2>
+          <form class="login" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <a class="btn btn-outline-black rounded-0 text-gray-800 bg-white border-solid border-2   border-gray-800  hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-200 dark:hover:bg-gray-300 dark:focus:ring-gray-300 dark:border-gray-300 " 
+                href="{% url 'home' %}">Home</a>
+            <button 
+                  class="primaryAction mt-12  text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" 
+                  type="submit">{% trans "Sign In" %}</button>
+            <p class="mt-2">
+              <a class="button secondaryAction mt-12  text-gray-800 bg-lime-200 hover:bg-lime-300 focus:outline-none focus:ring-4 focus:ring-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-300 dark:focus:ring-gray-400 dark:border-gray-200" 
+              href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+            </p>
+          </form>
+      </div> 
+    </div>
+  </div>
+</div>
+
+
 
 {% endblock %}
