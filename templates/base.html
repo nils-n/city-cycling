@@ -4,25 +4,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% block meta %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Glasgow City Cycling, eCommerce Shop with a wide range of high-quality cycling products 
         including clothing, bike assecoires, lights, locks and wearables for rain">
   <meta name='keywords' content='Cycling gear, Bike accessories, Bike lights, Bike helmets, Cycling clothes, Bike locks,  
                 Bicycle accessories, Bike repair kits, Urban cycling gear, biking equipment, Bike safety items, Road cycling gear'>
-  <title>{% block title %} {% endblock title%}</title>
+  {% endblock meta%}
+  {% block extra_meta %}
+  {% endblock extra_meta %}
+  {% block corecss %}
+  {% endblock corecss %}
+  {% block extra_css %}
+  {% endblock extra_css %}
+  <title>{% block title %} {% endblock title%}  {% block extra_title %} {% endblock extra_title %} </title>
   {% compress css %}
   <link rel="stylesheet" href="{% static 'src/output.css' %}">
+  {% block corejs %}
   {% endcompress %}
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
               integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
               crossorigin="anonymous"></script>
+   {% endblock corejs %}
+   {% block extra_js %}
+   {% endblock extra_js %}
    {% block headercss %}
    {% endblock headercss %}
 </head>
 <body class="bg-gray-50">
-
     {% include 'partials/navbar.html' %}
+    {% block page_header %}
+    {% endblock page_header %}
     {% if messages %}
     <div class="message-container">
          {%  for message in messages %}
