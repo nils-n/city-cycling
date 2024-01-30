@@ -56,6 +56,9 @@
     {% endif %}
     {% block content %}
     {% endblock content %}
+    {% include 'partials/footer.html'%}
+    {% block newsletter %}
+    {% endblock newsletter %}
     <script src="https://js.stripe.com/v3/"></script>
     {% block postloadjs %}
     {% endblock postloadjs %}

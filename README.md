@@ -917,6 +917,7 @@ All pages were designed with accessibility in mind for website users that requir
 - [Inuit Mailchimp](https://mailchimp.com/) for newsletter signup functionality
 - [Eagle](https://eagle.cool/store) to capture page previews and organize assets
 - [Leonardo.ai](https://leonardo.ai/) to generate fake preview images for the products in the shop
+- [Font Awesome](https://fontawesome.com/) for icons in SVG format
 
 ### Languages
 
