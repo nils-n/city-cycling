@@ -919,6 +919,7 @@ All pages were designed with accessibility in mind for website users that requir
 - [Eagle](https://eagle.cool/store) to capture page previews and organize assets
 - [Leonardo.ai](https://leonardo.ai/) to generate fake preview images for the products in the shop
 - [Font Awesome](https://fontawesome.com/) for icons in SVG format
+- [Remove BG](https://www.remove.bg/) to remove background of the product preview images
 
 ### Languages
 
@@ -1134,9 +1135,8 @@ The coverage of the automated tests were below the percentage that I was aiming 
 - Cookie setup for handling CSRF Tokens when using AJAX [Github](https://github.com/realpython/django-form-fun/blob/master/part1/main.js) as referenced in this blog post [Django and AJAX Form Submissions – Say 'Goodbye' to the Page Refresh](https://realpython.com/django-and-ajax-form-submissions/)
 - How to send POST requests from Javascript [Django Forum - send views.py request.POST with JavaScript](https://forum.djangoproject.com/t/send-views-py-request-post-with-javascript/23146/8)
 - The `Boutique Ado` Walkthrough from [Code Insitute](https://codeinstitute.net/) curriculum (eCommerce) was used as basis for shopping bag, checkout processes, webhook handling, database structure, allauth authentication, hosting static files on AWS and payments with Stripe.
-- Many of the UI elements were based on [Flowbite](https://flowbite.com/) components for `Tailwind` as a starting point, including [toasts](https://flowbite.com/docs/components/toast/), [navbar](https://flowbite.com/docs/components/navbar/), [cards](https://flowbite.com/docs/components/card/), [jumbotron](https://flowbite.com/docs/components/jumbotron/) , [tables](https://flowbite.com/docs/components/tables/) , [rating](https://flowbite.com/docs/components/rating/), [comment boxes](https://flowbite.com/docs/forms/textarea/#comment-box), [banner](https://flowbite.com/docs/components/banner/), [buttons](https://flowbite.com/docs/components/buttons/), [spinner](https://flowbite.com/docs/components/spinner/), [checkbox](https://flowbite.com/docs/forms/checkbox/), [select](https://flowbite.com/docs/forms/select/), [textarea](https://flowbite.com/docs/forms/textarea/)  and  [forms](https://flowbite.com/docs/components/forms/) follwing a DRY principle of not having to re-invent the wheel. All references are also clearly marked in the code. 
+- Many of the UI elements were based on [Flowbite](https://flowbite.com/) components for `Tailwind` as a starting point, including [toasts](https://flowbite.com/docs/components/toast/), [navbar](https://flowbite.com/docs/components/navbar/), [cards](https://flowbite.com/docs/components/card/), [jumbotron](https://flowbite.com/docs/components/jumbotron/) , [tables](https://flowbite.com/docs/components/tables/) , [rating](https://flowbite.com/docs/components/rating/), [comment boxes](https://flowbite.com/docs/forms/textarea/#comment-box), [banner](https://flowbite.com/docs/components/banner/), [buttons](https://flowbite.com/docs/components/buttons/), [spinner](https://flowbite.com/docs/components/spinner/), [checkbox](https://flowbite.com/docs/forms/checkbox/), [select](https://flowbite.com/docs/forms/select/), [textarea](https://flowbite.com/docs/forms/textarea/) and [forms](https://flowbite.com/docs/components/forms/) follwing a DRY principle of not having to re-invent the wheel. All references are also clearly marked in the code.
 - The code for handling signup with `Mailchimp` was based on their default form as selected from their copy+paste options [MailChimp](https://mailchimp.com/) and then customized via [Tailwind](https://tailwindcss.com/) and [Flowbite](https://flowbite.com/)
-
 
 ### Content
 
