@@ -26,11 +26,13 @@ addToBagBtn.addEventListener("click", (e) => {
 
 // flag a warning modal that user needs to select a size before adding to bag
 function handleAddToBagClick(e, hasSizes, selectedSize) {
+  console.log("should not add");
   if (hasSizes === "True" && !selectedSize) {
     e.preventDefault();
     errorMessageEl.innerText =
       "Error : Product has sizes, but size was not selected";
   }
+  errorMessageEl.classList.remove("hidden");
 }
 
 // handle a click on the increment button
