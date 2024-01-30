@@ -1807,6 +1807,10 @@ input:checked + .toggle-bg {
   justify-content: space-between;
 }
 
+.justify-items-start {
+  justify-items: start;
+}
+
 .gap-2 {
   gap: 0.5rem;
 }
