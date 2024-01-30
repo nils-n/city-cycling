@@ -200,6 +200,8 @@
                                         class="quantity-btn rounded-lg bg-gray-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                                     -
                                 </button>
+                                <!-- https://stackoverflow.com/questions/71296535/how-to-remove-arrow-on-input-type-number-with-tailwind-css 
+                                    to remove the up and down arrows in firefox -->
                                 <input type="number"
                                        name='quantity'
                                        value='1'
@@ -207,7 +209,7 @@
                                        readonly="readonly"
                                        aria-label="quantity of {{product.name}}"
                                        id="qty-{{ product.id }}"
-                                       class="disabled rounded-lg bg-gray-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                                       class="disabled rounded-lg bg-gray-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
                                 <button type="button"
                                         data-product-id="{{ product.id }}"
                                         data-button-type='increment'
