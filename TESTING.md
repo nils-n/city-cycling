@@ -35,8 +35,7 @@ The test strategy consisted of a combination of manual and automated tests.
   - [Issues Found During Manual Testing](#issues-found-during-manual-testing)
 - [Automated Tests](#automated-tests)
   - [Results of pytest automated testing](#results-of-pytest-automated-testing)
-  - [Coverage Report](#coverage-report)
-  - [Running the Tests on Github Actions](#running-the-tests-on-github-actions)
+    - [Coverage Report](#coverage-report)
 
 ---
 
@@ -647,6 +646,53 @@ There were several issues found during Manual Testing that required refactoring 
 
 ### Results of pytest automated testing
 
-### Coverage Report
+In the screenshot below the outputs of the Python (pytest) Unit Test results (43 tests in total). No errors occured.
 
-### Running the Tests on Github Actions
+<table>
+  <tr>
+    <th>
+      Results of Automated Testing for Python (pytest)
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/pytest-results.png'  alt='Results of pytest'>
+    </td>
+  </tr>
+</table>
+
+An individual summary of all tests was also created with the `pytest-html` plugin :
+
+<table>
+  <tr>
+    <th>
+      Results of Automated Testing for Python (pytest)
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/pytest-html.png'  alt='Results of pytest-html 1/2'>
+    </td>
+  </tr>
+</table>
+
+#### Coverage Report
+
+Coverage of Python Unit test was `50%`. I did aim to test more views and models, but I had to sacrifice coverage in order to fit the timebox for this iteration. The `CustomUser` model and its view functions were tested by mocking its DB access using `django-pytest` and `pytest_factoryboy`. 
+
+In addition, the tests were added to a GitHub action workflow and run each time a PR is made. 
+
+
+<table>
+  <tr>
+    <th>
+      Coverage Automated Testing for Python (pytest)
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <img src='/assets/testing/pytest-coverage-1.png'  alt='Coverage report of pytest'>
+      <img src='/assets/testing/pytest-coverage-2.png'  alt='Coverage report of pytest'>
+    </td>
+  </tr>
+</table>
