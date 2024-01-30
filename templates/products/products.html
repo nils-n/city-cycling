@@ -79,9 +79,13 @@
                                     > {% if product.has_rating %}{{ product.get_rating|floatformat:1 }} / 5 {% else %} (no ratings yet) {% endif %}
                             </span>
                         </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-3xl font-bold text-gray-900 dark:text-white">£{{ product.price }}</span>
-                            <a href=" {% url 'product_detail' product.id %}" class="text-white rounded-lg bg-gray-700 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:focus:ring-lime-900  font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Add to cart</a>
+                        <div class="flex items-end justify-between">
+                            <div class='flex flex-col sm:flex-row sm:gap-x-2 sm:items-center'>
+                                <p>{% if product.category|lower == "sale" %} SALE! {% endif %}</p>
+                                <p class="text-lg sm:text-3xl  font-bold {% if product.category|lower == 'sale' %} px-3 py-2 bg-red-200 rounded-lg  text-orange-400 {% else %} text-gray-900  {% endif %} dark:text-white">£{{ product.price }}</p>
+                            </div>
+                            <a href=" {% url 'product_detail' product.id %}" 
+                            class="text-white sm:text-xl  rounded-lg bg-gray-700 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:focus:ring-lime-900  font-medium py-3  text-sm px-2 sm:px-5 text-center ">Add to cart</a>
                         </div>
                         <!-- For Product Admins-->
                         {% if request.user.is_superuser %}
