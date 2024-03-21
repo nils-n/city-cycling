@@ -19,7 +19,6 @@ from products.models import Product
 
 
 from bag.contexts import bag_contents
-from icecream import ic
 
 User = get_user_model()
 
@@ -49,13 +48,11 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
-    ic("entering checkout view")
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == "POST":
         bag = request.session.get("bag", {})
-        ic("this request is a POST request")
 
         form_data = {
             "full_name": request.POST["full_name"],
@@ -71,7 +68,6 @@ def checkout(request):
 
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            ic("OK the order form was valid")
             order = order_form.save(commit=False)
             pid = request.POST.get("client_secret").split("_secret")[0]
             order.stripe_pid = pid
@@ -99,7 +95,6 @@ def checkout(request):
                             )
                             order_line_item.save()
                 except Product.DoesNotExist:
-                    ic("ERROR this product does not exist")
                     messages.error(
                         request,
                         (
@@ -110,11 +105,8 @@ def checkout(request):
                     )
                     order.delete()
                     return redirect(reverse("view_bag"))
-            ic("OK the order has been saved ")
 
             request.session["save_info"] = "save-info" in request.POST
-            ic("OK returning now to checkout_success view ")
-            ic(order.order_number)
             return redirect(
                 reverse("checkout_success", args=[order.order_number])
             )
