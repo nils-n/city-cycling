@@ -1,34 +1,56 @@
-{% extends "account/base.html" %}
+{% extends "account/base.html" %} 
 {% load tailwind_filters %}
-
 {% load i18n %}
-{% load account %}
-
-{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
-
+{%load account %} 
+  
+{% block head_title %}
+    {% trans "Confirm E-mail Address" %}
+{%endblock %}
 
 {% block inner_content %}
-<hr>
-<h2 class="logo-font mb-4">{% trans "Confirm E-mail Address" %}</h2>
-<hr>
 
-{% if confirmation %}
+    <div class="flex justify-center">
+        <div class="mx-auto max-w-screen-lg md:p-4">
+            <div class="md:1/2 mx-4 my-10 md:mx-8 md:max-w-md">
+                <div class="md:w-full">
+                    <hr />
+                    <h2 class="logo-font mb-4">{% trans "Confirm E-mail Address" %}</h2>
+                    <hr />
 
-{% user_display confirmation.email_address.user as user_display %}
+                    {% if confirmation %}
+                    
+                    <div class="pt-8 pb-4">
+                     {% user_display confirmation.email_address.user as user_display %}
+                        <p>
+    
+                        {% blocktrans with confirmation.email_address.email as email %}Please
+                        confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail
+                        address for user {{ user_display }}.{% endblocktrans %}
+                        </p>
+                    
+                    </div>
+                   
+                    <form
+                        method="post"
+                        action="{% url 'account_confirm_email' confirmation.key %}"
+                    >
+                    {% csrf_token %}
+                    <button type="submit" class='button secondaryAction mt-4  text-gray-800 bg-lime-200 hover:bg-lime-300 focus:outline-none focus:ring-4 focus:ring-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-300 dark:focus:ring-gray-400 dark:border-gray-200'>{% trans 'Confirm' %}</button>
+                    </form>
 
-<p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktrans %}</p>
+                    {% else %} {% url 'account_email' as email_url %}
 
-<form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
-{% csrf_token %}
-    <button type="submit">{% trans 'Confirm' %}</button>
-</form>
+                    <p>
+                    {% blocktrans %}This e-mail confirmation link expired or is invalid.
+                    Please
+                    <a href="{{ email_url }}">issue a new e-mail confirmation request</a
+                    >.{% endblocktrans %}
+                    </p>
 
-{% else %}
-
-{% url 'account_email' as email_url %}
-
-<p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
-
-{% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
