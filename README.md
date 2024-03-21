@@ -40,7 +40,7 @@ The idea is that these two groups come together on this website, where the exper
 ## Table of Content
 
 - [City Cycling Glasgow](#city-cycling-glasgow)
-    - [Project Goal](#project-goal)
+  - [Project Goal](#project-goal)
   - [Business Model](#business-model)
   - [Table of Content](#table-of-content)
   - [User Experience (UX)](#user-experience-ux)
@@ -88,7 +88,7 @@ The idea is that these two groups come together on this website, where the exper
     - [How to Fork](#how-to-fork)
     - [How to Clone](#how-to-clone)
   - [Testing](#testing)
-      - [Limitation](#limitation)
+    - [Limitation](#limitation)
     - [Solved Bugs](#solved-bugs)
     - [Open Bugs](#open-bugs)
   - [Credits](#credits)
@@ -884,7 +884,7 @@ Wireframes were created in [Figma](https://www.figma.com/), using a mobile-first
 - The next iteration will include a blog that allows the page owner to produce high-quality content about cycling in Glasgow, allowing users to interact with other cyclists and foster a community of cyclists in Glasgow
 - Another iteration will consist of a routing page where users can share, discuss and present their best routes to work in Glasgow. The database used in this iteration is already designed for this purpose, including a generic `Comment` model that is based on the `ContentType` model. This model allows user comments on any model type using `GenericForeinKeys` , and comments are therefore not only constraint to purchases by design.
 - Sortings on the products based on rating (ie.e. avg. rating from high to low, show only items with 4 stars and above on average)
-- Signup via social media and a proper email backend that sends actual verification emails when a user signs up. Currently, a Django admin user has to approve new users manually.
+- Signup via social media
 
 ---
 
@@ -1118,7 +1118,26 @@ The coverage of the automated tests were below the percentage that I was aiming 
 
   **Solution** The final cue to solve this problem was found on the third answer of [Stackoverflow - Why don't my Django unittests know that MessageMiddleware is installed?](https://stackoverflow.com/questions/11938164/why-dont-my-django-unittests-know-that-messagemiddleware-is-installed) that pointed to the right location in the Django documentation: [Failing silently when the message framework is disabled](https://docs.djangoproject.com/en/dev/ref/contrib/messages/#failing-silently-when-the-message-framework-is-disabled) : Adding the keyword `fail_silently` to each `django.messages` solved the issue and made the tests pass.
 
----
+- Bug: In the version that was submitted for assessment, the verification emails after sign-up and after a purchase in the shop would not be sent.
+
+  - **Solution** It turned out, and that was not mentioned in the course, that from `python-3.12` onwards, the `SMTP.starttls()` does not accept a `keyfile` argument any more. By default, Heroku would use the latest version `python-3.12`. The solution that fixed the entire issue was to force the python version of the Heroku build to a python version smaller than `python-3.12` by adding a `runtime.txt` file in the root directory with the specific python version to use. Specifying explicitly ``python-3.11.7`, the emails would be sent. See an explanation of the error (and its suggestion how to fix) [Google Group Discussion](https://groups.google.com/g/django-updates/c/rdAvRfTHqts) and [GitHub: Error sending e-mail with smtp backend when using python 3.12 and django 4.1.x](https://github.com/PacktPublishing/Django-4-by-example/issues/41)
+
+  <div style='text-align:center'>
+      <table style='width:90%; content-align:center'>
+       <tr style='width: 30%'>
+      <th> Description </th>
+      <th> Image </th>
+       </tr>
+       <tr style='width: 30%'>
+      <td>Heroku uses by default the latest python version (python-3.12), and the SMTP.starttls()  function tpython > 3.12 would  not accep  </td>
+       <td> <img src="./assets/images/bugs/bug-email-verification-1.png"; alt="Django debug error message" >  </td>
+       </tr>
+       <tr>
+       <td> Solution: Add a 'runtime.txt' into Django root folder with specific python version to use during production (Heroku)  </td>
+       <td> <img src="./assets/images/bugs/bug-email-verification.png"; alt="example of bug -  pyest messages" >  </td>
+       </tr>
+      </table>
+  </div>
 
 ### Open Bugs
 
