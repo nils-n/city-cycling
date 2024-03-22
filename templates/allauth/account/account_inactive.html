@@ -5,9 +5,20 @@
 {% block title %}{% trans "Account Inactive" %}{% endblock %}
 
 {% block inner_content %}
-<hr>
-<h2 class="logo-font mb-4">{% trans "Account Inactive" %}</h2>
-<hr>
 
-<p>{% trans "This account is inactive." %}</p>
+<div class='flex justify-center w-auto'>
+  <div class="max-w-screen-lg ml-10 mr-10 md:p-4">
+      <div class="md:mx-8 mx-4  my-10 md:max-w-md md:1/2 ">
+          <div class="md:w-full">
+
+            <hr>
+            <h2 class="logo-font mb-4">{% trans "Account Inactive" %}</h2>
+            <hr>
+
+            <p>{% trans "This account is inactive." %}</p>
+
+       </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
