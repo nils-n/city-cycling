@@ -1,4 +1,5 @@
-""" view function for the profiles app"""
+"""view function for the profiles app"""
+
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth import get_user_model
 from django.contrib import messages
@@ -39,11 +40,13 @@ def profile(request, user_id):
 
         # store the purchased products
         purchased_products = []
+        purchased_products_ids = []
         for order in orders:
             for line_item in order.lineitems.all():
                 product_id = line_item.product.id
-                if product_id not in purchased_products:
+                if product_id not in purchased_products_ids:
                     purchased_products.append(line_item.product)
+                    purchased_products_ids.append(product_id)
 
         # store the user comments
         user_comments = []
